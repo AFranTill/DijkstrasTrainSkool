@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Nodes
+comment1.params=nodeNumber\ nodeName\ nodeLocale
+comment1.target=Nodes(int,\ java.lang.String,\ int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Nodes\r\n
+numComments=2
