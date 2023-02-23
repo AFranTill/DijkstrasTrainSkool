@@ -3,7 +3,7 @@
  * Write a description of class Main here.
  *
  * @author Frances Till
- * @version Verision 1 12/2/23
+ * @version Verision 1 24/2/23
  */
 
 import java.awt.Frame; //don't actually need rn
