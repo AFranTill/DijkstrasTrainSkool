@@ -11,6 +11,7 @@ public class TrainNetwork
     private int x;
     private int numberOfNodes;//NEEDS intialisign
     private int[] network;
+    private String[] names{"One","Two", "Three", "Four", "Five", "Six"};
     
     /**
      * Constructor for objects of class TrainNetwork

@@ -26,6 +26,8 @@ public class Nodes extends JFrame
     private String colorOfNode;
     private String imageForNode;
     private String nameOfNode;
+    private Nodes[] whoCanIGoTo;
+    private int[] howLongWillItTake;
     
     Canvas myGraphic;
     /**
