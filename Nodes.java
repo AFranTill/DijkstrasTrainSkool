@@ -30,6 +30,8 @@ public class Nodes extends JFrame
     private int numberOfNodes;
     private Nodes[] whoCanIGoTo;
     private int[] howLongWillItTake;
+    private int distanceFromStart = Integer.MAX_VALUE;
+    private boolean evaluated = false; 
 
     Canvas myGraphic;
     /**
@@ -60,6 +62,16 @@ public class Nodes extends JFrame
     public String getName(){
         return nameOfNode;
     }
+    
+    public void setDistance(int dist){
+        evaluated = true;
+        distanceFromStart = dist;
+    }
+    
+    public int getDistance(){
+        return distanceFromStart;
+    }
+    
 }
 
 

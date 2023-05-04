@@ -13,6 +13,7 @@ public class TrainNetwork
     private int numberOfNodes;//NEEDS to be intialises
     private String names[] = {"Zero", "One","Two", "Three", "Four", "Five", "Six"}; //names for the different nodes
     private Nodes arrayOfNodes[]; //intailise the array 
+    private int firstValue = 0;
 
     /**
      * Constructor for objects of class TrainNetwork
@@ -35,7 +36,20 @@ public class TrainNetwork
             System.out.println(arrayOfNodes[i].getName());
         }
         
+        makeConnections();
         
+        algorithm();
+    }
+    
+    public void makeConnections(){
+        
+    }
+    
+    public void algorithm(){
+        arrayOfNodes[firstValue].setDistance(0);
+        
+        
+    
     }
 
 }

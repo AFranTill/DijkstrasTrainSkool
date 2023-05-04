@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Nodes
-comment1.params=newName
-comment1.target=Nodes(java.lang.String)
+comment1.params=newNumber\ newName\ numberofNodes
+comment1.target=Nodes(int,\ java.lang.String,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Nodes\r\n
 comment2.params=newNumber\ newName
 comment2.target=Nodes(int,\ java.lang.String)
@@ -9,4 +9,8 @@ comment3.params=
 comment3.target=int\ getNumber()
 comment4.params=
 comment4.target=java.lang.String\ getName()
-numComments=5
+comment5.params=dist
+comment5.target=void\ setDistance(int)
+comment6.params=
+comment6.target=int\ getDistance()
+numComments=7
