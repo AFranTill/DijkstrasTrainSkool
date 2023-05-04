@@ -7,4 +7,6 @@ comment2.params=newNumber\ newName
 comment2.target=Nodes(int,\ java.lang.String)
 comment3.params=
 comment3.target=int\ getNumber()
-numComments=4
+comment4.params=
+comment4.target=java.lang.String\ getName()
+numComments=5

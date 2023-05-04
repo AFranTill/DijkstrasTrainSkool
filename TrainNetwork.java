@@ -2,49 +2,40 @@
 /**
  * Creates and intialises a network of train and nodes
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Frances Till
+ * @version 4/5/23 (verision 2) 
  */
+
+import java.util.Scanner;
+
 public class TrainNetwork
 {
-    // instance variables - replace the example below with your own
-    private int x;
-    private int numberOfNodes;//NEEDS intialisign
-    private int[] network;
-    private String names[] = {"One","Two", "Three", "Four", "Five", "Six"};
-    private Nodes arrayOfNodes[];
-    Nodes otherNode;
-    
+    private int numberOfNodes;//NEEDS to be intialises
+    private String names[] = {"Zero", "One","Two", "Three", "Four", "Five", "Six"}; //names for the different nodes
+    private Nodes arrayOfNodes[]; //intailise the array 
+
     /**
      * Constructor for objects of class TrainNetwork
      */
     public TrainNetwork()
     {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("how many nodes do you want?");
+        numberOfNodes = keyboard.nextInt();
         //create a name for the node
-        numberOfNodes = 5; 
-        Nodes arrayOfNodes[] = new Nodes[5];
-        for(int i = 0; i < numberOfNodes;i++){
-            String name = names[i];
-            if(i==3) i =5;
-            Nodes singleNode = new Nodes(i, name);
-            if(i==5) i = 3;
-            
-            if(i > 4){
-                Nodes otherNode = new Nodes(i, name);
-            }
-            arrayOfNodes[i] = singleNode;
+        numberOfNodes = 5;  
+        Nodes[] arrayOfNodes = new Nodes[numberOfNodes];
+        
+        
+        for(int i = 0; i < numberOfNodes; i++){
+            arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
         }
         
-        for(int i = 0; i < numberOfNodes;i++){
-            int girlie = arrayOfNodes[i].getNumber();
-            System.out.println(girlie);
-            int girlieTwo = otherNode.getNumber();
-            System.out.println(girlie);
+        for(int i = 0; i < numberOfNodes; i++){
+            System.out.println(arrayOfNodes[i].getName());
         }
+        
+        
     }
 
-    public void nameNode()
-    {
-        
-    }
 }

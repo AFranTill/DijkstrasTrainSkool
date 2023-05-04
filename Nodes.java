@@ -27,6 +27,7 @@ public class Nodes extends JFrame
     private String imageForNode;
     private String nameOfNode;
     private int numberOfNode;
+    private int numberOfNodes;
     private Nodes[] whoCanIGoTo;
     private int[] howLongWillItTake;
 
@@ -34,19 +35,30 @@ public class Nodes extends JFrame
     /**
      * Constructor for objects of class Nodes
      */
-    public Nodes(String newName)
+    public Nodes(int newNumber, String newName, int numberofNodes)
     {        
         nameOfNode = newName;
+        numberOfNode = newNumber;
+        numberOfNodes = numberOfNodes;
+        
+        // whoCanIGoTo = new Nodes[numberOfNodes];
+        
+         // for(int i = 0; i < numberOfNodes; i++){
+            // arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
+        // }
     }
     
     public Nodes(int newNumber, String newName)
     {
-        nameOfNode = newName;
-        newNumber = numberOfNode;
+        
     }
     
     public int getNumber(){
         return numberOfNode;
+    }
+    
+    public String getName(){
+        return nameOfNode;
     }
 }
 
