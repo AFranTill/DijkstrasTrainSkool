@@ -33,7 +33,7 @@ public class Nodes extends JFrame
     private int distanceFromStart = Integer.MAX_VALUE;
     private boolean evaluated = false; 
 
-    private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
+    //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
     
     Canvas myGraphic;
     /**
@@ -75,15 +75,7 @@ public class Nodes extends JFrame
         return distanceFromStart;
     }
     
-    public void setNetworkBeginning(int numberOfConnectedNodes, int nodeNumber, Nodes nextNode){
-            //Nodes[] whoCanIGoTo = new Nodes[numberOfConnectedNodes];
-            whoCanIGoTo[nodeNumber] = nextNode;
-    }
-    
-    
-    public String getConnectionName(){
-        return whoCanIGoTo[0].getName();
-    }
+   
     
     
 }

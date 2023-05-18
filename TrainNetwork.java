@@ -14,6 +14,8 @@ public class TrainNetwork
     private String names[] = {"Zero", "One","Two", "Three", "Four", "Five", "Six"}; //names for the different nodes
     private Nodes arrayOfNodes[]; //intailise the array 
     private int firstValue = 0;
+    private Links arrayOfLinks[];
+    private int numberOfLinks;
 
     /**
      * Constructor for objects of class TrainNetwork
@@ -35,21 +37,16 @@ public class TrainNetwork
             System.out.println(arrayOfNodes[i].getName());
         }
         
-        makeConnections(arrayOfNodes);
         
-        System.out.println("find name of first connection");
+        numberOfLinks = 5;
+        int x = 6;
         
-        System.out.println(arrayOfNodes[0].getConnectionName());
+        for(int i = 0; i < numberOfLinks; i++){
+            arrayOfLinks[i] = new Links(x, arrayOfNodes[i], arrayOfNodes[(i+1)]);
+        }
         
+       
         //algorithm();
-    }
-    
-    public void makeConnections(Nodes[] arrayOfNodes){
-        arrayOfNodes[0].setNetworkBeginning(3, 0, arrayOfNodes[3]);
-        
-        //arrayOfNodes[0].addToNetwork(0, arrayOfNodes[1]);
-         //arrayOfNodes[0].addToNetwork(1, arrayOfNodes[2]);
-          //arrayOfNodes[0].addToNetwork(2, arrayOfNodes[3]);
     }
     
     public void algorithm(){

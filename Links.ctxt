@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Links
+comment1.params=weight\ firstNode\ secondNode
+comment1.target=Links(int,\ Nodes,\ Nodes)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Links\r\n
+numComments=2
