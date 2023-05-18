@@ -23,8 +23,7 @@ public class TrainNetwork
         Scanner keyboard = new Scanner(System.in);
         System.out.println("how many nodes do you want?");
         numberOfNodes = keyboard.nextInt();
-        //create a name for the node
-        numberOfNodes = 5;  
+        //create a name for the node  
         Nodes[] arrayOfNodes = new Nodes[numberOfNodes];
         
         
@@ -36,13 +35,21 @@ public class TrainNetwork
             System.out.println(arrayOfNodes[i].getName());
         }
         
-        makeConnections();
+        makeConnections(arrayOfNodes);
         
-        algorithm();
+        System.out.println("find name of first connection");
+        
+        System.out.println(arrayOfNodes[0].getConnectionName());
+        
+        //algorithm();
     }
     
-    public void makeConnections(){
+    public void makeConnections(Nodes[] arrayOfNodes){
+        arrayOfNodes[0].setNetworkBeginning(3, 0, arrayOfNodes[3]);
         
+        //arrayOfNodes[0].addToNetwork(0, arrayOfNodes[1]);
+         //arrayOfNodes[0].addToNetwork(1, arrayOfNodes[2]);
+          //arrayOfNodes[0].addToNetwork(2, arrayOfNodes[3]);
     }
     
     public void algorithm(){
