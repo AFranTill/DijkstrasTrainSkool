@@ -3,7 +3,7 @@
  * Creates and intialises a network of train and nodes
  *
  * @author Frances Till
- * @version 4/5/23 (verision 2) 
+ * @version 4 22/5/23 
  */
 
 import java.util.Scanner;
@@ -50,7 +50,7 @@ public class TrainNetwork
     }
     
     public void algorithm(){
-        arrayOfNodes[firstValue].setDistance(0);
+        
         
         
     

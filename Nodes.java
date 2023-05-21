@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class Nodes here.
+ * Class to construct the nodes
  *
  * @author Frances Till
- * @version 1 28/4/23
+ * @version 4 22/5/23
  */
 
 import java.awt.Frame; //don't actually need rn
