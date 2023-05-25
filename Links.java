@@ -20,9 +20,16 @@ public class Links
         startPoint = firstNode;
         endPoint = secondNode;
         weight = weight;    
-
+            
     }
     
+    public Nodes getEndNode(){
+        return endPoint;
+    }
+    
+    public int getWeight(){
+        return weight;
+    }
     
 
 }

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Nodes
-comment1.params=newNumber\ newName\ numberofNodes
+comment1.params=newNumber\ newName\ numberOfNodes
 comment1.target=Nodes(int,\ java.lang.String,\ int)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Nodes\r\n
 comment2.params=newNumber\ newName

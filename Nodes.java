@@ -39,7 +39,7 @@ public class Nodes extends JFrame
     /**
      * Constructor for objects of class Nodes
      */
-    public Nodes(int newNumber, String newName, int numberofNodes)
+    public Nodes(int newNumber, String newName, int numberOfNodes)
     {        
         nameOfNode = newName;
         numberOfNode = newNumber;
@@ -74,6 +74,8 @@ public class Nodes extends JFrame
     public int getDistance(){
         return distanceFromStart;
     }
+    
+    
     
    
     
