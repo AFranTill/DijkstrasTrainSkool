@@ -16,6 +16,7 @@ public class TrainNetwork
     private int firstValue = 0;
     private Links arrayOfLinks[];
     private int numberOfLinks;
+    private int arrayOfDistances[];
 
     /**
      * Constructor for objects of class TrainNetwork
@@ -37,8 +38,17 @@ public class TrainNetwork
             System.out.println(arrayOfNodes[i].getName());
         }
         
-        
         numberOfLinks = 5;
+         
+        for(int i = 0; i < numberOfLinks; i++){
+            int weight =  (int) Math.floor(Math.random() *(5 - 1 + 1) + 1);
+            int secondNodeNumber = numberOfNodes - i;
+            Nodes firstNode = arrayOfNodes[i];
+            Nodes secondNode = arrayOfNodes[secondNodeNumber];
+            arrayOfLinks[i] = new Links(weight,firstNode, secondNode);
+        }
+        
+                                     
         int x = 6;
         
         for(int i = 0; i < numberOfLinks; i++){
@@ -50,7 +60,8 @@ public class TrainNetwork
     }
     
     public void algorithm(){
-        
+        Nodes fixedNode = arrayOfNodes[0];
+        //make new dist arrays 
         
         
     
