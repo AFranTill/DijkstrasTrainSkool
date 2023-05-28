@@ -3,7 +3,7 @@
  * Write a description of class Links here.
  *
  * @author Frances Till
- * @version 2 22/5/23
+ * @version 3 26/5/23
  */
 
 
@@ -15,11 +15,11 @@ public class Links
     /**
      * Constructor for objects of class Links
      */
-    public Links(int weight, Nodes firstNode, Nodes secondNode)
+    public Links(int theNumber, Nodes firstNode, Nodes secondNode)
     {        
         startPoint = firstNode;
         endPoint = secondNode;
-        weight = weight;    
+        weight = theNumber;    
             
     }
     
@@ -29,6 +29,10 @@ public class Links
     
     public int getWeight(){
         return weight;
+    }
+    
+    public Nodes getStartNode(){
+        return startPoint; 
     }
     
 

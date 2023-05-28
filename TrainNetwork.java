@@ -3,10 +3,11 @@
  * Creates and intialises a network of train and nodes
  *
  * @author Frances Till
- * @version 4 22/5/23 
+ * @version 5 26/5/23 
  */
 
 import java.util.Scanner;
+import java.util.*;
 
 public class TrainNetwork
 {
@@ -32,17 +33,17 @@ public class TrainNetwork
         numberOfLinks = 5;
         Links[] arrayOfLinks = new Links[numberOfLinks];
         
-        for(int i = 0; i < arrayOfLinks.length; i++){
-            System.out.println(arrayOfLinks[i] + ", ");
-        }
+        // for(int i = 0; i < arrayOfLinks.length; i++){
+            // System.out.println(arrayOfLinks[i] + ", ");
+        // }
         
         for(int i = 0; i < numberOfNodes; i++){
             arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
         }
         
-        for(int i = 0; i < numberOfNodes; i++){
-            System.out.println(arrayOfNodes[i].getName());
-        }
+        // for(int i = 0; i < numberOfNodes; i++){
+            // System.out.println(arrayOfNodes[i].getName());
+        // }
         
         
         System.out.println(numberOfLinks);
@@ -52,20 +53,14 @@ public class TrainNetwork
             int secondNodeNumber = (int) Math.floor(Math.random() *(maxNumberOfNodes - 0 + 1) + 0);
             Nodes firstNode = arrayOfNodes[i];
             Nodes secondNode = arrayOfNodes[secondNodeNumber];
-            System.out.println("iteration number " + i);
-            System.out.println(weight);
-            System.out.println(firstNode.getName());
-            System.out.println(secondNode.getName());
-            System.out.println(secondNodeNumber);
-            System.out.println(arrayOfLinks[i] + " " );
-            arrayOfLinks[i] = new Links(weight, firstNode, secondNode); 
+            arrayOfLinks[i] = new Links(weight, firstNode, secondNode);
         }
         
                                      
         int x = 6;
         
         // for(int i = 0; i < numberOfLinks; i++){
-            // arrayOfLinks[i] = new Links(x, arrayOfNodes[i], arrayOfNodes[(i+1)]);
+            // System.out.println(arrayOfLinks[i].getWeight() + ", ");
         // }
         
        
@@ -73,12 +68,34 @@ public class TrainNetwork
         
         
         
+        System.out.println("link beginnings");
+        
+        for(int i = 0; i < numberOfLinks; i++){
+            System.out.println(arrayOfLinks[i].getStartNode().getName() + ", ");
+        }
+
+        
+        System.out.println("Link ends");
+        
+        for(int i = 0; i < numberOfLinks; i++){
+            System.out.println(arrayOfLinks[i].getEndNode().getName() + ", ");
+        }
+        
+        System.out.println("Link Weights");
+        
+        for(int i = 0; i < numberOfLinks; i++){
+            System.out.println(arrayOfLinks[i].getWeight() + ", ");
+        }
+
+        
+        System.out.println("yyayyyayyayay");
         
     }
     
     public void algorithm(Nodes[] arrayOfNodes, Links[] arrayOfLinks ){
         Nodes fixedNode = arrayOfNodes[0];
         int[] arrayOfDistances = new int[numberOfLinks];
+        Arrays.fill(arrayOfDistances, Integer.MAX_VALUE);
         for(int i = 0; i < numberOfNodes; i++){
             Nodes nextNode = arrayOfNodes[i];
             for(int j = 0; j < numberOfLinks; j++){
@@ -92,13 +109,17 @@ public class TrainNetwork
         }
         
         
-        for(int i = 0; i < arrayOfDistances.length; i++){
-            System.out.println(arrayOfDistances[i] + ", ");
-        }
+        // for(int i = 0; i < arrayOfNodes.length; i++){
+            // System.out.println(arrayOfNodes[i] + ", ");
+        // }
         
         for(int i = 0; i < arrayOfDistances.length; i++){
-            System.out.println(arrayOfLinks[i].getWeight() + ", ");
+            System.out.print(arrayOfDistances[i] + ", ");
         }
+        
+        // for(int i = 0; i < arrayOfLinks.length; i++){
+            // System.out.println(arrayOfLinks[i].getWeight() + ", ");
+        // }
     }
     
     public int compare(int[] arrayOfNumbers, int currentNumber, int numberToCompare){
@@ -112,8 +133,5 @@ public class TrainNetwork
             return 1200;
         }
     }
-    //arrayofIdstancees needs to have max vvalues
-    // the links wieghts arent being got bc they are not there. There are no link weights 
-    
 
 }
