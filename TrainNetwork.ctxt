@@ -2,7 +2,7 @@
 comment0.target=TrainNetwork
 comment1.params=
 comment1.target=TrainNetwork()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ TrainNetwork\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ TrainNetwork\r\n
 comment2.params=arrayOfNodes\ arrayOfLinks
 comment2.target=void\ algorithm(Nodes[],\ Links[])
 comment3.params=arrayOfNumbers\ currentNumber\ numberToCompare

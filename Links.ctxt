@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=Links
-comment0.text=\n\ Write\ a\ description\ of\ class\ Links\ here.\n\n\ @author\ Frances\ Till\n\ @version\ 3\ 26/5/23\n
+comment0.text=\r\n\ Links\ class\ formed\ edges\ and\ vertices\ between\ different\ nodes\r\n\r\n\ @author\ Frances\ Till\r\n\ @version\ 3\ 26/5/23\r\n
 comment1.params=theNumber\ firstNode\ secondNode
 comment1.target=Links(int,\ Nodes,\ Nodes)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Links\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Links\r\n
 comment2.params=
 comment2.target=Nodes\ getEndNode()
 comment3.params=

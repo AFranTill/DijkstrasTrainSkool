@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class Links here.
+ * Links class formed edges and vertices between different nodes
  *
  * @author Frances Till
  * @version 3 26/5/23
