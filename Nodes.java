@@ -32,6 +32,7 @@ public class Nodes extends JFrame
     private int[] howLongWillItTake;
     private int distanceFromStart = Integer.MAX_VALUE;
     private boolean evaluated = false; 
+    private Nodes pathBack; 
 
     //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
     
@@ -73,6 +74,14 @@ public class Nodes extends JFrame
     
     public int getDistance(){
         return distanceFromStart;
+    }
+    
+    public void setPathBack(Nodes backOne){
+        pathBack = backOne;
+    }
+    
+    public Nodes getPathBack(){
+        return pathBack;
     }
     
     
