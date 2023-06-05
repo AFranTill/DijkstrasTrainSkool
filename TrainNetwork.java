@@ -116,6 +116,8 @@ public class TrainNetwork
         Arrays.fill(arrayOfDistances, Integer.MAX_VALUE);
         int weightOfNewLink = 0;
         arrayOfDistances[fixedNode.getNumber()] = 0;
+        ToDoQueue.addToQueue(fixedNode);
+        
         
         for(int j = 0; j < numberOfLinks; j++){
             //get links 
@@ -129,7 +131,7 @@ public class TrainNetwork
             arrayOfLinks[j].getWeight();
             //arrayOfDistances[startNodeValue];
             
-            weightOfNewLink = arrayOfDistances[pathBack] + arrayOfLinks[j].getWeight();
+            //weightOfNewLink = arrayOfDistances[j.getPathBack().getNumber()] + arrayOfLinks[j].getWeight();
             
             int travelTime = compare(arrayOfDistances, j, weightOfNewLink); 
             arrayOfDistances[j] = travelTime;

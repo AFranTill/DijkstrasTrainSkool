@@ -33,6 +33,7 @@ public class Nodes extends JFrame
     private int distanceFromStart = Integer.MAX_VALUE;
     private boolean evaluated = false; 
     private Nodes pathBack; 
+    private Nodes follower; // for the queue
 
     //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
     
@@ -84,9 +85,15 @@ public class Nodes extends JFrame
         return pathBack;
     }
     
+    public void addFollower(Nodes newFollower)
+    {
+        this.follower = newFollower;
+    }
     
-    
-   
+        public Nodes getFollower()
+    {
+        return this.follower;
+    }
     
     
 }
