@@ -95,7 +95,14 @@ public class Nodes extends JFrame
         return this.follower;
     }
     
-    
+     public int getLength(Nodes current){
+        if(current.getFollower() == null){
+            System.out.println("returned 1");
+            return 1;
+        }else{            
+            return 1 + getLength(current.getFollower());
+        }
+    }
 }
 
 

@@ -116,10 +116,14 @@ public class TrainNetwork
         Arrays.fill(arrayOfDistances, Integer.MAX_VALUE);
         int weightOfNewLink = 0;
         arrayOfDistances[fixedNode.getNumber()] = 0;
-        ToDoQueue.addToQueue(fixedNode);
+        ToDoQueue queue = new ToDoQueue();
+        queue.addToQueue(fixedNode);
         
-        
-        for(int j = 0; j < numberOfLinks; j++){
+        for(int j = 0; j < queue.getLength(); j++){ // this for loop may not be the right vibe we'll see
+            
+            Nodes currentNode = queue.getHead();
+            
+            for each 
             //get links 
             //
             Nodes startNode = arrayOfLinks[j].getStartNode();

@@ -39,7 +39,7 @@ public class ToDoQueue
         }
     }
 
-    public Nodes getHeadOfQueue(){
+    public Nodes getHead(){
         return this.head;
     }
 
@@ -59,6 +59,9 @@ public class ToDoQueue
         return current;        
     }
     
-    
+    public int getLength(){        
+        int length = head.getLength(this.head);
+        return length;
+    }
 
 }
