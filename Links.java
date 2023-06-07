@@ -6,35 +6,42 @@
  * @version 3 26/5/23
  */
 
-
 public class Links 
 {
-    private Nodes startPoint;
-    private Nodes endPoint;
+    private Nodes startNode;
+    private Nodes endNode;
     private int weight; 
     /**
      * Constructor for objects of class Links
      */
     public Links(int theNumber, Nodes firstNode, Nodes secondNode)
     {        
-        startPoint = firstNode;
-        endPoint = secondNode;
+        startNode = firstNode;
+        endNode = secondNode;
         weight = theNumber;    
-            
+
     }
-    
+
     public Nodes getEndNode(){
-        return endPoint;
+        return endNode;
     }
-    
+
     public int getWeight(){
         return weight;
     }
-    
+
     public Nodes getStartNode(){
-        return startPoint; 
+        return startNode; 
     }
-    
+
+    public Nodes findOtherEnd(Nodes sourceNode){
+        if(sourceNode == startNode){
+            return endNode;
+        }else if (sourceNode == endNode){
+            return startNode;
+        }else{
+            return null;
+        }
+    }
 
 }
-

@@ -105,55 +105,67 @@ public class TrainNetwork
             System.out.println(arrayOfLinks[i].getWeight() + ", ");
         }
 
-        algorithm(arrayOfNodes, arrayOfLinks);
+        algorithmPartOne(arrayOfNodes, arrayOfLinks);
 
         System.out.println("yyayyyayyayay");
     }
 
-    public void algorithm(Nodes[] arrayOfNodes, Links[] arrayOfLinks ){
+    public void algorithmPartOne(Nodes[] arrayOfNodes, Links[] arrayOfLinks ){
         Nodes fixedNode = arrayOfNodes[firstValue];
+        
         int[] arrayOfDistances = new int[numberOfLinks];
+        
         Arrays.fill(arrayOfDistances, Integer.MAX_VALUE);
+        
         int weightOfNewLink = 0;
+        
         arrayOfDistances[fixedNode.getNumber()] = 0;
+        
         ToDoQueue queue = new ToDoQueue();
+        
         queue.addToQueue(fixedNode);
         
-        for(int j = 0; j < queue.getLength(); j++){ // this for loop may not be the right vibe we'll see
+        while(queue.isQueueEmpty() == false){ // this for loop may not be the right vibe we'll see
             
             Nodes currentNode = queue.getHead();
             
-            for each 
-            //get links 
-            //
-            Nodes startNode = arrayOfLinks[j].getStartNode();
-            Nodes endNode = arrayOfLinks[j].getEndNode();
-            int startNodeValue = startNode.getNumber();
+            findLinks(currentNode, arrayOfNodes, arrayOfLinks, arrayOfDistances);
             
-            
-            
-            arrayOfLinks[j].getWeight();
+        
+            //arrayOfLinks[j].getWeight();
             //arrayOfDistances[startNodeValue];
             
             //weightOfNewLink = arrayOfDistances[j.getPathBack().getNumber()] + arrayOfLinks[j].getWeight();
             
-            int travelTime = compare(arrayOfDistances, j, weightOfNewLink); 
-            arrayOfDistances[j] = travelTime;
+            //int travelTime = compare(arrayOfDistances, j, weightOfNewLink); 
+            //arrayOfDistances[j] = travelTime;
+        }
+    }
+    
+     public void findLinks(Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayofDistances){
+        for(int i =0; i < numberOfLinks; i++){
+            Nodes workingNode = arrayOfLinks[i].findOtherEnd(sourceNode);
+            Links workingLink = arrayOfLinks[i];
+            if(workingNode != null){
+                algorithmPartTwo(workingLink, sourceNode, arrayOfNodes, arrayOfLinks, arrayOfDistances);
+            }else{
+                
+            }
+        }
+    }
+    
+    public void algorithmPartTwo(Links workingLink, Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayOfDistances){
+        int weight = workingLink.getWeight();
+        Nodes dest = workingLink.findOtherEnd(sourceNode);
+        int destLocale = dest.getNumber();
+        int sourceLocale = sourceNode.getNumber();
+        int costToSource = arrayOfDistances[sourceLocale];
+        int costToDest = arrayOfDistances[destLocale];
+        
+        if(costToSource + costToDest < arrayOfDistances[destLocale]){
             
-
+        }else{
         }
-
-        // for(int i = 0; i < arrayOfNodes.length; i++){
-        // System.out.println(arrayOfNodes[i] + ", ");
-        // }
-
-        for(int i = 0; i < arrayOfDistances.length; i++){
-            System.out.print(arrayOfDistances[i] + ", ");
-        }
-
-        // for(int i = 0; i < arrayOfLinks.length; i++){
-        // System.out.println(arrayOfLinks[i].getWeight() + ", ");
-        // }
     }
 
     public int compare(int[] arrayOfNumbers, int currentNumber, int numberToCompare){
@@ -167,5 +179,18 @@ public class TrainNetwork
             return 1200;
         }
     }
-
+    
+   
 }
+
+// for(int i = 0; i < arrayOfNodes.length; i++){
+        // System.out.println(arrayOfNodes[i] + ", ");
+        // }
+
+        // for(int i = 0; i < arrayOfDistances.length; i++){
+            // System.out.print(arrayOfDistances[i] + ", ");
+        // }
+
+        // for(int i = 0; i < arrayOfLinks.length; i++){
+        // System.out.println(arrayOfLinks[i].getWeight() + ", ");
+        // }
