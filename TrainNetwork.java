@@ -61,34 +61,6 @@ public class TrainNetwork
 
         arrayOfLinks[8] = new Links(2, arrayOfNodes[4], arrayOfNodes[5]);
 
-        
-        //-----------------------
-
-        // //RANDOMISES A PATH OF LINKS = NOT VERY GOOD 
-        // System.out.println(numberOfLinks);
-        // for(int i = 0; i < numberOfLinks; i++){
-        // int weight =  (int) Math.floor(Math.random() *(maxNumberOfNodes - 1 + 1) + 1);
-        // int secondNodeNumber = (int) Math.floor(Math.random() *(maxNumberOfNodes - 0 + 1) + 0);
-        // if(secondNodeNumber != i){
-        // Nodes firstNode = arrayOfNodes[i];
-        // Nodes secondNode = arrayOfNodes[secondNodeNumber];
-        // arrayOfLinks[i] = new Links(weight, firstNode, secondNode);
-        // System.out.println("went head" + secondNodeNumber +", "+ i);
-        // }else{ ///HELP I don't actually think this works but anyways
-        // System.out.println("didn't go ahead" + i);
-        // i = i - 1;
-        // System.out.println("didn't go ahead" + i);
-        // }
-
-        // }    
-
-        //-----------------------
-
-        // for(int i = 0; i < numberOfLinks; i++){
-        // System.out.println(arrayOfLinks[i].getWeight() + ", ");
-        // }
-
-        
         System.out.println("link beginnings");
         for(int i = 0; i < numberOfLinks; i++){
             System.out.println(arrayOfLinks[i].getStartNode().getName() + ", ");
@@ -108,63 +80,102 @@ public class TrainNetwork
         algorithmPartOne(arrayOfNodes, arrayOfLinks);
 
         System.out.println("yyayyyayyayay");
+
+
     }
 
     public void algorithmPartOne(Nodes[] arrayOfNodes, Links[] arrayOfLinks ){
         Nodes fixedNode = arrayOfNodes[firstValue];
-        
+
         int[] arrayOfDistances = new int[numberOfLinks];
-        
+
         Arrays.fill(arrayOfDistances, Integer.MAX_VALUE);
-        
+
         int weightOfNewLink = 0;
-        
+
         arrayOfDistances[fixedNode.getNumber()] = 0;
-        
+
         ToDoQueue queue = new ToDoQueue();
-        
+
         queue.addToQueue(fixedNode);
-        
+
         while(queue.isQueueEmpty() == false){ // this for loop may not be the right vibe we'll see
-            
+
             Nodes currentNode = queue.getHead();
-            
-            findLinks(currentNode, arrayOfNodes, arrayOfLinks, arrayOfDistances);
-            
-        
+
+            findLinks(currentNode, arrayOfNodes, arrayOfLinks, arrayOfDistances, queue);
+
+            queue.takeFromQueue();
+
             //arrayOfLinks[j].getWeight();
             //arrayOfDistances[startNodeValue];
-            
+
             //weightOfNewLink = arrayOfDistances[j.getPathBack().getNumber()] + arrayOfLinks[j].getWeight();
-            
+
             //int travelTime = compare(arrayOfDistances, j, weightOfNewLink); 
             //arrayOfDistances[j] = travelTime;
         }
-    }
-    
-     public void findLinks(Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayofDistances){
-        for(int i =0; i < numberOfLinks; i++){
-            Nodes workingNode = arrayOfLinks[i].findOtherEnd(sourceNode);
-            Links workingLink = arrayOfLinks[i];
-            if(workingNode != null){
-                algorithmPartTwo(workingLink, sourceNode, arrayOfNodes, arrayOfLinks, arrayOfDistances);
-            }else{
-                
+        
+        
+        System.out.println("Nodes");
+        for(int i = 0; i < numberOfNodes; i++){
+            System.out.println(arrayOfNodes[i].getName() + ", ");
+        }
+
+        System.out.println("distances");
+        for(int i = 0; i < numberOfLinks; i++){
+            System.out.println(arrayOfDistances[i]+ ", ");
+        }
+
+        System.out.println("paths");
+        for(int i = 0; i < numberOfNodes; i++){
+            for(int j = 0; j < numberOfNodes; j++){
+                if(arrayOfNodes[j].getPathBack() != null){
+                    System.out.println(arrayOfNodes[i].getPathBack().getName() + ", ");
+                }
             }
         }
     }
-    
-    public void algorithmPartTwo(Links workingLink, Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayOfDistances){
+
+    public void findLinks(Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayOfDistances, ToDoQueue queue){
+        for(int i = 0; i < numberOfLinks; i++){
+            Nodes workingNode = arrayOfLinks[i].findOtherEnd(sourceNode);
+            Links workingLink = arrayOfLinks[i];
+            if(workingNode != null){
+                algorithmPartTwo(workingLink, sourceNode, arrayOfNodes, arrayOfLinks, arrayOfDistances, queue);
+            }else{
+
+            }
+        }
+    }
+
+    public void algorithmPartTwo(Links workingLink, Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayOfDistances, ToDoQueue queue){
         int weight = workingLink.getWeight();
         Nodes dest = workingLink.findOtherEnd(sourceNode);
         int destLocale = dest.getNumber();
+        System.out.println("destLocale");
+        System.out.println(destLocale);
         int sourceLocale = sourceNode.getNumber();
+        System.out.println(sourceNode.getName());
+        System.out.println(sourceNode.getNumber());
+        System.out.println(arrayOfDistances[sourceLocale]);
         int costToSource = arrayOfDistances[sourceLocale];
         int costToDest = arrayOfDistances[destLocale];
+        int totalCost = costToSource + costToDest;
+        System.out.println("totalCost");
+        System.out.println(totalCost);
+        System.out.println("arrayOfDistances[destLocale]");
+        System.out.println(arrayOfDistances[destLocale]);
         
-        if(costToSource + costToDest < arrayOfDistances[destLocale]){
-            
+
+        if(totalCost <= arrayOfDistances[destLocale]){
+            System.out.println("crying");
+            sourceNode.setDistance(totalCost);
+            arrayOfDistances[sourceLocale] = totalCost;
+            dest.setPathBack(sourceNode);
+            queue.addToQueue(dest);
         }else{
+            System.out.println("unchanged");
         }
     }
 
@@ -179,18 +190,41 @@ public class TrainNetwork
             return 1200;
         }
     }
-    
-   
+
 }
-
 // for(int i = 0; i < arrayOfNodes.length; i++){
-        // System.out.println(arrayOfNodes[i] + ", ");
-        // }
+// System.out.println(arrayOfNodes[i] + ", ");
+// }
 
-        // for(int i = 0; i < arrayOfDistances.length; i++){
-            // System.out.print(arrayOfDistances[i] + ", ");
-        // }
+// for(int i = 0; i < arrayOfDistances.length; i++){
+// System.out.print(arrayOfDistances[i] + ", ");
+// }
 
-        // for(int i = 0; i < arrayOfLinks.length; i++){
-        // System.out.println(arrayOfLinks[i].getWeight() + ", ");
-        // }
+// for(int i = 0; i < arrayOfLinks.length; i++){
+// System.out.println(arrayOfLinks[i].getWeight() + ", ");
+// }
+
+//-----------------------
+// //RANDOMISES A PATH OF LINKS = NOT VERY GOOD 
+// System.out.println(numberOfLinks);
+// for(int i = 0; i < numberOfLinks; i++){
+// int weight =  (int) Math.floor(Math.random() *(maxNumberOfNodes - 1 + 1) + 1);
+// int secondNodeNumber = (int) Math.floor(Math.random() *(maxNumberOfNodes - 0 + 1) + 0);
+// if(secondNodeNumber != i){
+// Nodes firstNode = arrayOfNodes[i];
+// Nodes secondNode = arrayOfNodes[secondNodeNumber];
+// arrayOfLinks[i] = new Links(weight, firstNode, secondNode);
+// System.out.println("went head" + secondNodeNumber +", "+ i);
+// }else{ ///HELP I don't actually think this works but anyways
+// System.out.println("didn't go ahead" + i);
+// i = i - 1;
+// System.out.println("didn't go ahead" + i);
+// }
+
+// }    
+
+//-----------------------
+
+// for(int i = 0; i < numberOfLinks; i++){
+// System.out.println(arrayOfLinks[i].getWeight() + ", ");
+// }
