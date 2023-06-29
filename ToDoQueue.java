@@ -33,6 +33,9 @@ public class ToDoQueue
         if(isEmpty == true){
             head = newFollower;
             tail = newFollower;
+        }else if (isAlreadyHere(newFollower) == true){
+            System.out.println("already in queue");
+        
         }else {
             tail.addFollower(newFollower);
             tail = newFollower;
@@ -63,5 +66,10 @@ public class ToDoQueue
         int length = head.getLength(this.head);
         return length;
     }
+    
+    public boolean isAlreadyHere(Nodes nodeOfTheHour){
+        return false; //HELP
+    }
+        
 
 }
