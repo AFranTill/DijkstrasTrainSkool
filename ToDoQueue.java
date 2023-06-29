@@ -33,7 +33,7 @@ public class ToDoQueue
         if(isEmpty == true){
             head = newFollower;
             tail = newFollower;
-        }else if (isAlreadyHere(newFollower) == true){
+        }else if (alreadyInHere(this.head, newFollower) == true){
             System.out.println("already in queue");
         
         }else {
@@ -67,9 +67,15 @@ public class ToDoQueue
         return length;
     }
     
-    public boolean isAlreadyHere(Nodes nodeOfTheHour){
-        return false; //HELP
+    public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour){
+        if(current == nodeOfTheHour){
+            return true;
+        }else if (current.getFollower() != null){
+            current = current.getFollower();
+            return alreadyInHere(current, nodeOfTheHour);
+        }else{
+            return false;
+        }
     }
-        
 
 }

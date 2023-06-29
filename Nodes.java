@@ -35,6 +35,7 @@ public class Nodes extends JFrame
     private boolean evaluated = false; 
     private Nodes pathBack; 
     private Nodes follower; // for the queue
+    int x = 0;
 
     private ArrayList<Links> linksForThisNode = new ArrayList<Links>();
     //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
@@ -98,10 +99,13 @@ public class Nodes extends JFrame
     }
 
     public int getLength(Nodes current){
+        
          if(current.getFollower() == null){
             System.out.println("returned 1");
             return 1;
-        }else{            
+        }else{
+            System.out.println("queue length is: " + x);
+            x++;
             return 1 + getLength(current.getFollower());
         }
     }

@@ -101,6 +101,8 @@ public class TrainNetwork
 
     public void algorithmPartOne(Nodes[] arrayOfNodes, Links[] arrayOfLinks ){
         Nodes currentNode = arrayOfNodes[firstValue]; // node currently looking at
+        int length = arrayOfNodes.length - 1;
+        Nodes lastNode = arrayOfNodes[length];
         ToDoQueue queue = new ToDoQueue();
         queue.addToQueue(arrayOfNodes[firstValue]);
         
@@ -132,7 +134,10 @@ public class TrainNetwork
                     destNode.setDistance(currentDist);
                     //update dist & prev node here
                     System.out.println("updated dist " + destNode.getDistance());
-                    queue.addToQueue(destNode);
+                    if(destNode != lastNode){
+                        queue.addToQueue(destNode);
+                        System.out.println("added dest " + destNode.getName() + " to queue");
+                    }
                 }else{
                     System.out.println("the current dist " + currentDist + " is larger than destNode dist " + destNode.getDistance() + " so not updated");
                 }
@@ -140,7 +145,7 @@ public class TrainNetwork
                 // if(nextCurrentNode == null || destNode.getDistance() < nextCurrentNode.getDistance()){ //I HAVE FOUND THE ISSUE HELPPP
                     // System.out.println("the next current node is " + currentNode.getName() + " and the dest node is " + destNode.getName()); 
                     // System.out.println("with distances of " + currentNode.getDistance() + " and " + destNode.getDistance());
-                    // nextCurrentNode = destNode;
+                    //nextCurrentNode = destNode;
                     // System.out.println();
                     // System.out.println("the next node " + currentNode.getName() + " is now the dest node");
                 // }
@@ -150,12 +155,12 @@ public class TrainNetwork
             
             queue.takeFromQueue();
             currentNode = queue.getHead();
-            System.out.println("head of queue ");
-            System.out.print(queue.getHead().getName());
-            System.out.println("length of queue "); //HELP THIS IS AN ISSUE 
-            System.out.println(queue.getLength());
+            // System.out.println("head of queue ");
+            // System.out.print(queue.getHead().getName());
+            // System.out.println("length of queue "); //HELP THIS IS AN ISSUE 
+            // System.out.println(queue.getLength());
         }
-        
+        System.out.println("over");
 
         // int[] arrayOfDistances = new int[numberOfLinks];
 
