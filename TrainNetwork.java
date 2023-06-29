@@ -34,17 +34,9 @@ public class TrainNetwork
         numberOfLinks = 9;
         Links[] arrayOfLinks = new Links[numberOfLinks];
 
-        // for(int i = 0; i < arrayOfLinks.length; i++){
-        // System.out.println(arrayOfLinks[i] + ", ");
-        // }
-
         for(int i = 0; i < numberOfNodes; i++){
             arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
         }
-
-        // for(int i = 0; i < numberOfNodes; i++){
-        // System.out.println(arrayOfNodes[i].getName());
-        // }
 
         //CREATES A PRESET LINK Shit
 
@@ -111,7 +103,7 @@ public class TrainNetwork
         }
         
         System.out.println("gotten to algorithm");
-        while(queue.isQueueEmpty() != true){ //dont like (not how I would write) HELP
+        while(queue.isQueueEmpty() != true){ 
     
             System.out.println("new current node");
             
@@ -132,6 +124,7 @@ public class TrainNetwork
                     System.out.println();
                     System.out.println("This is smaller than the destNode.getDistance, " + destNode.getDistance());
                     destNode.setDistance(currentDist);
+                    destNode.setPathBack(currentNode);
                     //update dist & prev node here
                     System.out.println("updated dist " + destNode.getDistance());
                     if(destNode != lastNode){
@@ -141,75 +134,13 @@ public class TrainNetwork
                 }else{
                     System.out.println("the current dist " + currentDist + " is larger than destNode dist " + destNode.getDistance() + " so not updated");
                 }
-                
-                // if(nextCurrentNode == null || destNode.getDistance() < nextCurrentNode.getDistance()){ //I HAVE FOUND THE ISSUE HELPPP
-                    // System.out.println("the next current node is " + currentNode.getName() + " and the dest node is " + destNode.getName()); 
-                    // System.out.println("with distances of " + currentNode.getDistance() + " and " + destNode.getDistance());
-                    //nextCurrentNode = destNode;
-                    // System.out.println();
-                    // System.out.println("the next node " + currentNode.getName() + " is now the dest node");
-                // }
-                
                 slowPrint(0);
             }
             
             queue.takeFromQueue();
             currentNode = queue.getHead();
-            // System.out.println("head of queue ");
-            // System.out.print(queue.getHead().getName());
-            // System.out.println("length of queue "); //HELP THIS IS AN ISSUE 
-            // System.out.println(queue.getLength());
         }
         System.out.println("over");
-
-        // int[] arrayOfDistances = new int[numberOfLinks];
-
-        // Arrays.fill(arrayOfDistances, Integer.MAX_VALUE);
-
-        // int weightOfNewLink = 0;
-
-        // arrayOfDistances[firstNode.getNumber()] = 0;
-
-        // ToDoQueue queue = new ToDoQueue();
-
-        // queue.addToQueue(firstNode);
-
-        // while(queue.isQueueEmpty() == false){ // this for loop may not be the right vibe we'll see
-
-            // Nodes currentNode = queue.getHead();
-
-            // findLinks(currentNode, arrayOfNodes, arrayOfLinks, arrayOfDistances, queue);
-
-            // queue.takeFromQueue();
-
-            // //arrayOfLinks[j].getWeight();
-            // //arrayOfDistances[startNodeValue];
-
-            // //weightOfNewLink = arrayOfDistances[j.getPathBack().getNumber()] + arrayOfLinks[j].getWeight();
-
-            // //int travelTime = compare(arrayOfDistances, j, weightOfNewLink); 
-            // //arrayOfDistances[j] = travelTime;
-        // }
-        
-        
-        // System.out.println("Nodes");
-        // for(int i = 0; i < numberOfNodes; i++){
-            // System.out.println(arrayOfNodes[i].getName() + ", ");
-        // }
-
-        // System.out.println("distances");
-        // for(int i = 0; i < numberOfLinks; i++){
-            // System.out.println(arrayOfDistances[i]+ ", ");
-        // }
-
-        // System.out.println("paths");
-        // for(int i = 0; i < numberOfNodes; i++){
-            // for(int j = 0; j < numberOfNodes; j++){
-                // if(arrayOfNodes[j].getPathBack() != null){
-                    // System.out.println(arrayOfNodes[i].getPathBack().getName() + ", ");
-                // }
-            // }
-        // }
     }
 
     public void findLinks(Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayOfDistances, ToDoQueue queue){

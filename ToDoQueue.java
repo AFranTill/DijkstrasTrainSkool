@@ -62,11 +62,6 @@ public class ToDoQueue
         return current;        
     }
     
-    public int getLength(){        
-        int length = head.getLength(this.head);
-        return length;
-    }
-    
     public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour){
         if(current == nodeOfTheHour){
             return true;
