@@ -3,7 +3,7 @@
  * Creates and intialises a network of train and nodes
  *
  * @author Frances Till
- * @version 5 26/5/23 
+ * @version 11 30/6/23 
  */
 
 import java.util.Scanner;
@@ -125,6 +125,7 @@ public class TrainNetwork
                     System.out.println("This is smaller than the destNode.getDistance, " + destNode.getDistance());
                     destNode.setDistance(currentDist);
                     destNode.setPathBack(currentNode);
+                    System.out.println("pathBack " + destNode.getPathBack().getName());
                     //update dist & prev node here
                     System.out.println("updated dist " + destNode.getDistance());
                     if(destNode != lastNode){

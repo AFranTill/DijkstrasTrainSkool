@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=ToDoQueue
-comment0.text=\r\n\ Making\ a\ queue,\ with\ enqueue\ and\ dequeue\ methods\ \r\n\r\n\ @author\ Frances\ Till\r\n\ @version\ 6/6/23\r\n
+comment0.text=\r\n\ Making\ a\ queue,\ with\ enqueue\ and\ dequeue\ methods\ \r\n\r\n\ @author\ Frances\ Till\r\n\ @version\ 2\ 30/6/23\r\n
 comment1.params=
 comment1.target=ToDoQueue()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Queue\r\n

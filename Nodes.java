@@ -3,24 +3,13 @@
  * Class to construct the nodes
  *
  * @author Frances Till
- * @version 4 22/5/23
+ * @version 5 30/6/23
  */
 
-import java.awt.Frame; //don't actually need rn
-import javax.swing.JFrame;
-import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.*;
-import java.awt.*; 
-import java.awt.event.*; //or events specifcally 
-import java.awt.geom.*;
+
 import java.util.*;
 
-public class Nodes extends JFrame
+public class Nodes 
 {
     final int nodeSize = 10; //camecalse ocrrect? All caps? issue
 
@@ -40,7 +29,6 @@ public class Nodes extends JFrame
     private ArrayList<Links> linksForThisNode = new ArrayList<Links>();
     //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
 
-    Canvas myGraphic;
     /**
      * Constructor for objects of class Nodes
      */

@@ -3,7 +3,7 @@
  * Links class formed edges and vertices between different nodes
  *
  * @author Frances Till
- * @version 3 26/5/23
+ * @version 5 30/6/23
  */
 
 public class Links 
