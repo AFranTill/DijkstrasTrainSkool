@@ -11,6 +11,10 @@ public class Links
     private Nodes startNode;
     private Nodes endNode;
     private int weight; 
+    private int linkLength;
+    private int linkX;
+    private int linkY;
+    
     /**
      * Constructor for objects of class Links
      */

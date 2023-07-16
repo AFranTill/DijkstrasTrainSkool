@@ -30,6 +30,8 @@ public class TrainNetwork
         numberOfNodes = 6; //keyboard.nextInt();
         int maxNumberOfNodes = numberOfNodes - 1;
         //create a name for the node  
+        
+        
         Nodes[] arrayOfNodes = new Nodes[numberOfNodes];
         numberOfLinks = 9;
         Links[] arrayOfLinks = new Links[numberOfLinks];
@@ -87,7 +89,10 @@ public class TrainNetwork
         algorithmPartOne(arrayOfNodes, arrayOfLinks);
 
         System.out.println("yyayyyayyayay");
-
+        
+        
+        GUIMaker gui = new GUIMaker(arrayOfNodes, arrayOfLinks);
+        gui.repaint();
 
     }
 

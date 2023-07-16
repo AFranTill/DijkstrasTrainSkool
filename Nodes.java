@@ -119,4 +119,8 @@ public class Nodes
     public ArrayList getLinks(){
         return linksForThisNode;
     }
+    
+    public int getNumberOfLinks(){
+        return linksForThisNode.size();
+    }
 }
