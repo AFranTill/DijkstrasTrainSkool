@@ -2,7 +2,7 @@
  * Making a GUI and visuals
  *
  * @author Frances Till
- * @version 1 13/7/23
+ * @version 2 17/7/23
  */
 
 import javax.swing.*;
@@ -94,15 +94,24 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         ToDoQueue queue = new ToDoQueue();
         ArrayList<Links> linksForThisNode;
+        int forwardDist = 10;
+        int x = 10;
+        int y = 10;
+        int yChange;
+        int yDiff = 5;
         for(int i = 0; i < arrayOfNodes.length; i++){//HELP
             Nodes currentNode = arrayOfNodes[i];
             linksForThisNode = currentNode.getLinks();
             for(Links link : linksForThisNode){
                 queue.addToQueue(link.findOtherEnd(currentNode));
             }
+            yChange = yDiff/currentNode.getNumberOfLinks();
             while(queue.isQueueEmpty() != true){ 
-                //setX
-                //setY
+                int newX = x + forwardDist*i;
+                currentNode.setXCoord(newX);
+                int newY = y + yChange;
+                currentNode.setYCoord(newY);
+                yChange = yDiff - yChange;
                 //change y change
                 //remove from queue
             

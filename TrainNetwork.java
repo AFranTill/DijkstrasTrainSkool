@@ -3,7 +3,7 @@
  * Creates and intialises a network of train and nodes
  *
  * @author Frances Till
- * @version 11 30/6/23 
+ * @version 12 17/7/23 
  */
 
 import java.util.Scanner;

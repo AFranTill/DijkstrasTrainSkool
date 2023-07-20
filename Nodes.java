@@ -3,7 +3,7 @@
  * Class to construct the nodes
  *
  * @author Frances Till
- * @version 5 30/6/23
+ * @version 6 17/7/23
  */
 
 
@@ -24,7 +24,8 @@ public class Nodes
     private boolean evaluated = false; 
     private Nodes pathBack; 
     private Nodes follower; // for the queue
-    int x = 0;
+    private int xCoord;
+    private int yCoord;
 
     private ArrayList<Links> linksForThisNode = new ArrayList<Links>();
     //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
@@ -122,5 +123,21 @@ public class Nodes
     
     public int getNumberOfLinks(){
         return linksForThisNode.size();
+    }
+    
+    public void setXCoord(int x){
+        xCoord = x; 
+    }
+    
+    public int getXCoord(){
+        return this.xCoord; 
+    }
+    
+    public void setYCoord(int y){
+        yCoord = y; 
+    }
+    
+    public int getYCoord(){
+        return this.yCoord; 
     }
 }
