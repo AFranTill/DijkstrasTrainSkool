@@ -21,6 +21,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     Canvas myGraphic;
     //final String fileName = "blueRectangle.png";
     //ImageIcon image = new ImageIcon(fileName);
+    
     /**
      * Constructor for objects of class CirclesAndSquares
      */
@@ -100,21 +101,26 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         int yChange;
         int yDiff = 5;
         for(int i = 0; i < arrayOfNodes.length; i++){//HELP
+            
             Nodes currentNode = arrayOfNodes[i];
             linksForThisNode = currentNode.getLinks();
+            
             for(Links link : linksForThisNode){
                 queue.addToQueue(link.findOtherEnd(currentNode));
             }
-            yChange = yDiff/currentNode.getNumberOfLinks();
-            while(queue.isQueueEmpty() != true){ 
-                int newX = x + forwardDist*i;
-                currentNode.setXCoord(newX);
-                int newY = y + yChange;
-                currentNode.setYCoord(newY);
-                yChange = yDiff - yChange;
-                //change y change
-                //remove from queue
             
+            yChange = yDiff/currentNode.getNumberOfLinks();
+            
+            while(queue.isQueueEmpty() != true){ 
+                Nodes placingNode = queue.getHead();
+                
+                int newX = x + forwardDist*i;
+                placingNode.setXCoord(newX);
+                int newY = y + yChange;
+                placingNode.setYCoord(newY);
+                
+                yChange = yDiff - yChange;
+                queue.takeFromQueue();
             }
             // yChange = 20/(currentNode.getNumberOfLinks() - 1);
             // g2.drawOval(x, y, height, width);
@@ -192,7 +198,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         //image.paintIcon(this, g, x, y);
          Graphics2D g2 = (Graphics2D) g;
         // System.out.println("working????");
-        // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
+        //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
             // currentNode = arrayOfNodes[i];
             // yChange = 20/(currentNode.getNumberOfLinks() - 1);
             // g2.drawOval(x, y, height, width);
