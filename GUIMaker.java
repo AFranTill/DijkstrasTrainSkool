@@ -19,6 +19,8 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     JMenuItem menuItem;
 
     Canvas myGraphic;
+    Nodes[] nodesAccessible;
+    Links[] linksAccessible;
     //final String fileName = "blueRectangle.png";
     //ImageIcon image = new ImageIcon(fileName);
     
@@ -30,6 +32,9 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         String title = "huh?";
         int squareWindowSize = 300;
+        
+        nodesAccessible = arrayOfNodes; //HELP improve copying at some pint might pull up issues otherwise 
+        linksAccessible = arrayOfLinks;
 
         //creating menu - removed inputs from prev lesson
         this.setTitle(title);
@@ -93,19 +98,24 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         addMouseListener(this);
         menu.add(menuItem);
 
-        ToDoQueue queue = new ToDoQueue();
+         ToDoQueue queue = new ToDoQueue();
         ArrayList<Links> linksForThisNode;
         int forwardDist = 10;
         int x = 10;
-        int y = 10;
+        int y = 100;
         int yChange;
-        int yDiff = 5;
-        for(int i = 0; i < arrayOfNodes.length; i++){//HELP
+        int yDiff = 50;
+        Nodes currentNode;
+        nodesAccessible[0].setXCoord(10);
+        nodesAccessible[0].setYCoord(10);
+        for(int i = 0; i < nodesAccessible.length; i++){//HELP also don't set things for first node
             
-            Nodes currentNode = arrayOfNodes[i];
+            System.out.println("sup");
+            currentNode = nodesAccessible[i];
             linksForThisNode = currentNode.getLinks();
             
             for(Links link : linksForThisNode){
+                System.out.println("added" + link.findOtherEnd(currentNode).getName());
                 queue.addToQueue(link.findOtherEnd(currentNode));
             }
             
@@ -132,7 +142,6 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
                 // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
                 // g2.draw(lin);
             }
-        
         
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
     
@@ -186,17 +195,42 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
     public void paint (Graphics g){ //HELP BIG ONE need to set the values fo the arrays and the links etc before doign them in here bc can't pass anything into here.
         super.paint(g);
-        int x = 10;
-        int y = 10;
+        //int x = 10;
+        //int y = 10;
         int height = 20;
         int width = 20;
         Nodes currentNode;
         int xChange;
-        int yChange;
+        //int yChange;
         int length = 20;
         int vertical = 1;
         //image.paintIcon(this, g, x, y);
          Graphics2D g2 = (Graphics2D) g;
+         
+         
+        ToDoQueue queue = new ToDoQueue();
+        ArrayList<Links> linksForThisNode;
+        int forwardDist = 10;
+        int x = 10;
+        int y = 100;
+        int yChange;
+        int yDiff = 5;
+        
+            System.out.println("length" + nodesAccessible.length);
+            int circleSize = 30;
+            for(int i = 0; i < nodesAccessible.length; i++){
+                System.out.println("is this working?");
+                x = nodesAccessible[i].getXCoord();
+                y = nodesAccessible[i].getYCoord();
+                System.out.println("x: " + x + " y: " + y);
+                g2.drawOval(x, y, circleSize, circleSize);
+            }
+            
+            g2.setColor(Color.black);
+            
+            g2.drawOval(x, y, circleSize, circleSize);
+            g2.drawOval(50, 50, 50, 50);
+            
         // System.out.println("working????");
         //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
             // currentNode = arrayOfNodes[i];
@@ -243,7 +277,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         int circleXLocale = 100;
         int circleYLocale = 140;
-        int circleSize = 200;
+        //int circleSize = 200;
         int lineLength = 200;
         int xLineStart = circleXLocale + circleSize;
         int xLineEnd = xLineStart + lineLength;
