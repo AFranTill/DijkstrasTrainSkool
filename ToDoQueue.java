@@ -28,16 +28,16 @@ public class ToDoQueue
         }else return false;
     }
 
-    public void addToQueue(Nodes newFollower){ 
+    public void addToQueue(Nodes newFollower, int which){ 
         boolean isEmpty = isQueueEmpty();
         if(isEmpty == true){
             head = newFollower;
             tail = newFollower;
-        }else if (alreadyInHere(this.head, newFollower) == true){
+        }else if (alreadyInHere(this.head, newFollower, which) == true){
             System.out.println("already in queue");
         
         }else {
-            tail.addFollower(newFollower);
+            tail.addFollower(newFollower, which);
             tail = newFollower;
         }
     }
@@ -46,7 +46,7 @@ public class ToDoQueue
         return this.head;
     }
 
-    public Nodes takeFromQueue(){
+    public Nodes takeFromQueue(int which){
         boolean isEmpty = isQueueEmpty();
         Nodes current; 
         if(isEmpty == true){
@@ -54,7 +54,7 @@ public class ToDoQueue
 
         }else {
             current = head;
-            head = head.getFollower();
+            head = head.getFollower(which);
 
             if(head == null)tail = null;
         }
@@ -62,14 +62,28 @@ public class ToDoQueue
         return current;        
     }
     
-    public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour){
+    public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour, int which){
         if(current == nodeOfTheHour){
             return true;
-        }else if (current.getFollower() != null){
-            current = current.getFollower();
-            return alreadyInHere(current, nodeOfTheHour);
+        }else if (current.getFollower(which) != null){
+            current = current.getFollower(which);
+            return alreadyInHere(current, nodeOfTheHour, which);
         }else{
             return false;
+        }
+    }
+    
+    public void printQueue(int which){
+        Nodes current = this.head;
+        while (current.getFollower(which) != null){
+            if(current.getFollower(which) == this.tail){
+                System.out.println(current.getName());
+                System.out.println(current.getFollower(which).getName());
+                current = current.getFollower(which);
+            }else{
+                System.out.println(current.getName());
+                current = current.getFollower(which);
+            }
         }
     }
 

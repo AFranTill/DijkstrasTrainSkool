@@ -21,9 +21,11 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     Canvas myGraphic;
     Nodes[] nodesAccessible;
     Links[] linksAccessible;
+    int followerNumber = 1;
+    int circleSize = 30;
     //final String fileName = "blueRectangle.png";
     //ImageIcon image = new ImageIcon(fileName);
-    
+
     /**
      * Constructor for objects of class CirclesAndSquares
      */
@@ -32,7 +34,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         String title = "huh?";
         int squareWindowSize = 300;
-        
+
         nodesAccessible = arrayOfNodes; //HELP improve copying at some pint might pull up issues otherwise 
         linksAccessible = arrayOfLinks;
 
@@ -98,54 +100,67 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         addMouseListener(this);
         menu.add(menuItem);
 
-         ToDoQueue queue = new ToDoQueue();
+        ToDoQueue queue = new ToDoQueue();
         ArrayList<Links> linksForThisNode;
-        int forwardDist = 10;
-        int x = 10;
+        int forwardDist = circleSize*2;
+        int x = circleSize*2;
         int y = 100;
         int yChange;
-        int yDiff = 50;
+        int yDiff;
         Nodes currentNode;
         nodesAccessible[0].setXCoord(10);
         nodesAccessible[0].setYCoord(10);
         for(int i = 0; i < nodesAccessible.length; i++){//HELP also don't set things for first node
-            
+
             System.out.println("sup");
             currentNode = nodesAccessible[i];
             linksForThisNode = currentNode.getLinks();
-            
+            //queue.printQueue(followerNumber);
             for(Links link : linksForThisNode){
-                System.out.println("added" + link.findOtherEnd(currentNode).getName());
-                queue.addToQueue(link.findOtherEnd(currentNode));
+                System.out.println("added" + link.findOtherEnd(currentNode).getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
+                queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
+                
+                System.out.println();
+            
             }
-            
+            queue.printQueue(followerNumber);
+            yDiff = circleSize* currentNode.getNumberOfLinks();
             yChange = yDiff/currentNode.getNumberOfLinks();
-            
+            int otherY = yChange; //if this equals 0 and hehe starts by equalling 0 i think it would also work
+            int hehe = 1;
             while(queue.isQueueEmpty() != true){ 
                 Nodes placingNode = queue.getHead();
                 
-                int newX = x + forwardDist*i;
-                placingNode.setXCoord(newX);
-                int newY = y + yChange;
-                placingNode.setYCoord(newY);
                 
-                yChange = yDiff - yChange;
-                queue.takeFromQueue();
+                System.out.println("yChange " + yChange + " yDiff " + yDiff + " otherY " + otherY + " hehe " + hehe);
+                otherY = yDiff - yChange*hehe;
+                hehe++;
+                System.out.println("yChange " + yChange + " yDiff " + yDiff + " otherY " + otherY + " hehe " + hehe);
+                
+                int newX = x + forwardDist*(i+0); //this shouldnt be working??  
+                placingNode.setXCoord(newX);
+                System.out.println("newX " + newX);
+                int newY = y + otherY;
+                placingNode.setYCoord(newY);
+                System.out.println("newY " + newY);
+
+                queue.takeFromQueue(followerNumber);
+                
             }
             // yChange = 20/(currentNode.getNumberOfLinks() - 1);
             // g2.drawOval(x, y, height, width);
             // System.out.println("working");
-            
+
             // g2.drawString("Girlboss!", 100, 100);
-            
+
             // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-                // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-                // g2.draw(lin);
-            }
-        
+            // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
+            // g2.draw(lin);
+        }
+
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
-    
-}
+
+    }
 
     public void actionPerformed(ActionEvent e){
         String itemToActOn = e.getActionCommand(); //string of the clicked on menu item title's 
@@ -195,105 +210,89 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
     public void paint (Graphics g){ //HELP BIG ONE need to set the values fo the arrays and the links etc before doign them in here bc can't pass anything into here.
         super.paint(g);
-        //int x = 10;
-        //int y = 10;
-        int height = 20;
-        int width = 20;
-        Nodes currentNode;
-        int xChange;
-        //int yChange;
-        int length = 20;
-        int vertical = 1;
+        Graphics2D g2 = (Graphics2D) g;
+
         //image.paintIcon(this, g, x, y);
-         Graphics2D g2 = (Graphics2D) g;
-         
-         
+
+        Nodes currentNode;
         ToDoQueue queue = new ToDoQueue();
         ArrayList<Links> linksForThisNode;
-        int forwardDist = 10;
-        int x = 10;
+
+        int forwardDist = circleSize*2;
+        int x = 50;
         int y = 100;
         int yChange;
         int yDiff = 5;
+
+        System.out.println("length" + nodesAccessible.length);
         
-            System.out.println("length" + nodesAccessible.length);
-            int circleSize = 30;
-            for(int i = 0; i < nodesAccessible.length; i++){
-                System.out.println("is this working?");
-                x = nodesAccessible[i].getXCoord();
-                y = nodesAccessible[i].getYCoord();
-                System.out.println("x: " + x + " y: " + y);
-                g2.drawOval(x, y, circleSize, circleSize);
-            }
-            
-            g2.setColor(Color.black);
-            
+        //int circleSize = 30;
+        g2.setColor(Color.black);
+        for(int i = 0; i < nodesAccessible.length; i++){
+            System.out.println(i);
+            System.out.println("is this working?");
+            x = nodesAccessible[i].getXCoord();
+            y = nodesAccessible[i].getYCoord();
+            System.out.println("x: " + x + " y: " + y);
             g2.drawOval(x, y, circleSize, circleSize);
-            g2.drawOval(50, 50, 50, 50);
-            
+        }
+        
+        int i = 0;
+        for(Links link : linksAccessible){
+            System.out.println("link number " + i);
+            int shift = circleSize/2;
+            Line2D lin = new Line2D.Float(link.getStartNode().getXCoord()+shift, link.getStartNode().getYCoord()+shift, link.getEndNode().getXCoord()+shift, link.getEndNode().getYCoord()+shift);
+            g2.draw(lin);
+            i++;
+            }
+
+        
+
         // System.out.println("working????");
         //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-            // currentNode = arrayOfNodes[i];
-            // yChange = 20/(currentNode.getNumberOfLinks() - 1);
-            // g2.drawOval(x, y, height, width);
-            // System.out.println("working");
-            
-            // g2.drawString("Girlboss!", 100, 100);
-            
-            // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-                // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-                // g2.draw(lin);
-            // }
-            
-            // x = x + 20;
-            // y = y + yChange*vertical;
-            // vertical = vertical*-1;
+        // currentNode = arrayOfNodes[i];
+        // yChange = 20/(currentNode.getNumberOfLinks() - 1);
+        // g2.drawOval(x, y, height, width);
+        // System.out.println("working");
 
+        // g2.drawString("Girlboss!", 100, 100);
+
+        // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
+        // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
+        // g2.draw(lin);
         // }
-        
-        // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-            // currentNode = arrayOfNodes[i];
-            // yChange = 20/(currentNode.getNumberOfLinks() - 1);
-            // if(i==0){
-                // g2.drawOval(x, y, height, width);
-                // xChange = 100;//HELP
 
-            // }else{
-                // newX = x +
-                // newY = y + yChange;
-                // g2.drawOval(newX, newY, height, width);
-            // }
-            // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-                // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-            // }
+        // x = x + 20;
+        // y = y + yChange*vertical;
+        // vertical = vertical*-1;
 
         // }
 
         // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-            // g2.drawOval(x, y, height, width);
-            // //x = x + change;
+        // currentNode = arrayOfNodes[i];
+        // yChange = 20/(currentNode.getNumberOfLinks() - 1);
+        // if(i==0){
+        // g2.drawOval(x, y, height, width);
+        // xChange = 100;//HELP
+
+        // }else{
+        // newX = x +
+        // newY = y + yChange;
+        // g2.drawOval(newX, newY, height, width);
+        // }
+        // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
+        // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
+        // }
 
         // }
 
-        int circleXLocale = 100;
-        int circleYLocale = 140;
-        //int circleSize = 200;
-        int lineLength = 200;
-        int xLineStart = circleXLocale + circleSize;
-        int xLineEnd = xLineStart + lineLength;
-        int yLineStart = circleYLocale + circleSize/2;
-        int yLineEnd = yLineStart;
-        int otherCircleXLocale = circleXLocale + circleSize + lineLength;
-        int otherCircleYLocale = circleYLocale;
-        Line2D lin = new Line2D.Float(xLineStart, yLineStart, xLineEnd, yLineEnd);
-        g2.draw(lin);
-        g2.drawOval(circleXLocale, circleYLocale, circleSize, circleSize);
-        g2.drawOval(otherCircleXLocale, otherCircleYLocale, circleSize, circleSize);
-        g2.drawString("Girlboss!", circleXLocale + circleSize/3, circleYLocale + circleSize/2);
-        g2.setColor(Color.BLUE);
-        g2.drawString("Girlbossy!", otherCircleXLocale + circleSize/3, otherCircleYLocale + circleSize/2);
-    
-}
+        // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
+        // g2.drawOval(x, y, height, width);
+        // //x = x + change;
+
+        // }
+
+    }
 
     public void mouseExited(MouseEvent e){System.out.println("exit");}
 

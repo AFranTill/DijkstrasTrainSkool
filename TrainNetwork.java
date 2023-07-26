@@ -19,6 +19,7 @@ public class TrainNetwork
     private Links arrayOfLinks[];
     private int numberOfLinks;
     private int arrayOfDistances[];
+    private int followerNumber = 0;
 
     /**
      * Constructor for objects of class TrainNetwork
@@ -101,7 +102,7 @@ public class TrainNetwork
         int length = arrayOfNodes.length - 1;
         Nodes lastNode = arrayOfNodes[length];
         ToDoQueue queue = new ToDoQueue();
-        queue.addToQueue(arrayOfNodes[firstValue]);
+        queue.addToQueue(arrayOfNodes[firstValue], followerNumber);
         
         for(Nodes node : arrayOfNodes){
             node.setLinks(arrayOfLinks);
@@ -134,7 +135,7 @@ public class TrainNetwork
                     //update dist & prev node here
                     System.out.println("updated dist " + destNode.getDistance());
                     if(destNode != lastNode){
-                        queue.addToQueue(destNode);
+                        queue.addToQueue(destNode, followerNumber);
                         System.out.println("added dest " + destNode.getName() + " to queue");
                     }
                 }else{
@@ -143,13 +144,13 @@ public class TrainNetwork
                 slowPrint(0);
             }
             
-            queue.takeFromQueue();
+            queue.takeFromQueue(followerNumber);
             currentNode = queue.getHead();
         }
         System.out.println("over");
     }
 
-    public void findLinks(Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayOfDistances, ToDoQueue queue){
+    public void findLinks(Nodes sourceNode, Nodes[] arrayOfNodes, Links[] arrayOfLinks, int[] arrayOfDistances, ToDoQueue queue){ //HELP
         for(int i = 0; i < numberOfLinks; i++){
             Nodes workingNode = arrayOfLinks[i].findOtherEnd(sourceNode);
             Links workingLink = arrayOfLinks[i];
@@ -185,7 +186,7 @@ public class TrainNetwork
             sourceNode.setDistance(totalCost);
             arrayOfDistances[sourceLocale] = totalCost;
             dest.setPathBack(sourceNode);
-            queue.addToQueue(dest);
+            queue.addToQueue(dest, followerNumber);
         }else{
             System.out.println("unchanged");
         }

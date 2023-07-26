@@ -23,7 +23,7 @@ public class Nodes
     private int distanceFromStart = Integer.MAX_VALUE;
     private boolean evaluated = false; 
     private Nodes pathBack; 
-    private Nodes follower; // for the queue
+    private Nodes[] follower = new Nodes[2]; // for the queue
     private int xCoord;
     private int yCoord;
 
@@ -77,14 +77,14 @@ public class Nodes
         return pathBack;
     }
 
-    public void addFollower(Nodes newFollower)
+    public void addFollower(Nodes newFollower, int which)
     {
-        this.follower = newFollower;
+        this.follower[which] = newFollower;
     }
 
-    public Nodes getFollower()
+    public Nodes getFollower(int which)
     {
-        return this.follower;
+        return this.follower[which];
     }
 
 
