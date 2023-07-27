@@ -26,6 +26,8 @@ public class Nodes
     private Nodes[] follower = new Nodes[2]; // for the queue
     private int xCoord;
     private int yCoord;
+    private boolean visited = false;
+    private Nodes nextFollower;
 
     private ArrayList<Links> linksForThisNode = new ArrayList<Links>();
     //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
@@ -140,5 +142,22 @@ public class Nodes
     
     public int getYCoord(){
         return this.yCoord; 
+    }
+    
+
+    public void setNextFollower(Nodes nextFollower) {
+        this.nextFollower = nextFollower;
+    }
+
+    public Nodes getNextFollower() {
+        return nextFollower;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 }

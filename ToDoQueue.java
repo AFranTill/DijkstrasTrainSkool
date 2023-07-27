@@ -28,39 +28,84 @@ public class ToDoQueue
         }else return false;
     }
 
-    public void addToQueue(Nodes newFollower, int which){ 
+    // public void addToQueue(Nodes newFollower, int which){ 
+        // boolean isEmpty = isQueueEmpty();
+        // if(isEmpty == true){
+            // head = newFollower;
+            // tail = newFollower;
+        // }else if (alreadyInHere(this.head, newFollower, which) == true){
+            // System.out.println("already in queue");
+        
+        // }else {
+            // tail.addFollower(newFollower, which);
+            // tail = newFollower;
+        // }
+    // }
+
+    
+    public void addToQueue(Nodes newFollower, int which) {
         boolean isEmpty = isQueueEmpty();
-        if(isEmpty == true){
+        if (isEmpty) {
             head = newFollower;
             tail = newFollower;
-        }else if (alreadyInHere(this.head, newFollower, which) == true){
-            System.out.println("already in queue");
-        
-        }else {
-            tail.addFollower(newFollower, which);
+        } else if (!newFollower.isVisited()) {
+            tail.setNextFollower(newFollower);
             tail = newFollower;
+            newFollower.setVisited(true); // Mark the node as visited
+        } else {
+            System.out.println("already in queue");
         }
     }
+
+    public Nodes takeFromQueue(int which) {
+        boolean isEmpty = isQueueEmpty();
+        Nodes current;
+        if (isEmpty) {
+            current = null;
+        } else {
+            current = head;
+            head = head.getNextFollower();
+
+            if (head == null)
+                tail = null;
+        }
+        return current;
+    }
+
+    // public void addToQueue(Nodes newFollower, int which) {
+        // boolean isEmpty = isQueueEmpty();
+        // if (isEmpty) {
+            // head = newFollower;
+            // tail = newFollower;
+        // } else if (!newFollower.isVisited()) {
+            // tail.addFollower(newFollower, which);
+            // tail = newFollower;
+            // newFollower.setVisited(true); // Mark the node as visited
+        // } else {
+            // System.out.println("already in queue");
+        // }
+    // }
+
 
     public Nodes getHead(){
         return this.head;
     }
 
-    public Nodes takeFromQueue(int which){
-        boolean isEmpty = isQueueEmpty();
-        Nodes current; 
-        if(isEmpty == true){
-            current = null;
+    // public Nodes takeFromQueue(int which){
+        // boolean isEmpty = isQueueEmpty();
+        // Nodes current; 
+        // if(isEmpty == true){
+            // current = null;
 
-        }else {
-            current = head;
-            head = head.getFollower(which);
+        // }else {
+            // current = head;
+            // head = head.getFollower(which);
 
-            if(head == null)tail = null;
-        }
+            // if(head == null)tail = null;
+        // }
 
-        return current;        
-    }
+        // return current;        
+    // }
     
    public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour, int which) {
     while (current != null) {
