@@ -62,16 +62,17 @@ public class ToDoQueue
         return current;        
     }
     
-    public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour, int which){
-        if(current == nodeOfTheHour){
+   public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour, int which) {
+    while (current != null) {
+        if (current == nodeOfTheHour) {
             return true;
-        }else if (current.getFollower(which) != null){
-            current = current.getFollower(which);
-            return alreadyInHere(current, nodeOfTheHour, which);
-        }else{
-            return false;
         }
+        current = current.getFollower(which);
     }
+    return false;
+}
+
+
     
     public void printQueue(int which){
         Nodes current = this.head;

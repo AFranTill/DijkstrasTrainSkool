@@ -20,7 +20,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
     Canvas myGraphic;
     Nodes[] nodesAccessible;
-    Links[] linksAccessible;
+    ArrayList<Links> linksAccessible;
     int followerNumber = 1;
     int circleSize = 30;
     //final String fileName = "blueRectangle.png";
@@ -29,11 +29,12 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     /**
      * Constructor for objects of class CirclesAndSquares
      */
-    public GUIMaker(Nodes[] arrayOfNodes, Links[] arrayOfLinks)
+    public GUIMaker(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks)
     {
 
         String title = "huh?";
         int squareWindowSize = 300;
+        this.setSize(squareWindowSize, squareWindowSize);
 
         nodesAccessible = arrayOfNodes; //HELP improve copying at some pint might pull up issues otherwise 
         linksAccessible = arrayOfLinks;
@@ -219,8 +220,8 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         ArrayList<Links> linksForThisNode;
 
         int forwardDist = circleSize*2;
-        int x = 50;
-        int y = 100;
+        int x;
+        int y;
         int yChange;
         int yDiff = 5;
 
@@ -246,7 +247,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             i++;
             }
 
-        
+        }   
 
         // System.out.println("working????");
         //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
@@ -292,7 +293,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         // }
 
-    }
+    
 
     public void mouseExited(MouseEvent e){System.out.println("exit");}
 

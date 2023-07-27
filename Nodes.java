@@ -35,9 +35,9 @@ public class Nodes
      */
     public Nodes(int newNumber, String newName, int numberOfNodes)
     {        
-        nameOfNode = newName;
-        numberOfNode = newNumber;
-        numberOfNodes = numberOfNodes;
+        this.nameOfNode = newName;
+        this.numberOfNode = newNumber;
+        this.numberOfNodes = numberOfNodes;
 
         // whoCanIGoTo = new Nodes[numberOfNodes];
         // for(int i = 0; i < numberOfNodes; i++){
@@ -82,13 +82,14 @@ public class Nodes
         this.follower[which] = newFollower;
     }
 
-    public Nodes getFollower(int which)
+    public Nodes getFollower(int which) //NOTE this is the part that is breaking. idk why?
+    //this is working on the queue to print the circles (aka the links and nodes are being made but not the circles? idk it'sinteresting. 
     {
         return this.follower[which];
     }
 
 
-    public void setLinks(Links[] arrayOfLinks){
+    public void setLinks(ArrayList<Links> arrayOfLinks){
         for(Links link : arrayOfLinks){
             if(link.findOtherEnd(this) != null && link.findOtherEnd(this) != this){
                 linksForThisNode.add(link);
