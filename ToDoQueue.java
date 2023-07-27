@@ -42,13 +42,13 @@ public class ToDoQueue
         // }
     // }
 
-    
+                                                        
     public void addToQueue(Nodes newFollower, int which) {
         boolean isEmpty = isQueueEmpty();
         if (isEmpty) {
             head = newFollower;
             tail = newFollower;
-        } else if (!newFollower.isVisited()) {
+        } else if (!newFollower.isVisited()) { // HELP rewrite
             tail.setNextFollower(newFollower);
             tail = newFollower;
             newFollower.setVisited(true); // Mark the node as visited

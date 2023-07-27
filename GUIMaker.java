@@ -109,22 +109,18 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         int yChange;
         int yDiff;
         Nodes currentNode;
-        nodesAccessible[0].setXCoord(10);
-        nodesAccessible[0].setYCoord(10);
+        nodesAccessible[0].setXCoord(50);
+        nodesAccessible[0].setYCoord(y);
         for(int i = 0; i < nodesAccessible.length; i++){//HELP also don't set things for first node
-
-            System.out.println("sup");
             currentNode = nodesAccessible[i];
             linksForThisNode = currentNode.getLinks();
-            //queue.printQueue(followerNumber);
-            for(Links link : linksForThisNode){
-                System.out.println("added" + link.findOtherEnd(currentNode).getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
-                queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
-                
-                System.out.println();
             
+            for(Links link : linksForThisNode){
+                System.out.println("added link to " + link.findOtherEnd(currentNode).getName() + " from " + currentNode.getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
+                queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
             }
-            queue.printQueue(followerNumber);
+
+            //queue.printQueue(followerNumber);
             yDiff = circleSize* currentNode.getNumberOfLinks();
             yChange = yDiff/currentNode.getNumberOfLinks();
             int otherY = yChange; //if this equals 0 and hehe starts by equalling 0 i think it would also work
@@ -132,18 +128,16 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             while(queue.isQueueEmpty() != true){ 
                 Nodes placingNode = queue.getHead();
                 
-                
-                System.out.println("yChange " + yChange + " yDiff " + yDiff + " otherY " + otherY + " hehe " + hehe);
+                //System.out.println("yChange " + yChange + " yDiff " + yDiff + " otherY " + otherY + " hehe " + hehe);
                 otherY = yDiff - yChange*hehe;
                 hehe++;
-                System.out.println("yChange " + yChange + " yDiff " + yDiff + " otherY " + otherY + " hehe " + hehe);
+                int newX = x + forwardDist*(i+0); //this shouldnt be working?? 
                 
-                int newX = x + forwardDist*(i+0); //this shouldnt be working??  
                 placingNode.setXCoord(newX);
-                System.out.println("newX " + newX);
                 int newY = y + otherY;
                 placingNode.setYCoord(newY);
-                System.out.println("newY " + newY);
+                
+                System.out.println("coordinates of " + placingNode.getName() + "x Coord " + placingNode.getXCoord() + " y coord " + placingNode.getYCoord());
 
                 queue.takeFromQueue(followerNumber);
                 
@@ -225,22 +219,18 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         int yChange;
         int yDiff = 5;
 
-        System.out.println("length" + nodesAccessible.length);
         
         //int circleSize = 30;
         g2.setColor(Color.black);
         for(int i = 0; i < nodesAccessible.length; i++){
             System.out.println(i);
-            System.out.println("is this working?");
             x = nodesAccessible[i].getXCoord();
             y = nodesAccessible[i].getYCoord();
-            System.out.println("x: " + x + " y: " + y);
             g2.drawOval(x, y, circleSize, circleSize);
         }
         
         int i = 0;
         for(Links link : linksAccessible){
-            System.out.println("link number " + i);
             int shift = circleSize/2;
             Line2D lin = new Line2D.Float(link.getStartNode().getXCoord()+shift, link.getStartNode().getYCoord()+shift, link.getEndNode().getXCoord()+shift, link.getEndNode().getYCoord()+shift);
             g2.draw(lin);
