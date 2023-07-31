@@ -145,7 +145,7 @@ public class Nodes
     }
     
 
-    public void setNextFollower(Nodes nextFollower) {
+    public void setNextFollower(Nodes nextFollower, int which) {
         this.nextFollower = nextFollower;
     }
 

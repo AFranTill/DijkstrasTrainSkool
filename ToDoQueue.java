@@ -48,10 +48,9 @@ public class ToDoQueue
         if (isEmpty) {
             head = newFollower;
             tail = newFollower;
-        } else if (!newFollower.isVisited()) { // HELP rewrite
-            tail.setNextFollower(newFollower);
+        } else if (alreadyInHere(this.head, newFollower, which) == false) { // HELP rewrite
+            tail.addFollower(newFollower,which);
             tail = newFollower;
-            newFollower.setVisited(true); // Mark the node as visited
         } else {
             System.out.println("already in queue");
         }
@@ -64,7 +63,7 @@ public class ToDoQueue
             current = null;
         } else {
             current = head;
-            head = head.getNextFollower();
+            head = head.getFollower(which);
 
             if (head == null)
                 tail = null;
@@ -121,6 +120,10 @@ public class ToDoQueue
     
     public void printQueue(int which){
         Nodes current = this.head;
+        boolean  isEmpty = isQueueEmpty();
+        if(isEmpty == true){
+            System.out.println("queue is empty!");
+        }else{
         while (current.getFollower(which) != null){
             if(current.getFollower(which) == this.tail){
                 System.out.println(current.getName());
@@ -132,5 +135,8 @@ public class ToDoQueue
             }
         }
     }
+}
+    
+    
 
 }

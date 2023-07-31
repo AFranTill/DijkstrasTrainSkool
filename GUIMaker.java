@@ -11,6 +11,8 @@ import java.awt.event.*; //or events specifcally
 import java.awt.geom.*;
 import java.util.ArrayList;
 
+import java.util.concurrent.TimeUnit; 
+
 public class GUIMaker extends JFrame implements ActionListener, MouseListener // can use JFrame tools
 {
     //menu bar items = class object intialisation
@@ -33,7 +35,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     {
 
         String title = "huh?";
-        int squareWindowSize = 300;
+        int squareWindowSize = 600;
         this.setSize(squareWindowSize, squareWindowSize);
 
         nodesAccessible = arrayOfNodes; //HELP improve copying at some pint might pull up issues otherwise 
@@ -130,6 +132,8 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
                 
                 //System.out.println("yChange " + yChange + " yDiff " + yDiff + " otherY " + otherY + " hehe " + hehe);
                 otherY = yDiff - yChange*hehe;
+                System.out.println("Other Y " + otherY + " yDiff " + yDiff + " yChange " + yChange + " hehe " + hehe);
+                slowPrint(1);
                 hehe++;
                 int newX = x + forwardDist*(i+0); //this shouldnt be working?? 
                 
@@ -137,11 +141,13 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
                 int newY = y + otherY;
                 placingNode.setYCoord(newY);
                 
-                System.out.println("coordinates of " + placingNode.getName() + "x Coord " + placingNode.getXCoord() + " y coord " + placingNode.getYCoord());
+                //System.out.println("coordinates of " + placingNode.getName() + "x Coord " + placingNode.getXCoord() + " y coord " + placingNode.getYCoord());
 
                 queue.takeFromQueue(followerNumber);
                 
             }
+            
+            queue.printQueue(followerNumber);
             // yChange = 20/(currentNode.getNumberOfLinks() - 1);
             // g2.drawOval(x, y, height, width);
             // System.out.println("working");
@@ -285,6 +291,15 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
     
 
+        public static void slowPrint(int timeWaiting) { //makes the computer pause for the given amount of time
+        timeWaiting = timeWaiting*1000;
+        try{
+            TimeUnit.MILLISECONDS.sleep(timeWaiting);
+        }catch (Exception e){
+            System.out.println("sorry the timer isn't working");
+        }
+    }
+    
     public void mouseExited(MouseEvent e){System.out.println("exit");}
 
     public void mouseEntered(MouseEvent e){System.out.println("enter");}
