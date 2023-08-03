@@ -120,45 +120,33 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             for(Links link : linksForThisNode){
                 System.out.println("added link to " + link.findOtherEnd(currentNode).getName() + " from " + currentNode.getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
                 queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
+                //queue.printQueue(followerNumber);
             }
-
-            //queue.printQueue(followerNumber);
+            
             yDiff = circleSize* currentNode.getNumberOfLinks();
             yChange = yDiff/currentNode.getNumberOfLinks();
-            int otherY = yChange; //if this equals 0 and hehe starts by equalling 0 i think it would also work
-            int hehe = 1;
+            int otherY = yChange; //if this equals 0 and currentLink starts by equalling 0 i think it would also work
+            int currentLink = 1;
             while(queue.isQueueEmpty() != true){ 
                 Nodes placingNode = queue.getHead();
                 
-                //System.out.println("yChange " + yChange + " yDiff " + yDiff + " otherY " + otherY + " hehe " + hehe);
-                otherY = yDiff - yChange*hehe;
-                System.out.println("Other Y " + otherY + " yDiff " + yDiff + " yChange " + yChange + " hehe " + hehe);
-                slowPrint(1);
-                hehe++;
-                int newX = x + forwardDist*(i+0); //this shouldnt be working?? 
+                otherY = yDiff - yChange*currentLink;
                 
+                System.out.println("Other Y " + otherY + " yDiff " + yDiff + " yChange " + yChange + " currentLink " + currentLink);
+                
+                //slowPrint(1);
+                currentLink++;
+                
+                int newX = x + forwardDist*(i+0); //this shouldnt be working?? 
                 placingNode.setXCoord(newX);
+                
                 int newY = y + otherY;
                 placingNode.setYCoord(newY);
                 
-                //System.out.println("coordinates of " + placingNode.getName() + "x Coord " + placingNode.getXCoord() + " y coord " + placingNode.getYCoord());
-
                 queue.takeFromQueue(followerNumber);
-                
             }
-            
             queue.printQueue(followerNumber);
-            // yChange = 20/(currentNode.getNumberOfLinks() - 1);
-            // g2.drawOval(x, y, height, width);
-            // System.out.println("working");
-
-            // g2.drawString("Girlboss!", 100, 100);
-
-            // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-            // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-            // g2.draw(lin);
         }
-
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
 
     }

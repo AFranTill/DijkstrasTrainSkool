@@ -60,15 +60,15 @@ public class TrainNetwork
         //System.out.println(numberOfLinks);
         
         int minNumberOfLinks = 1;
-        int maxNumberOfLinks = 4;
+        int maxNumberOfLinks = 2;
         
         
         
         boolean goAhead = true;
         for(int firstNodeNumber = 0; firstNodeNumber < numberOfNodes; firstNodeNumber++){
             int numberOfLinksForThisNode = (int) Math.floor(Math.random() *(maxNumberOfLinks - minNumberOfLinks + 1) + minNumberOfLinks);
-            System.out.println("this node is: " + arrayOfNodes[firstNodeNumber].getName());
-            System.out.println("the number Of links are " + numberOfLinksForThisNode);
+            //System.out.println("this node is: " + arrayOfNodes[firstNodeNumber].getName());
+            //System.out.println("the number Of links are " + numberOfLinksForThisNode);
             int[] linkEnds = new int[numberOfLinksForThisNode];
             
             for(int k = 0; k < numberOfLinksForThisNode; k++){
@@ -136,7 +136,7 @@ public class TrainNetwork
             node.setLinks(arrayOfLinks);
         }
 
-        System.out.println("gotten to algorithm");
+        //System.out.println("gotten to algorithm");
         while(queue.isQueueEmpty() != true){ 
 
             System.out.println("new current node");

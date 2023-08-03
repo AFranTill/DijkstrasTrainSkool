@@ -143,15 +143,6 @@ public class Nodes
     public int getYCoord(){
         return this.yCoord; 
     }
-    
-
-    public void setNextFollower(Nodes nextFollower, int which) {
-        this.nextFollower = nextFollower;
-    }
-
-    public Nodes getNextFollower() {
-        return nextFollower;
-    }
 
     public boolean isVisited() {
         return visited;

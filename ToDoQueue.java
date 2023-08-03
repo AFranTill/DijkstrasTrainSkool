@@ -16,9 +16,7 @@ public class ToDoQueue
      */
     public ToDoQueue()
     {
-        //hi
 
-        
     }
 
     public boolean isQueueEmpty(){
@@ -28,27 +26,12 @@ public class ToDoQueue
         }else return false;
     }
 
-    // public void addToQueue(Nodes newFollower, int which){ 
-        // boolean isEmpty = isQueueEmpty();
-        // if(isEmpty == true){
-            // head = newFollower;
-            // tail = newFollower;
-        // }else if (alreadyInHere(this.head, newFollower, which) == true){
-            // System.out.println("already in queue");
-        
-        // }else {
-            // tail.addFollower(newFollower, which);
-            // tail = newFollower;
-        // }
-    // }
-
-                                                        
     public void addToQueue(Nodes newFollower, int which) {
         boolean isEmpty = isQueueEmpty();
-        if (isEmpty) {
+        if (isEmpty == true) {
             head = newFollower;
             tail = newFollower;
-        } else if (alreadyInHere(this.head, newFollower, which) == false) { // HELP rewrite
+        } else if (alreadyInHere(newFollower, which) == false) { // HELP rewrite
             tail.addFollower(newFollower,which);
             tail = newFollower;
         } else {
@@ -56,87 +39,52 @@ public class ToDoQueue
         }
     }
 
-    public Nodes takeFromQueue(int which) {
-        boolean isEmpty = isQueueEmpty();
+    public void takeFromQueue(int which) {
         Nodes current;
-        if (isEmpty) {
-            current = null;
-        } else {
-            current = head;
-            head = head.getFollower(which);
+        
+        current = head;
+        head = head.getFollower(which);
+        current.addFollower(null, which);
 
-            if (head == null)
-                tail = null;
+        if (head == null){
+            tail = null;
         }
-        return current;
+
     }
 
-    // public void addToQueue(Nodes newFollower, int which) {
-        // boolean isEmpty = isQueueEmpty();
-        // if (isEmpty) {
-            // head = newFollower;
-            // tail = newFollower;
-        // } else if (!newFollower.isVisited()) {
-            // tail.addFollower(newFollower, which);
-            // tail = newFollower;
-            // newFollower.setVisited(true); // Mark the node as visited
-        // } else {
-            // System.out.println("already in queue");
-        // }
-    // }
-
-
-    public Nodes getHead(){
-        return this.head;
-    }
-
-    // public Nodes takeFromQueue(int which){
-        // boolean isEmpty = isQueueEmpty();
-        // Nodes current; 
-        // if(isEmpty == true){
-            // current = null;
-
-        // }else {
-            // current = head;
-            // head = head.getFollower(which);
-
-            // if(head == null)tail = null;
-        // }
-
-        // return current;        
-    // }
-    
-   public boolean alreadyInHere(Nodes current, Nodes nodeOfTheHour, int which) {
-    while (current != null) {
-        if (current == nodeOfTheHour) {
-            return true;
+    public boolean alreadyInHere(Nodes nodeOfTheHour, int which) {
+        Nodes current = this.head;
+        while (current != null) {
+            if (current == nodeOfTheHour) {
+                System.out.println("node of the hour " + nodeOfTheHour.getName() + " current " + current.getName() + " head " + this.head.getName() + " tail " + this.tail.getName());
+                return true;
+            }
+            current = current.getFollower(which);
         }
-        current = current.getFollower(which);
+        return false;
     }
-    return false;
-}
 
-
-    
     public void printQueue(int which){
         Nodes current = this.head;
         boolean  isEmpty = isQueueEmpty();
         if(isEmpty == true){
             System.out.println("queue is empty!");
         }else{
-        while (current.getFollower(which) != null){
-            if(current.getFollower(which) == this.tail){
-                System.out.println(current.getName());
-                System.out.println(current.getFollower(which).getName());
-                current = current.getFollower(which);
-            }else{
-                System.out.println(current.getName());
-                current = current.getFollower(which);
+            while (current.getFollower(which) != null){
+                if(current.getFollower(which) == this.tail){
+                    System.out.println(current.getName());
+                    System.out.println(current.getFollower(which).getName());
+                    current = current.getFollower(which);
+                }else{
+                    System.out.println(current.getName());
+                    current = current.getFollower(which);
+                }
             }
         }
     }
-}
-    
-    
+
+    public Nodes getHead(){
+        return this.head;
+    }
 
 }
