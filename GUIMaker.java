@@ -31,7 +31,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     /**
      * Constructor for objects of class CirclesAndSquares
      */
-    public GUIMaker(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks)
+    public GUIMaker(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks, int graphType)
     {
 
         String title = "huh?";
@@ -40,6 +40,12 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         nodesAccessible = arrayOfNodes; //HELP improve copying at some pint might pull up issues otherwise 
         linksAccessible = arrayOfLinks;
+        
+        int maxY = squareWindowSize - circleSize;
+        int maxX = squareWindowSize - circleSize; //HELP - these should be dependant on the screensize
+        int minY = 30 + circleSize; // 30 being the size of the menubar at the top
+        int minX = circleSize; // gives buffer room
+        
 
         //creating menu - removed inputs from prev lesson
         this.setTitle(title);
@@ -105,6 +111,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         ToDoQueue queue = new ToDoQueue();
         ArrayList<Links> linksForThisNode;
+
         int forwardDist = circleSize*2;
         int x = circleSize*2;
         int y = 100;
@@ -120,25 +127,40 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
                 System.out.println("added link to " + link.findOtherEnd(currentNode).getName() + " from " + currentNode.getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
                 queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
             }
-            
-            yDiff = circleSize* currentNode.getNumberOfLinks();
-            yChange = yDiff/currentNode.getNumberOfLinks();
-            int otherY = yChange; //if this equals 0 and currentLink starts by equalling 0 i think it would also work
-            int currentLink = 1;
-            while(queue.isQueueEmpty() != true){ 
-                Nodes placingNode = queue.getHead();
-                otherY = yDiff - yChange*currentLink;
-                if(placingNode.getNumber() == 0)System.out.println("DreamsDreams Other Y " + otherY + " yDiff " + yDiff + " yChange " + yChange + " currentLink " + currentLink);
-                currentLink++;
-                int newX = x + forwardDist*(i+0); //this shouldnt be working?? 
-                
-                int newY = y + otherY;
-                placingNode.setYCoord(newY);
-                placingNode.setXCoord(newX);
-                queue.takeFromQueue(followerNumber);
+
+            if(graphType == 1){
+                yDiff = circleSize* currentNode.getNumberOfLinks();
+                yChange = yDiff/currentNode.getNumberOfLinks();
+                int otherY = yChange; //if this equals 0 and currentLink starts by equalling 0 i think it would also work
+                int currentLink = 1;
+                while(queue.isQueueEmpty() != true){ 
+                    Nodes placingNode = queue.getHead();
+                    otherY = yDiff - yChange*currentLink;
+                    if(placingNode.getNumber() == 0)System.out.println("DreamsDreams Other Y " + otherY + " yDiff " + yDiff + " yChange " + yChange + " currentLink " + currentLink);
+                    currentLink++;
+                    int newX = x + forwardDist*(i+0); //this shouldnt be working?? 
+
+                    int newY = y + otherY;
+                    placingNode.setYCoord(newY);
+                    placingNode.setXCoord(newX);
+                    queue.takeFromQueue(followerNumber);
+                }
+                queue.printQueue(followerNumber);
+
+            }else if(graphType == 2){
+                while(queue.isQueueEmpty() != true){ 
+                    Nodes placingNode = queue.getHead();
+                    int newY = (int) Math.floor(Math.random() *(maxY - minY + 1) + minY);
+                    int newX = (int) Math.floor(Math.random() *(maxX - minX + 1) + minX);
+                    placingNode.setYCoord(newY);
+                    placingNode.setXCoord(newX);
+                    queue.takeFromQueue(followerNumber);
+                }
+            }else{
+
             }
-            queue.printQueue(followerNumber);
         }
+
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
     }
 
@@ -204,7 +226,6 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         int yChange;
         int yDiff = 5;
 
-        
         //int circleSize = 30;
         g2.setColor(Color.black);
         for(int i = 0; i < nodesAccessible.length; i++){
@@ -213,64 +234,62 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             y = nodesAccessible[i].getYCoord();
             g2.drawOval(x, y, circleSize, circleSize);
         }
-        
+
         int i = 0;
         for(Links link : linksAccessible){
             int shift = circleSize/2;
             Line2D lin = new Line2D.Float(link.getStartNode().getXCoord()+shift, link.getStartNode().getYCoord()+shift, link.getEndNode().getXCoord()+shift, link.getEndNode().getYCoord()+shift);
             g2.draw(lin);
             i++;
-            }
+        }
 
-        }   
+    }   
 
-        // System.out.println("working????");
-        //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-        // currentNode = arrayOfNodes[i];
-        // yChange = 20/(currentNode.getNumberOfLinks() - 1);
-        // g2.drawOval(x, y, height, width);
-        // System.out.println("working");
+    // System.out.println("working????");
+    //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
+    // currentNode = arrayOfNodes[i];
+    // yChange = 20/(currentNode.getNumberOfLinks() - 1);
+    // g2.drawOval(x, y, height, width);
+    // System.out.println("working");
 
-        // g2.drawString("Girlboss!", 100, 100);
+    // g2.drawString("Girlboss!", 100, 100);
 
-        // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-        // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-        // g2.draw(lin);
-        // }
+    // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
+    // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
+    // g2.draw(lin);
+    // }
 
-        // x = x + 20;
-        // y = y + yChange*vertical;
-        // vertical = vertical*-1;
+    // x = x + 20;
+    // y = y + yChange*vertical;
+    // vertical = vertical*-1;
 
-        // }
+    // }
 
-        // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-        // currentNode = arrayOfNodes[i];
-        // yChange = 20/(currentNode.getNumberOfLinks() - 1);
-        // if(i==0){
-        // g2.drawOval(x, y, height, width);
-        // xChange = 100;//HELP
+    // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
+    // currentNode = arrayOfNodes[i];
+    // yChange = 20/(currentNode.getNumberOfLinks() - 1);
+    // if(i==0){
+    // g2.drawOval(x, y, height, width);
+    // xChange = 100;//HELP
 
-        // }else{
-        // newX = x +
-        // newY = y + yChange;
-        // g2.drawOval(newX, newY, height, width);
-        // }
-        // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-        // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-        // }
+    // }else{
+    // newX = x +
+    // newY = y + yChange;
+    // g2.drawOval(newX, newY, height, width);
+    // }
+    // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
+    // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
+    // }
 
-        // }
+    // }
 
-        // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-        // g2.drawOval(x, y, height, width);
-        // //x = x + change;
+    // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
+    // g2.drawOval(x, y, height, width);
+    // //x = x + change;
 
-        // }
+    // }
 
-    
-
-        public static void slowPrint(int timeWaiting) { //makes the computer pause for the given amount of time
+    public static void slowPrint(int timeWaiting) { //makes the computer pause for the given amount of time
         timeWaiting = timeWaiting*1000;
         try{
             TimeUnit.MILLISECONDS.sleep(timeWaiting);
@@ -278,7 +297,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             System.out.println("sorry the timer isn't working");
         }
     }
-    
+
     public void mouseExited(MouseEvent e){System.out.println("exit");}
 
     public void mouseEntered(MouseEvent e){System.out.println("enter");}

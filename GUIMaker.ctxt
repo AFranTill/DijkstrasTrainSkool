@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=GUIMaker
-comment1.params=arrayOfNodes\ arrayOfLinks
-comment1.target=GUIMaker(Nodes[],\ java.util.ArrayList)
+comment1.params=arrayOfNodes\ arrayOfLinks\ graphType
+comment1.target=GUIMaker(Nodes[],\ java.util.ArrayList,\ int)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ CirclesAndSquares\n
 comment10.params=e
 comment10.target=void\ mouseClicked(java.awt.event.MouseEvent)

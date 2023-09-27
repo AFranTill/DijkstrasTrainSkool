@@ -26,6 +26,7 @@ public class TrainNetwork
     private ArrayList<Links> arrayOfLinks = new ArrayList<Links>();
     private int arrayOfDistances[];
     private int followerNumber = 0;
+    private int graphType;
 
     /**
      * Constructor for objects of class TrainNetwork
@@ -43,7 +44,9 @@ public class TrainNetwork
         Nodes[] arrayOfNodes = new Nodes[numberOfNodes];
         //numberOfLinks = 9;
        
-
+        System.out.println("and what graph type?");
+        graphType = keyboard.nextInt();
+        
         for(int i = 0; i < numberOfNodes; i++){
             arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
         }
@@ -128,7 +131,7 @@ public class TrainNetwork
 
         System.out.println("yyayyyayyayay");
 
-        GUIMaker gui = new GUIMaker(arrayOfNodes, arrayOfLinks);
+        GUIMaker gui = new GUIMaker(arrayOfNodes, arrayOfLinks, graphType);
         //gui.repaint();
         
          writeToFile(arrayOfNodes, arrayOfLinks); //additional (filewriting)

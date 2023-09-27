@@ -1,63 +1,747 @@
 Node Information:
-Zero - X: 720, Y: 160
-One - X: 480, Y: 160
-Two - X: 1020, Y: 130
-Three - X: 600, Y: 160
-Four - X: 1260, Y: 130
-Five - X: 1020, Y: 100
-Six - X: 1380, Y: 280
-Seven - X: 1140, Y: 220
-Eight - X: 1440, Y: 100
-Nine - X: 1200, Y: 190
-Ten - X: 480, Y: 100
-Eleven - X: 1380, Y: 220
-Twelve - X: 1140, Y: 160
-Thirteen - X: 1500, Y: 100
-Fourteen - X: 1380, Y: 130
-Fifteen - X: 900, Y: 190
-Sixteen - X: 360, Y: 100
-Seventeen - X: 900, Y: 160
-Eighteen - X: 1200, Y: 130
-Nineteen - X: 1380, Y: 160
-Twenty - X: 900, Y: 130
-Twenty-One - X: 840, Y: 130
-Twenty-Two - X: 1200, Y: 160
-Twenty-Three - X: 540, Y: 100
-Twenty-Four - X: 840, Y: 100
+Zero - X: 442, Y: 227
+One - X: 513, Y: 554
+Two - X: 220, Y: 431
+Three - X: 245, Y: 149
+Four - X: 390, Y: 245
+Five - X: 456, Y: 125
+Six - X: 529, Y: 166
+Seven - X: 488, Y: 387
+Eight - X: 359, Y: 234
+Nine - X: 196, Y: 68
+Ten - X: 237, Y: 501
+Eleven - X: 373, Y: 78
+Twelve - X: 243, Y: 268
+Thirteen - X: 558, Y: 272
+Fourteen - X: 82, Y: 166
+Fifteen - X: 535, Y: 272
+Sixteen - X: 37, Y: 161
+Seventeen - X: 531, Y: 357
+Eighteen - X: 117, Y: 273
+Nineteen - X: 240, Y: 490
+Twenty - X: 191, Y: 67
+Twenty-One - X: 437, Y: 60
+Twenty-Two - X: 366, Y: 238
+Twenty-Three - X: 57, Y: 209
+Twenty-Four - X: 479, Y: 495
+Twenty-Five - X: 35, Y: 478
+Twenty-Six - X: 370, Y: 90
+Twenty-Seven - X: 170, Y: 539
+Twenty-Eight - X: 497, Y: 392
+Twenty-Nine - X: 337, Y: 96
+Thirty - X: 540, Y: 82
+Thirty-One - X: 60, Y: 356
+Thirty-Two - X: 202, Y: 116
+Thirty-Three - X: 424, Y: 503
+Thirty-Four - X: 127, Y: 343
+Thirty-Five - X: 32, Y: 553
+Thirty-Six - X: 513, Y: 142
+Thirty-Seven - X: 346, Y: 70
+Thirty-Eight - X: 146, Y: 345
+Thirty-Nine - X: 547, Y: 143
+Forty - X: 337, Y: 201
+Forty-One - X: 292, Y: 131
+Forty-Two - X: 510, Y: 562
+Forty-Three - X: 110, Y: 62
+Forty-Four - X: 279, Y: 334
+Forty-Five - X: 291, Y: 261
+Forty-Six - X: 212, Y: 498
+Forty-Seven - X: 128, Y: 191
+Forty-Eight - X: 110, Y: 380
+Forty-Nine - X: 266, Y: 184
+Fifty - X: 173, Y: 425
+Fifty-One - X: 466, Y: 216
+Fifty-Two - X: 67, Y: 484
+Fifty-Three - X: 397, Y: 532
+Fifty-Four - X: 510, Y: 199
+Fifty-Five - X: 501, Y: 96
+Fifty-Six - X: 515, Y: 301
+Fifty-Seven - X: 360, Y: 560
+Fifty-Eight - X: 193, Y: 393
+Fifty-Nine - X: 488, Y: 68
+Sixty - X: 285, Y: 550
+Sixty-One - X: 348, Y: 100
+Sixty-Two - X: 317, Y: 76
+Sixty-Three - X: 504, Y: 161
+Sixty-Four - X: 161, Y: 216
+Sixty-Five - X: 99, Y: 383
+Sixty-Six - X: 416, Y: 206
+Sixty-Seven - X: 353, Y: 214
+Sixty-Eight - X: 563, Y: 167
+Sixty-Nine - X: 137, Y: 506
+Seventy - X: 93, Y: 86
+Seventy-One - X: 139, Y: 559
+Seventy-Two - X: 264, Y: 131
+Seventy-Three - X: 241, Y: 173
+Seventy-Four - X: 312, Y: 403
+Seventy-Five - X: 412, Y: 376
+Seventy-Six - X: 547, Y: 73
+Seventy-Seven - X: 363, Y: 545
+Seventy-Eight - X: 455, Y: 322
+Seventy-Nine - X: 114, Y: 481
+Eighty - X: 171, Y: 99
+Eighty-One - X: 41, Y: 408
+Eighty-Two - X: 186, Y: 446
+Eighty-Three - X: 163, Y: 267
+Eighty-Four - X: 464, Y: 461
+Eighty-Five - X: 552, Y: 457
+Eighty-Six - X: 247, Y: 567
+Eighty-Seven - X: 498, Y: 71
+Eighty-Eight - X: 52, Y: 95
+Eighty-Nine - X: 465, Y: 425
+Ninety - X: 308, Y: 223
+Ninety-One - X: 87, Y: 453
+Ninety-Two - X: 512, Y: 193
+Ninety-Three - X: 264, Y: 433
+Ninety-Four - X: 260, Y: 313
+Ninety-Five - X: 71, Y: 518
+Ninety-Six - X: 182, Y: 319
+Ninety-Seven - X: 214, Y: 370
+Ninety-Eight - X: 401, Y: 100
+Ninety-Nine - X: 336, Y: 344
+One Hundred - X: 333, Y: 186
+One Hundred One - X: 277, Y: 415
+One Hundred Two - X: 189, Y: 511
+One Hundred Three - X: 368, Y: 112
+One Hundred Four - X: 265, Y: 328
+One Hundred Five - X: 210, Y: 107
+One Hundred Six - X: 233, Y: 203
+One Hundred Seven - X: 58, Y: 203
+One Hundred Eight - X: 548, Y: 513
+One Hundred Nine - X: 292, Y: 413
+One Hundred Ten - X: 211, Y: 389
+One Hundred Eleven - X: 431, Y: 160
+One Hundred Twelve - X: 563, Y: 311
+One Hundred Thirteen - X: 295, Y: 86
+One Hundred Fourteen - X: 246, Y: 359
+One Hundred Fifteen - X: 564, Y: 385
+One Hundred Sixteen - X: 165, Y: 278
+One Hundred Seventeen - X: 246, Y: 372
+One Hundred Eighteen - X: 383, Y: 273
+One Hundred Nineteen - X: 474, Y: 110
+One Hundred Twenty - X: 221, Y: 364
+One Hundred Twenty-One - X: 165, Y: 486
+One Hundred Twenty-Two - X: 192, Y: 500
+One Hundred Twenty-Three - X: 460, Y: 65
+One Hundred Twenty-Four - X: 502, Y: 305
+One Hundred Twenty-Five - X: 398, Y: 224
+One Hundred Twenty-Six - X: 541, Y: 310
+One Hundred Twenty-Seven - X: 49, Y: 130
+One Hundred Twenty-Eight - X: 395, Y: 242
+One Hundred Twenty-Nine - X: 569, Y: 255
+One Hundred Thirty - X: 131, Y: 544
+One Hundred Thirty-One - X: 133, Y: 123
+One Hundred Thirty-Two - X: 226, Y: 249
+One Hundred Thirty-Three - X: 97, Y: 294
+One Hundred Thirty-Four - X: 465, Y: 404
+One Hundred Thirty-Five - X: 511, Y: 310
+One Hundred Thirty-Six - X: 414, Y: 443
+One Hundred Thirty-Seven - X: 387, Y: 407
+One Hundred Thirty-Eight - X: 427, Y: 284
+One Hundred Thirty-Nine - X: 294, Y: 219
+One Hundred Forty - X: 80, Y: 336
+One Hundred Forty-One - X: 207, Y: 514
+One Hundred Forty-Two - X: 541, Y: 86
+One Hundred Forty-Three - X: 453, Y: 269
+One Hundred Forty-Four - X: 108, Y: 110
+One Hundred Forty-Five - X: 142, Y: 69
+One Hundred Forty-Six - X: 185, Y: 117
+One Hundred Forty-Seven - X: 258, Y: 520
+One Hundred Forty-Eight - X: 47, Y: 281
+One Hundred Forty-Nine - X: 511, Y: 233
+One Hundred Fifty - X: 230, Y: 499
+One Hundred Fifty-One - X: 491, Y: 457
+One Hundred Fifty-Two - X: 508, Y: 435
+One Hundred Fifty-Three - X: 164, Y: 380
+One Hundred Fifty-Four - X: 178, Y: 475
+One Hundred Fifty-Five - X: 408, Y: 225
+One Hundred Fifty-Six - X: 278, Y: 363
+One Hundred Fifty-Seven - X: 472, Y: 225
+One Hundred Fifty-Eight - X: 404, Y: 180
+One Hundred Fifty-Nine - X: 154, Y: 107
+One Hundred Sixty - X: 504, Y: 486
+One Hundred Sixty-One - X: 212, Y: 342
+One Hundred Sixty-Two - X: 460, Y: 277
+One Hundred Sixty-Three - X: 138, Y: 428
+One Hundred Sixty-Four - X: 570, Y: 450
+One Hundred Sixty-Five - X: 119, Y: 102
+One Hundred Sixty-Six - X: 372, Y: 306
+One Hundred Sixty-Seven - X: 356, Y: 309
+One Hundred Sixty-Eight - X: 101, Y: 390
+One Hundred Sixty-Nine - X: 507, Y: 557
+One Hundred Seventy - X: 157, Y: 136
+One Hundred Seventy-One - X: 555, Y: 228
+One Hundred Seventy-Two - X: 488, Y: 446
+One Hundred Seventy-Three - X: 441, Y: 433
+One Hundred Seventy-Four - X: 431, Y: 322
+One Hundred Seventy-Five - X: 212, Y: 150
+One Hundred Seventy-Six - X: 354, Y: 530
+One Hundred Seventy-Seven - X: 315, Y: 435
+One Hundred Seventy-Eight - X: 62, Y: 331
+One Hundred Seventy-Nine - X: 30, Y: 91
+One Hundred Eighty - X: 520, Y: 552
+One Hundred Eighty-One - X: 42, Y: 424
+One Hundred Eighty-Two - X: 145, Y: 230
+One Hundred Eighty-Three - X: 460, Y: 349
+One Hundred Eighty-Four - X: 365, Y: 440
+One Hundred Eighty-Five - X: 348, Y: 129
+One Hundred Eighty-Six - X: 174, Y: 343
+One Hundred Eighty-Seven - X: 414, Y: 66
+One Hundred Eighty-Eight - X: 38, Y: 195
+One Hundred Eighty-Nine - X: 366, Y: 356
+One Hundred Ninety - X: 257, Y: 569
+One Hundred Ninety-One - X: 420, Y: 134
+One Hundred Ninety-Two - X: 210, Y: 96
+One Hundred Ninety-Three - X: 507, Y: 76
+One Hundred Ninety-Four - X: 395, Y: 336
+One Hundred Ninety-Five - X: 95, Y: 470
+One Hundred Ninety-Six - X: 465, Y: 351
+One Hundred Ninety-Seven - X: 67, Y: 237
+One Hundred Ninety-Eight - X: 250, Y: 95
+One Hundred Ninety-Nine - X: 503, Y: 217
+Two Hundred - X: 335, Y: 217
+Two Hundred One - X: 162, Y: 95
+Two Hundred Two - X: 175, Y: 177
+Two Hundred Three - X: 564, Y: 198
+Two Hundred Four - X: 233, Y: 392
+Two Hundred Five - X: 353, Y: 368
+Two Hundred Six - X: 52, Y: 402
+Two Hundred Seven - X: 119, Y: 78
+Two Hundred Eight - X: 521, Y: 385
+Two Hundred Nine - X: 293, Y: 111
+Two Hundred Ten - X: 454, Y: 381
+Two Hundred Eleven - X: 449, Y: 450
+Two Hundred Twelve - X: 403, Y: 143
+Two Hundred Thirteen - X: 31, Y: 262
+Two Hundred Fourteen - X: 222, Y: 144
+Two Hundred Fifteen - X: 319, Y: 135
+Two Hundred Sixteen - X: 309, Y: 490
+Two Hundred Seventeen - X: 383, Y: 289
+Two Hundred Eighteen - X: 242, Y: 63
+Two Hundred Nineteen - X: 161, Y: 287
+Two Hundred Twenty - X: 400, Y: 505
+Two Hundred Twenty-One - X: 514, Y: 507
+Two Hundred Twenty-Two - X: 444, Y: 212
+Two Hundred Twenty-Three - X: 123, Y: 71
+Two Hundred Twenty-Four - X: 261, Y: 448
+Two Hundred Twenty-Five - X: 295, Y: 203
+Two Hundred Twenty-Six - X: 422, Y: 71
+Two Hundred Twenty-Seven - X: 183, Y: 389
+Two Hundred Twenty-Eight - X: 250, Y: 86
+Two Hundred Twenty-Nine - X: 426, Y: 565
+Two Hundred Thirty - X: 468, Y: 405
+Two Hundred Thirty-One - X: 124, Y: 514
+Two Hundred Thirty-Two - X: 161, Y: 239
+Two Hundred Thirty-Three - X: 109, Y: 86
+Two Hundred Thirty-Four - X: 265, Y: 356
+Two Hundred Thirty-Five - X: 371, Y: 521
+Two Hundred Thirty-Six - X: 286, Y: 295
+Two Hundred Thirty-Seven - X: 420, Y: 136
+Two Hundred Thirty-Eight - X: 320, Y: 569
+Two Hundred Thirty-Nine - X: 554, Y: 265
+Two Hundred Forty - X: 236, Y: 314
+Two Hundred Forty-One - X: 128, Y: 270
+Two Hundred Forty-Two - X: 339, Y: 133
+Two Hundred Forty-Three - X: 124, Y: 289
+Two Hundred Forty-Four - X: 278, Y: 444
+Two Hundred Forty-Five - X: 518, Y: 296
+Two Hundred Forty-Six - X: 324, Y: 273
+Two Hundred Forty-Seven - X: 283, Y: 491
+Two Hundred Forty-Eight - X: 304, Y: 473
+Two Hundred Forty-Nine - X: 301, Y: 496
+Two Hundred Fifty - X: 306, Y: 418
+Two Hundred Fifty-One - X: 517, Y: 517
+Two Hundred Fifty-Two - X: 327, Y: 475
+Two Hundred Fifty-Three - X: 336, Y: 320
+Two Hundred Fifty-Four - X: 402, Y: 521
+Two Hundred Fifty-Five - X: 168, Y: 186
+Two Hundred Fifty-Six - X: 558, Y: 475
+Two Hundred Fifty-Seven - X: 257, Y: 504
+Two Hundred Fifty-Eight - X: 185, Y: 161
+Two Hundred Fifty-Nine - X: 550, Y: 559
+Two Hundred Sixty - X: 439, Y: 315
+Two Hundred Sixty-One - X: 248, Y: 425
+Two Hundred Sixty-Two - X: 147, Y: 302
+Two Hundred Sixty-Three - X: 478, Y: 177
+Two Hundred Sixty-Four - X: 140, Y: 567
+Two Hundred Sixty-Five - X: 335, Y: 250
+Two Hundred Sixty-Six - X: 433, Y: 143
+Two Hundred Sixty-Seven - X: 205, Y: 309
+Two Hundred Sixty-Eight - X: 109, Y: 340
+Two Hundred Sixty-Nine - X: 464, Y: 235
+Two Hundred Seventy - X: 169, Y: 408
+Two Hundred Seventy-One - X: 419, Y: 556
+Two Hundred Seventy-Two - X: 169, Y: 190
+Two Hundred Seventy-Three - X: 312, Y: 118
+Two Hundred Seventy-Four - X: 48, Y: 455
+Two Hundred Seventy-Five - X: 115, Y: 478
+Two Hundred Seventy-Six - X: 188, Y: 475
+Two Hundred Seventy-Seven - X: 426, Y: 81
+Two Hundred Seventy-Eight - X: 420, Y: 311
+Two Hundred Seventy-Nine - X: 161, Y: 471
+Two Hundred Eighty - X: 146, Y: 295
+Two Hundred Eighty-One - X: 524, Y: 446
+Two Hundred Eighty-Two - X: 505, Y: 185
+Two Hundred Eighty-Three - X: 476, Y: 84
+Two Hundred Eighty-Four - X: 188, Y: 84
+Two Hundred Eighty-Five - X: 131, Y: 182
+Two Hundred Eighty-Six - X: 457, Y: 191
+Two Hundred Eighty-Seven - X: 216, Y: 200
+Two Hundred Eighty-Eight - X: 443, Y: 178
+Two Hundred Eighty-Nine - X: 154, Y: 437
+Two Hundred Ninety - X: 99, Y: 439
+Two Hundred Ninety-One - X: 205, Y: 63
+Two Hundred Ninety-Two - X: 453, Y: 407
+Two Hundred Ninety-Three - X: 202, Y: 314
+Two Hundred Ninety-Four - X: 165, Y: 565
+Two Hundred Ninety-Five - X: 457, Y: 125
+Two Hundred Ninety-Six - X: 127, Y: 119
+Two Hundred Ninety-Seven - X: 314, Y: 532
+Two Hundred Ninety-Eight - X: 347, Y: 222
+Two Hundred Ninety-Nine - X: 403, Y: 289
 Link Information:
-Start Node: Zero, End Node: Eleven, Weight: 13
-Start Node: One, End Node: Seven, Weight: 10
-Start Node: Two, End Node: Sixteen, Weight: 10
-Start Node: Two, End Node: One, Weight: 19
-Start Node: Three, End Node: Two, Weight: 8
-Start Node: Three, End Node: Nine, Weight: 7
-Start Node: Four, End Node: Fourteen, Weight: 2
-Start Node: Five, End Node: One, Weight: 2
-Start Node: Six, End Node: Two, Weight: 2
-Start Node: Six, End Node: Twenty-Two, Weight: 22
-Start Node: Seven, End Node: Eighteen, Weight: 5
-Start Node: Eight, End Node: Twenty-Two, Weight: 24
-Start Node: Eight, End Node: Thirteen, Weight: 7
-Start Node: Nine, End Node: Nineteen, Weight: 11
-Start Node: Ten, End Node: Six, Weight: 19
-Start Node: Ten, End Node: Seven, Weight: 18
-Start Node: Eleven, End Node: Twenty-Two, Weight: 7
-Start Node: Eleven, End Node: Eighteen, Weight: 3
-Start Node: Twelve, End Node: Eighteen, Weight: 22
-Start Node: Twelve, End Node: Five, Weight: 1
-Start Node: Thirteen, End Node: Twenty-Two, Weight: 14
-Start Node: Fourteen, End Node: Fifteen, Weight: 7
-Start Node: Fifteen, End Node: Thirteen, Weight: 11
-Start Node: Fifteen, End Node: Twelve, Weight: 9
-Start Node: Sixteen, End Node: Five, Weight: 13
-Start Node: Seventeen, End Node: Fourteen, Weight: 22
-Start Node: Eighteen, End Node: Nine, Weight: 4
-Start Node: Nineteen, End Node: Twenty-Two, Weight: 7
-Start Node: Nineteen, End Node: Eighteen, Weight: 9
-Start Node: Twenty, End Node: Four, Weight: 5
-Start Node: Twenty, End Node: Fourteen, Weight: 20
-Start Node: Twenty-One, End Node: Thirteen, Weight: 17
-Start Node: Twenty-Two, End Node: Nineteen, Weight: 15
-Start Node: Twenty-Two, End Node: Fourteen, Weight: 18
-Start Node: Twenty-Three, End Node: Eight, Weight: 10
-Start Node: Twenty-Four, End Node: Thirteen, Weight: 23
+Start Node: Zero, End Node: One Hundred Forty-Seven, Weight: 157
+Start Node: One, End Node: Two Hundred Fifteen, Weight: 268
+Start Node: Two, End Node: Two Hundred Thirty-Seven, Weight: 295
+Start Node: Two, End Node: Ninety-Eight, Weight: 246
+Start Node: Three, End Node: Two Hundred Eighty-Six, Weight: 245
+Start Node: Three, End Node: Two Hundred Seventy-Eight, Weight: 281
+Start Node: Four, End Node: Forty-Four, Weight: 155
+Start Node: Four, End Node: Two Hundred Forty-Eight, Weight: 167
+Start Node: Five, End Node: Two Hundred Ninety-Four, Weight: 208
+Start Node: Six, End Node: Two Hundred Three, Weight: 164
+Start Node: Six, End Node: Fifty, Weight: 200
+Start Node: Seven, End Node: Three, Weight: 29
+Start Node: Eight, End Node: Two Hundred Fifty-Five, Weight: 37
+Start Node: Nine, End Node: One Hundred Fifty-Seven, Weight: 284
+Start Node: Ten, End Node: Two Hundred Sixty-Four, Weight: 143
+Start Node: Ten, End Node: Two Hundred Fifty-Seven, Weight: 207
+Start Node: Eleven, End Node: One Hundred Five, Weight: 224
+Start Node: Eleven, End Node: Two Hundred Ninety-Nine, Weight: 172
+Start Node: Twelve, End Node: One Hundred Twenty-Five, Weight: 149
+Start Node: Twelve, End Node: Two Hundred Eighty-Three, Weight: 110
+Start Node: Thirteen, End Node: Two Hundred Eleven, Weight: 37
+Start Node: Fourteen, End Node: One Hundred Eighty-Seven, Weight: 244
+Start Node: Fifteen, End Node: One Hundred Twenty, Weight: 146
+Start Node: Sixteen, End Node: Two Hundred Twenty-Eight, Weight: 273
+Start Node: Seventeen, End Node: Two Hundred Eight, Weight: 283
+Start Node: Eighteen, End Node: One Hundred Twenty-Seven, Weight: 238
+Start Node: Eighteen, End Node: Sixty-Six, Weight: 231
+Start Node: Nineteen, End Node: One Hundred Forty-Four, Weight: 52
+Start Node: Twenty, End Node: One Hundred Sixteen, Weight: 272
+Start Node: Twenty, End Node: Sixty-Four, Weight: 285
+Start Node: Twenty-One, End Node: Two Hundred Sixty-Six, Weight: 143
+Start Node: Twenty-Two, End Node: Eighty-Three, Weight: 139
+Start Node: Twenty-Two, End Node: One Hundred Seventy-Two, Weight: 173
+Start Node: Twenty-Three, End Node: One Hundred Twenty-Eight, Weight: 244
+Start Node: Twenty-Four, End Node: Two Hundred Eighty, Weight: 299
+Start Node: Twenty-Four, End Node: Two Hundred Twenty-Nine, Weight: 260
+Start Node: Twenty-Five, End Node: One Hundred Twenty-Five, Weight: 213
+Start Node: Twenty-Six, End Node: Ninety-One, Weight: 80
+Start Node: Twenty-Six, End Node: Two Hundred Nine, Weight: 107
+Start Node: Twenty-Seven, End Node: One Hundred Fifteen, Weight: 291
+Start Node: Twenty-Seven, End Node: Forty-Three, Weight: 173
+Start Node: Twenty-Eight, End Node: One Hundred Eight, Weight: 157
+Start Node: Twenty-Nine, End Node: One Hundred Sixteen, Weight: 10
+Start Node: Twenty-Nine, End Node: One Hundred Sixty-One, Weight: 90
+Start Node: Thirty, End Node: One Hundred Ninety-Three, Weight: 219
+Start Node: Thirty-One, End Node: One Hundred Twenty-Six, Weight: 168
+Start Node: Thirty-Two, End Node: Two Hundred Forty, Weight: 202
+Start Node: Thirty-Two, End Node: Thirty-One, Weight: 233
+Start Node: Thirty-Three, End Node: Fifty-Eight, Weight: 215
+Start Node: Thirty-Three, End Node: One Hundred Sixty-Eight, Weight: 2
+Start Node: Thirty-Four, End Node: Two Hundred Twenty-Three, Weight: 101
+Start Node: Thirty-Four, End Node: One Hundred Seventy-Nine, Weight: 198
+Start Node: Thirty-Five, End Node: Seventy-Seven, Weight: 279
+Start Node: Thirty-Six, End Node: One Hundred Fifty-Six, Weight: 183
+Start Node: Thirty-Seven, End Node: Two Hundred Seventy-Nine, Weight: 1
+Start Node: Thirty-Eight, End Node: Two Hundred Thirty-Four, Weight: 194
+Start Node: Thirty-Nine, End Node: Sixty-Four, Weight: 190
+Start Node: Forty, End Node: Twelve, Weight: 263
+Start Node: Forty-One, End Node: One Hundred Ninety-Four, Weight: 182
+Start Node: Forty-One, End Node: Sixty-Eight, Weight: 269
+Start Node: Forty-Two, End Node: One Hundred Sixty-Five, Weight: 258
+Start Node: Forty-Two, End Node: One Hundred Sixty-Eight, Weight: 248
+Start Node: Forty-Three, End Node: Fifty-Three, Weight: 227
+Start Node: Forty-Three, End Node: Fifty-Nine, Weight: 261
+Start Node: Forty-Four, End Node: Two Hundred Forty-Eight, Weight: 242
+Start Node: Forty-Five, End Node: One Hundred Eighteen, Weight: 222
+Start Node: Forty-Six, End Node: Two Hundred Eighty-Two, Weight: 26
+Start Node: Forty-Seven, End Node: Two Hundred Eighty-Nine, Weight: 129
+Start Node: Forty-Seven, End Node: Two Hundred Seventy-One, Weight: 112
+Start Node: Forty-Eight, End Node: Forty-One, Weight: 148
+Start Node: Forty-Eight, End Node: Two Hundred Thirty-Nine, Weight: 266
+Start Node: Forty-Nine, End Node: Two Hundred Seventy-Three, Weight: 275
+Start Node: Fifty, End Node: Eight, Weight: 210
+Start Node: Fifty-One, End Node: Two Hundred Eighty-Nine, Weight: 62
+Start Node: Fifty-Two, End Node: One Hundred Seventy-Four, Weight: 184
+Start Node: Fifty-Three, End Node: Two Hundred Thirty-Five, Weight: 60
+Start Node: Fifty-Three, End Node: Two Hundred Seventy-Two, Weight: 289
+Start Node: Fifty-Four, End Node: Two Hundred Fifty-Eight, Weight: 104
+Start Node: Fifty-Four, End Node: Fifty-Six, Weight: 281
+Start Node: Fifty-Five, End Node: Two Hundred Six, Weight: 224
+Start Node: Fifty-Six, End Node: Eighty-Five, Weight: 146
+Start Node: Fifty-Six, End Node: Two Hundred Ninety-Six, Weight: 279
+Start Node: Fifty-Seven, End Node: One Hundred Eighty-Three, Weight: 120
+Start Node: Fifty-Eight, End Node: Two Hundred Eighty-Eight, Weight: 175
+Start Node: Fifty-Eight, End Node: Two Hundred Nine, Weight: 238
+Start Node: Fifty-Nine, End Node: Two Hundred Eleven, Weight: 25
+Start Node: Sixty, End Node: Forty, Weight: 203
+Start Node: Sixty, End Node: One Hundred Twenty-Two, Weight: 206
+Start Node: Sixty-One, End Node: Twenty-Six, Weight: 201
+Start Node: Sixty-One, End Node: Two Hundred Twenty-Six, Weight: 104
+Start Node: Sixty-Two, End Node: Two Hundred Fifty-Three, Weight: 197
+Start Node: Sixty-Three, End Node: One Hundred Forty-Six, Weight: 197
+Start Node: Sixty-Three, End Node: Two Hundred Thirty-Three, Weight: 288
+Start Node: Sixty-Four, End Node: One Hundred Ten, Weight: 150
+Start Node: Sixty-Four, End Node: Nineteen, Weight: 63
+Start Node: Sixty-Five, End Node: Two Hundred Forty-Eight, Weight: 121
+Start Node: Sixty-Six, End Node: Ninety-One, Weight: 118
+Start Node: Sixty-Seven, End Node: Two Hundred Twenty-Nine, Weight: 38
+Start Node: Sixty-Eight, End Node: Fifty-Five, Weight: 53
+Start Node: Sixty-Nine, End Node: Two Hundred Sixty-Six, Weight: 227
+Start Node: Seventy, End Node: Sixty, Weight: 276
+Start Node: Seventy, End Node: One Hundred One, Weight: 118
+Start Node: Seventy-One, End Node: One Hundred Seventeen, Weight: 95
+Start Node: Seventy-Two, End Node: One Hundred Twenty-Nine, Weight: 154
+Start Node: Seventy-Three, End Node: Two Hundred Eighty-Four, Weight: 277
+Start Node: Seventy-Three, End Node: Fifty-Four, Weight: 120
+Start Node: Seventy-Four, End Node: One Hundred Seventy-Eight, Weight: 289
+Start Node: Seventy-Five, End Node: One Hundred Fifty-Five, Weight: 126
+Start Node: Seventy-Six, End Node: One Hundred Thirty-Five, Weight: 63
+Start Node: Seventy-Seven, End Node: Twenty-Seven, Weight: 213
+Start Node: Seventy-Eight, End Node: One Hundred Seventy-Two, Weight: 210
+Start Node: Seventy-Nine, End Node: Two Hundred Ninety-Two, Weight: 54
+Start Node: Eighty, End Node: Ten, Weight: 78
+Start Node: Eighty, End Node: Two Hundred Eighty-Five, Weight: 273
+Start Node: Eighty-One, End Node: Two Hundred Twenty-Six, Weight: 61
+Start Node: Eighty-Two, End Node: One Hundred Seventy-One, Weight: 208
+Start Node: Eighty-Three, End Node: One Hundred Twenty-Three, Weight: 152
+Start Node: Eighty-Three, End Node: Fifty-Three, Weight: 12
+Start Node: Eighty-Four, End Node: Eighty-Six, Weight: 65
+Start Node: Eighty-Five, End Node: One Hundred Fifty-Eight, Weight: 283
+Start Node: Eighty-Five, End Node: Two Hundred Fifty-Nine, Weight: 101
+Start Node: Eighty-Six, End Node: Two Hundred Seventy-Six, Weight: 290
+Start Node: Eighty-Six, End Node: One Hundred Twenty-Six, Weight: 46
+Start Node: Eighty-Seven, End Node: Forty-Eight, Weight: 200
+Start Node: Eighty-Eight, End Node: One Hundred Seventy-Nine, Weight: 221
+Start Node: Eighty-Nine, End Node: Fifty-Four, Weight: 274
+Start Node: Ninety, End Node: Eighty-Three, Weight: 272
+Start Node: Ninety, End Node: Seventy-Five, Weight: 194
+Start Node: Ninety-One, End Node: One Hundred Eighty-Three, Weight: 207
+Start Node: Ninety-One, End Node: One Hundred Seventy-Eight, Weight: 165
+Start Node: Ninety-Two, End Node: Two Hundred Twenty-Four, Weight: 151
+Start Node: Ninety-Three, End Node: One Hundred Nineteen, Weight: 202
+Start Node: Ninety-Four, End Node: One Hundred Thirty-Nine, Weight: 188
+Start Node: Ninety-Five, End Node: Two Hundred Sixty-Nine, Weight: 29
+Start Node: Ninety-Six, End Node: Sixteen, Weight: 264
+Start Node: Ninety-Six, End Node: Two, Weight: 76
+Start Node: Ninety-Seven, End Node: Ninety-One, Weight: 149
+Start Node: Ninety-Seven, End Node: Two Hundred Fifty-Two, Weight: 91
+Start Node: Ninety-Eight, End Node: Two Hundred Nine, Weight: 194
+Start Node: Ninety-Eight, End Node: One Hundred Sixty-One, Weight: 284
+Start Node: Ninety-Nine, End Node: Two Hundred Forty-Seven, Weight: 217
+Start Node: One Hundred, End Node: One Hundred Ten, Weight: 233
+Start Node: One Hundred One, End Node: One Hundred Eighty-Four, Weight: 242
+Start Node: One Hundred Two, End Node: One Hundred Sixty-Two, Weight: 16
+Start Node: One Hundred Three, End Node: One Hundred Thirty-Eight, Weight: 75
+Start Node: One Hundred Three, End Node: Two Hundred Ten, Weight: 210
+Start Node: One Hundred Four, End Node: One Hundred Forty-Three, Weight: 250
+Start Node: One Hundred Four, End Node: Two Hundred Twelve, Weight: 239
+Start Node: One Hundred Five, End Node: One Hundred Sixty, Weight: 260
+Start Node: One Hundred Five, End Node: Two Hundred Forty, Weight: 110
+Start Node: One Hundred Six, End Node: Two Hundred Eight, Weight: 12
+Start Node: One Hundred Six, End Node: Two Hundred Seventy-Four, Weight: 59
+Start Node: One Hundred Seven, End Node: One Hundred Nine, Weight: 154
+Start Node: One Hundred Seven, End Node: Two Hundred Thirty-Four, Weight: 216
+Start Node: One Hundred Eight, End Node: Eighty-Four, Weight: 37
+Start Node: One Hundred Nine, End Node: Sixty-Four, Weight: 283
+Start Node: One Hundred Nine, End Node: One Hundred Thirty-Five, Weight: 255
+Start Node: One Hundred Ten, End Node: One Hundred Seventeen, Weight: 260
+Start Node: One Hundred Eleven, End Node: Two Hundred Thirty-Eight, Weight: 223
+Start Node: One Hundred Eleven, End Node: Two Hundred Fifty-Six, Weight: 104
+Start Node: One Hundred Twelve, End Node: One Hundred Sixty-Four, Weight: 224
+Start Node: One Hundred Twelve, End Node: Fifty-Seven, Weight: 283
+Start Node: One Hundred Thirteen, End Node: One Hundred Forty-Three, Weight: 106
+Start Node: One Hundred Fourteen, End Node: Thirty-Eight, Weight: 159
+Start Node: One Hundred Fifteen, End Node: One Hundred Eighty-Nine, Weight: 292
+Start Node: One Hundred Fifteen, End Node: Seventy, Weight: 257
+Start Node: One Hundred Sixteen, End Node: Eleven, Weight: 10
+Start Node: One Hundred Seventeen, End Node: Seventy-Four, Weight: 296
+Start Node: One Hundred Eighteen, End Node: Nineteen, Weight: 45
+Start Node: One Hundred Eighteen, End Node: One Hundred Sixty-Five, Weight: 13
+Start Node: One Hundred Nineteen, End Node: One Hundred Fifty-Eight, Weight: 61
+Start Node: One Hundred Nineteen, End Node: Two Hundred Forty-Five, Weight: 218
+Start Node: One Hundred Twenty, End Node: Two Hundred Seventy-Seven, Weight: 39
+Start Node: One Hundred Twenty, End Node: Seventy-Nine, Weight: 204
+Start Node: One Hundred Twenty-One, End Node: Two Hundred Three, Weight: 215
+Start Node: One Hundred Twenty-Two, End Node: One Hundred Twenty-Five, Weight: 70
+Start Node: One Hundred Twenty-Three, End Node: One Hundred Ninety-Two, Weight: 250
+Start Node: One Hundred Twenty-Three, End Node: One Hundred Twenty-Two, Weight: 298
+Start Node: One Hundred Twenty-Four, End Node: One Hundred Ninety-Six, Weight: 46
+Start Node: One Hundred Twenty-Five, End Node: Forty-Eight, Weight: 254
+Start Node: One Hundred Twenty-Six, End Node: One Hundred Forty-Six, Weight: 288
+Start Node: One Hundred Twenty-Six, End Node: One Hundred Twenty-Eight, Weight: 79
+Start Node: One Hundred Twenty-Seven, End Node: Two Hundred Forty-Seven, Weight: 42
+Start Node: One Hundred Twenty-Seven, End Node: Thirty, Weight: 60
+Start Node: One Hundred Twenty-Eight, End Node: One Hundred Nine, Weight: 33
+Start Node: One Hundred Twenty-Nine, End Node: Fifty-Seven, Weight: 48
+Start Node: One Hundred Twenty-Nine, End Node: One Hundred Thirty-Three, Weight: 175
+Start Node: One Hundred Thirty, End Node: Twenty-Seven, Weight: 215
+Start Node: One Hundred Thirty, End Node: Two Hundred Twenty-Five, Weight: 113
+Start Node: One Hundred Thirty-One, End Node: Ninety, Weight: 65
+Start Node: One Hundred Thirty-Two, End Node: Two Hundred Thirty-Eight, Weight: 227
+Start Node: One Hundred Thirty-Two, End Node: Forty-Six, Weight: 13
+Start Node: One Hundred Thirty-Three, End Node: Two Hundred Seventy-Five, Weight: 102
+Start Node: One Hundred Thirty-Four, End Node: Ninety-Seven, Weight: 265
+Start Node: One Hundred Thirty-Five, End Node: Seventy-Six, Weight: 220
+Start Node: One Hundred Thirty-Five, End Node: Two Hundred Sixty-Three, Weight: 125
+Start Node: One Hundred Thirty-Six, End Node: Sixty-Four, Weight: 280
+Start Node: One Hundred Thirty-Six, End Node: Thirty-Four, Weight: 215
+Start Node: One Hundred Thirty-Seven, End Node: Two Hundred Eight, Weight: 273
+Start Node: One Hundred Thirty-Eight, End Node: Ninety, Weight: 225
+Start Node: One Hundred Thirty-Eight, End Node: Two Hundred Six, Weight: 81
+Start Node: One Hundred Thirty-Nine, End Node: Two Hundred Ninety-Five, Weight: 212
+Start Node: One Hundred Forty, End Node: Two Hundred Forty, Weight: 255
+Start Node: One Hundred Forty-One, End Node: Two Hundred Sixty, Weight: 212
+Start Node: One Hundred Forty-Two, End Node: Two Hundred Seventy-Four, Weight: 198
+Start Node: One Hundred Forty-Two, End Node: Five, Weight: 63
+Start Node: One Hundred Forty-Three, End Node: Fifty-Four, Weight: 121
+Start Node: One Hundred Forty-Four, End Node: Two Hundred Three, Weight: 6
+Start Node: One Hundred Forty-Four, End Node: Eleven, Weight: 248
+Start Node: One Hundred Forty-Five, End Node: One Hundred Thirteen, Weight: 256
+Start Node: One Hundred Forty-Five, End Node: Two Hundred Twenty-Five, Weight: 201
+Start Node: One Hundred Forty-Six, End Node: Thirty-Five, Weight: 283
+Start Node: One Hundred Forty-Seven, End Node: Two Hundred Ninety-One, Weight: 169
+Start Node: One Hundred Forty-Seven, End Node: Fifty-Eight, Weight: 60
+Start Node: One Hundred Forty-Eight, End Node: One Hundred Seventy-Three, Weight: 294
+Start Node: One Hundred Forty-Nine, End Node: Sixty-Six, Weight: 273
+Start Node: One Hundred Fifty, End Node: One Hundred Seventeen, Weight: 96
+Start Node: One Hundred Fifty, End Node: One Hundred Thirty-One, Weight: 174
+Start Node: One Hundred Fifty-One, End Node: Five, Weight: 7
+Start Node: One Hundred Fifty-One, End Node: Ninety-Seven, Weight: 110
+Start Node: One Hundred Fifty-Two, End Node: Thirty-Two, Weight: 121
+Start Node: One Hundred Fifty-Three, End Node: Eighty, Weight: 192
+Start Node: One Hundred Fifty-Three, End Node: Two Hundred Fifty-Nine, Weight: 217
+Start Node: One Hundred Fifty-Four, End Node: Two Hundred Forty-Five, Weight: 143
+Start Node: One Hundred Fifty-Five, End Node: Seventy-Five, Weight: 31
+Start Node: One Hundred Fifty-Six, End Node: Two Hundred Forty-Three, Weight: 52
+Start Node: One Hundred Fifty-Six, End Node: Two Hundred Nine, Weight: 78
+Start Node: One Hundred Fifty-Seven, End Node: Two Hundred Twenty-One, Weight: 143
+Start Node: One Hundred Fifty-Seven, End Node: Two Hundred Nine, Weight: 118
+Start Node: One Hundred Fifty-Eight, End Node: One Hundred Eighty-One, Weight: 229
+Start Node: One Hundred Fifty-Nine, End Node: Two Hundred Twenty-Nine, Weight: 137
+Start Node: One Hundred Fifty-Nine, End Node: One Hundred Twenty-Six, Weight: 171
+Start Node: One Hundred Sixty, End Node: Two Hundred Ninety-Seven, Weight: 41
+Start Node: One Hundred Sixty-One, End Node: Two Hundred Ninety-Seven, Weight: 124
+Start Node: One Hundred Sixty-One, End Node: One Hundred Fifty-Five, Weight: 294
+Start Node: One Hundred Sixty-Two, End Node: Two Hundred Seventy-Nine, Weight: 133
+Start Node: One Hundred Sixty-Three, End Node: One Hundred Seven, Weight: 297
+Start Node: One Hundred Sixty-Three, End Node: Seventy-Seven, Weight: 224
+Start Node: One Hundred Sixty-Four, End Node: Two Hundred Thirty-Nine, Weight: 228
+Start Node: One Hundred Sixty-Four, End Node: One Hundred Twenty-Four, Weight: 105
+Start Node: One Hundred Sixty-Five, End Node: One Hundred Seven, Weight: 198
+Start Node: One Hundred Sixty-Six, End Node: Two Hundred Three, Weight: 234
+Start Node: One Hundred Sixty-Six, End Node: Two Hundred Nineteen, Weight: 94
+Start Node: One Hundred Sixty-Seven, End Node: One Hundred Thirty-Five, Weight: 105
+Start Node: One Hundred Sixty-Eight, End Node: One Hundred Eighty-Nine, Weight: 82
+Start Node: One Hundred Sixty-Nine, End Node: Two Hundred Forty-Eight, Weight: 22
+Start Node: One Hundred Seventy, End Node: Eighty, Weight: 131
+Start Node: One Hundred Seventy, End Node: Thirteen, Weight: 181
+Start Node: One Hundred Seventy-One, End Node: Two Hundred Fifty-Eight, Weight: 143
+Start Node: One Hundred Seventy-Two, End Node: One Hundred Eighty, Weight: 204
+Start Node: One Hundred Seventy-Two, End Node: Two Hundred Eighty-Five, Weight: 9
+Start Node: One Hundred Seventy-Three, End Node: One Hundred Ten, Weight: 109
+Start Node: One Hundred Seventy-Three, End Node: Two Hundred Seventy-Eight, Weight: 233
+Start Node: One Hundred Seventy-Four, End Node: One Hundred Forty-Five, Weight: 277
+Start Node: One Hundred Seventy-Five, End Node: Ninety-Nine, Weight: 178
+Start Node: One Hundred Seventy-Five, End Node: Nine, Weight: 224
+Start Node: One Hundred Seventy-Six, End Node: Two Hundred Sixty-Two, Weight: 102
+Start Node: One Hundred Seventy-Seven, End Node: Two Hundred Five, Weight: 130
+Start Node: One Hundred Seventy-Seven, End Node: Two Hundred Thirty-Seven, Weight: 295
+Start Node: One Hundred Seventy-Eight, End Node: One Hundred Ninety-Nine, Weight: 154
+Start Node: One Hundred Seventy-Eight, End Node: Two Hundred Forty-Six, Weight: 255
+Start Node: One Hundred Seventy-Nine, End Node: One Hundred Fifty-Two, Weight: 90
+Start Node: One Hundred Seventy-Nine, End Node: Seventy-Six, Weight: 200
+Start Node: One Hundred Eighty, End Node: Two Hundred Eighteen, Weight: 129
+Start Node: One Hundred Eighty-One, End Node: Twenty-Five, Weight: 75
+Start Node: One Hundred Eighty-Two, End Node: Two Hundred Seventy-Seven, Weight: 104
+Start Node: One Hundred Eighty-Three, End Node: Two Hundred Fifty-Four, Weight: 185
+Start Node: One Hundred Eighty-Three, End Node: Two Hundred Nineteen, Weight: 260
+Start Node: One Hundred Eighty-Four, End Node: Two Hundred Six, Weight: 97
+Start Node: One Hundred Eighty-Five, End Node: Two Hundred Ninety-Seven, Weight: 51
+Start Node: One Hundred Eighty-Five, End Node: One Hundred Ninety-Nine, Weight: 240
+Start Node: One Hundred Eighty-Six, End Node: Two Hundred Forty-Nine, Weight: 94
+Start Node: One Hundred Eighty-Six, End Node: Two Hundred Fifty, Weight: 186
+Start Node: One Hundred Eighty-Seven, End Node: Ninety, Weight: 70
+Start Node: One Hundred Eighty-Seven, End Node: Two Hundred Fifty-One, Weight: 213
+Start Node: One Hundred Eighty-Eight, End Node: Two Hundred Seventy-Six, Weight: 217
+Start Node: One Hundred Eighty-Eight, End Node: Fourteen, Weight: 249
+Start Node: One Hundred Eighty-Nine, End Node: One Hundred Ninety-Five, Weight: 246
+Start Node: One Hundred Eighty-Nine, End Node: Seventy-Seven, Weight: 65
+Start Node: One Hundred Ninety, End Node: Forty, Weight: 141
+Start Node: One Hundred Ninety-One, End Node: Thirty-One, Weight: 81
+Start Node: One Hundred Ninety-Two, End Node: Eighty-One, Weight: 284
+Start Node: One Hundred Ninety-Two, End Node: Two Hundred Thirty-Seven, Weight: 91
+Start Node: One Hundred Ninety-Three, End Node: One Hundred Eighty-Five, Weight: 47
+Start Node: One Hundred Ninety-Four, End Node: Fifty-Four, Weight: 103
+Start Node: One Hundred Ninety-Five, End Node: Two Hundred Twenty-Seven, Weight: 182
+Start Node: One Hundred Ninety-Six, End Node: Sixty-Six, Weight: 47
+Start Node: One Hundred Ninety-Seven, End Node: Two Hundred, Weight: 14
+Start Node: One Hundred Ninety-Eight, End Node: Five, Weight: 275
+Start Node: One Hundred Ninety-Nine, End Node: Two Hundred Seventy-Two, Weight: 269
+Start Node: One Hundred Ninety-Nine, End Node: One Hundred Forty-Nine, Weight: 186
+Start Node: Two Hundred, End Node: Two Hundred Seventy-Nine, Weight: 170
+Start Node: Two Hundred One, End Node: Two Hundred Thirty-Two, Weight: 239
+Start Node: Two Hundred Two, End Node: Two Hundred Fifty-Seven, Weight: 213
+Start Node: Two Hundred Three, End Node: Ninety, Weight: 193
+Start Node: Two Hundred Four, End Node: Two Hundred Twenty-Seven, Weight: 49
+Start Node: Two Hundred Four, End Node: One Hundred Four, Weight: 75
+Start Node: Two Hundred Five, End Node: Fifty-Eight, Weight: 122
+Start Node: Two Hundred Six, End Node: One Hundred Seventy-Nine, Weight: 218
+Start Node: Two Hundred Six, End Node: Six, Weight: 133
+Start Node: Two Hundred Seven, End Node: Twenty, Weight: 160
+Start Node: Two Hundred Seven, End Node: Two Hundred Seventy-Nine, Weight: 39
+Start Node: Two Hundred Eight, End Node: Forty-Four, Weight: 244
+Start Node: Two Hundred Nine, End Node: Ninety-Eight, Weight: 120
+Start Node: Two Hundred Nine, End Node: Two Hundred Fifty-Six, Weight: 84
+Start Node: Two Hundred Ten, End Node: One Hundred Twenty-Six, Weight: 158
+Start Node: Two Hundred Eleven, End Node: Two Hundred Forty-Five, Weight: 171
+Start Node: Two Hundred Eleven, End Node: Ninety-Seven, Weight: 61
+Start Node: Two Hundred Twelve, End Node: Seventy-One, Weight: 227
+Start Node: Two Hundred Thirteen, End Node: Forty-Five, Weight: 124
+Start Node: Two Hundred Thirteen, End Node: One Hundred Thirty, Weight: 201
+Start Node: Two Hundred Fourteen, End Node: Two Hundred Seventy-Nine, Weight: 264
+Start Node: Two Hundred Fifteen, End Node: Seventy-Seven, Weight: 198
+Start Node: Two Hundred Fifteen, End Node: Two Hundred Forty-Two, Weight: 57
+Start Node: Two Hundred Sixteen, End Node: Two Hundred Nineteen, Weight: 65
+Start Node: Two Hundred Sixteen, End Node: Sixty-One, Weight: 161
+Start Node: Two Hundred Seventeen, End Node: Two Hundred Fifty-Two, Weight: 210
+Start Node: Two Hundred Eighteen, End Node: One Hundred Eighty-Three, Weight: 141
+Start Node: Two Hundred Eighteen, End Node: Seventy-Six, Weight: 91
+Start Node: Two Hundred Nineteen, End Node: One Hundred Twenty-Three, Weight: 135
+Start Node: Two Hundred Nineteen, End Node: One Hundred Thirteen, Weight: 279
+Start Node: Two Hundred Twenty, End Node: Two Hundred Fifty-Two, Weight: 278
+Start Node: Two Hundred Twenty-One, End Node: Two Hundred Eighty-Nine, Weight: 2
+Start Node: Two Hundred Twenty-Two, End Node: Two Hundred Twenty-Six, Weight: 145
+Start Node: Two Hundred Twenty-Two, End Node: Two Hundred Eleven, Weight: 25
+Start Node: Two Hundred Twenty-Three, End Node: Two Hundred Seventy-Two, Weight: 171
+Start Node: Two Hundred Twenty-Three, End Node: Two Hundred Thirty-One, Weight: 141
+Start Node: Two Hundred Twenty-Four, End Node: Two Hundred Ninety-Six, Weight: 191
+Start Node: Two Hundred Twenty-Four, End Node: One Hundred Five, Weight: 83
+Start Node: Two Hundred Twenty-Five, End Node: Eighty-Nine, Weight: 149
+Start Node: Two Hundred Twenty-Five, End Node: Twelve, Weight: 20
+Start Node: Two Hundred Twenty-Six, End Node: Two Hundred Sixty-Three, Weight: 194
+Start Node: Two Hundred Twenty-Seven, End Node: Twenty, Weight: 210
+Start Node: Two Hundred Twenty-Eight, End Node: One Hundred Forty-One, Weight: 292
+Start Node: Two Hundred Twenty-Eight, End Node: One Hundred Sixty-One, Weight: 229
+Start Node: Two Hundred Twenty-Nine, End Node: Two Hundred Twelve, Weight: 162
+Start Node: Two Hundred Twenty-Nine, End Node: One Hundred Ninety-Two, Weight: 26
+Start Node: Two Hundred Thirty, End Node: Two Hundred Nineteen, Weight: 179
+Start Node: Two Hundred Thirty, End Node: One Hundred Thirty-Nine, Weight: 234
+Start Node: Two Hundred Thirty-One, End Node: Ninety-Four, Weight: 124
+Start Node: Two Hundred Thirty-One, End Node: One Hundred Thirty-Seven, Weight: 273
+Start Node: Two Hundred Thirty-Two, End Node: One Hundred Thirty-Four, Weight: 264
+Start Node: Two Hundred Thirty-Three, End Node: Two Hundred Ninety-Nine, Weight: 3
+Start Node: Two Hundred Thirty-Three, End Node: Nineteen, Weight: 259
+Start Node: Two Hundred Thirty-Four, End Node: Twenty-Three, Weight: 28
+Start Node: Two Hundred Thirty-Four, End Node: One Hundred Seventy-Seven, Weight: 105
+Start Node: Two Hundred Thirty-Five, End Node: Fifty, Weight: 253
+Start Node: Two Hundred Thirty-Six, End Node: Two Hundred Twelve, Weight: 124
+Start Node: Two Hundred Thirty-Seven, End Node: Thirteen, Weight: 134
+Start Node: Two Hundred Thirty-Eight, End Node: Thirty-Four, Weight: 285
+Start Node: Two Hundred Thirty-Nine, End Node: Two Hundred Seventy, Weight: 140
+Start Node: Two Hundred Forty, End Node: Two Hundred Forty-One, Weight: 210
+Start Node: Two Hundred Forty, End Node: Twenty-One, Weight: 181
+Start Node: Two Hundred Forty-One, End Node: Thirty-Six, Weight: 39
+Start Node: Two Hundred Forty-One, End Node: One Hundred Twenty-Four, Weight: 180
+Start Node: Two Hundred Forty-Two, End Node: One Hundred Ninety-Eight, Weight: 223
+Start Node: Two Hundred Forty-Two, End Node: Thirty-Seven, Weight: 5
+Start Node: Two Hundred Forty-Three, End Node: Two Hundred Forty-Four, Weight: 14
+Start Node: Two Hundred Forty-Three, End Node: One Hundred Ninety, Weight: 281
+Start Node: Two Hundred Forty-Four, End Node: Sixty, Weight: 59
+Start Node: Two Hundred Forty-Four, End Node: One Hundred Twelve, Weight: 53
+Start Node: Two Hundred Forty-Five, End Node: One Hundred Four, Weight: 188
+Start Node: Two Hundred Forty-Five, End Node: Twenty-Three, Weight: 59
+Start Node: Two Hundred Forty-Six, End Node: One Hundred Four, Weight: 297
+Start Node: Two Hundred Forty-Seven, End Node: Ninety-Three, Weight: 170
+Start Node: Two Hundred Forty-Seven, End Node: Two Hundred Eighty-Five, Weight: 141
+Start Node: Two Hundred Forty-Eight, End Node: Two Hundred Seventy-Two, Weight: 149
+Start Node: Two Hundred Forty-Nine, End Node: Two Hundred Seventy-Four, Weight: 141
+Start Node: Two Hundred Fifty, End Node: Forty-Seven, Weight: 190
+Start Node: Two Hundred Fifty, End Node: Two Hundred Eighty-Five, Weight: 262
+Start Node: Two Hundred Fifty-One, End Node: Thirty-Six, Weight: 79
+Start Node: Two Hundred Fifty-One, End Node: One Hundred Sixty-Three, Weight: 292
+Start Node: Two Hundred Fifty-Two, End Node: Seven, Weight: 226
+Start Node: Two Hundred Fifty-Two, End Node: One, Weight: 158
+Start Node: Two Hundred Fifty-Three, End Node: Two Hundred Seventy, Weight: 295
+Start Node: Two Hundred Fifty-Four, End Node: Fifty-Two, Weight: 78
+Start Node: Two Hundred Fifty-Five, End Node: Twenty, Weight: 273
+Start Node: Two Hundred Fifty-Six, End Node: Thirty-Three, Weight: 100
+Start Node: Two Hundred Fifty-Six, End Node: Thirty-Eight, Weight: 246
+Start Node: Two Hundred Fifty-Seven, End Node: Two Hundred Seventy-Six, Weight: 45
+Start Node: Two Hundred Fifty-Seven, End Node: Ninety-Nine, Weight: 259
+Start Node: Two Hundred Fifty-Eight, End Node: One Hundred Sixty-Two, Weight: 12
+Start Node: Two Hundred Fifty-Eight, End Node: Seventy-One, Weight: 251
+Start Node: Two Hundred Fifty-Nine, End Node: One Hundred Eleven, Weight: 12
+Start Node: Two Hundred Fifty-Nine, End Node: Fifty-Seven, Weight: 32
+Start Node: Two Hundred Sixty, End Node: Eighty-Six, Weight: 74
+Start Node: Two Hundred Sixty-One, End Node: One Hundred Seventy-Three, Weight: 237
+Start Node: Two Hundred Sixty-One, End Node: Forty-Six, Weight: 135
+Start Node: Two Hundred Sixty-Two, End Node: One Hundred Eight, Weight: 150
+Start Node: Two Hundred Sixty-Two, End Node: Sixty-Eight, Weight: 184
+Start Node: Two Hundred Sixty-Three, End Node: Two Hundred Thirty-Four, Weight: 231
+Start Node: Two Hundred Sixty-Four, End Node: Two Hundred Nineteen, Weight: 203
+Start Node: Two Hundred Sixty-Five, End Node: Two Hundred Forty-Six, Weight: 31
+Start Node: Two Hundred Sixty-Five, End Node: Eighteen, Weight: 209
+Start Node: Two Hundred Sixty-Six, End Node: Two Hundred Forty, Weight: 141
+Start Node: Two Hundred Sixty-Six, End Node: One Hundred Seventy, Weight: 296
+Start Node: Two Hundred Sixty-Seven, End Node: One Hundred Eighty-Four, Weight: 140
+Start Node: Two Hundred Sixty-Seven, End Node: One Hundred Sixty-Six, Weight: 143
+Start Node: Two Hundred Sixty-Eight, End Node: Sixty-Five, Weight: 36
+Start Node: Two Hundred Sixty-Eight, End Node: Thirty-Eight, Weight: 270
+Start Node: Two Hundred Sixty-Nine, End Node: Two Hundred Ninety-Seven, Weight: 155
+Start Node: Two Hundred Seventy, End Node: Forty-Seven, Weight: 166
+Start Node: Two Hundred Seventy-One, End Node: Two Hundred Seventy-Five, Weight: 269
+Start Node: Two Hundred Seventy-Two, End Node: Two Hundred Sixty-Two, Weight: 152
+Start Node: Two Hundred Seventy-Two, End Node: Two Hundred Eighty-Seven, Weight: 200
+Start Node: Two Hundred Seventy-Three, End Node: One Hundred Ninety-Two, Weight: 293
+Start Node: Two Hundred Seventy-Three, End Node: Two Hundred Thirty-Three, Weight: 272
+Start Node: Two Hundred Seventy-Four, End Node: Two Hundred Fifty-Three, Weight: 168
+Start Node: Two Hundred Seventy-Five, End Node: Thirty-Two, Weight: 105
+Start Node: Two Hundred Seventy-Six, End Node: One Hundred Four, Weight: 19
+Start Node: Two Hundred Seventy-Six, End Node: One Hundred Thirty, Weight: 134
+Start Node: Two Hundred Seventy-Seven, End Node: One Hundred Eighty-Nine, Weight: 82
+Start Node: Two Hundred Seventy-Seven, End Node: Two Hundred Forty-Two, Weight: 207
+Start Node: Two Hundred Seventy-Eight, End Node: Two Hundred Forty-Eight, Weight: 73
+Start Node: Two Hundred Seventy-Nine, End Node: Forty-Seven, Weight: 174
+Start Node: Two Hundred Seventy-Nine, End Node: Twenty-Nine, Weight: 250
+Start Node: Two Hundred Eighty, End Node: Two Hundred Ninety-Four, Weight: 6
+Start Node: Two Hundred Eighty-One, End Node: One Hundred Twenty-Eight, Weight: 286
+Start Node: Two Hundred Eighty-One, End Node: Thirteen, Weight: 60
+Start Node: Two Hundred Eighty-Two, End Node: One Hundred Sixty-Two, Weight: 78
+Start Node: Two Hundred Eighty-Three, End Node: Two Hundred Sixty-Two, Weight: 240
+Start Node: Two Hundred Eighty-Three, End Node: One Hundred Forty-Eight, Weight: 212
+Start Node: Two Hundred Eighty-Four, End Node: One Hundred Ninety-Five, Weight: 27
+Start Node: Two Hundred Eighty-Four, End Node: One Hundred Ten, Weight: 138
+Start Node: Two Hundred Eighty-Five, End Node: One Hundred Ninety-Four, Weight: 41
+Start Node: Two Hundred Eighty-Six, End Node: One Hundred Eleven, Weight: 270
+Start Node: Two Hundred Eighty-Seven, End Node: One Hundred Seventy-One, Weight: 83
+Start Node: Two Hundred Eighty-Eight, End Node: Fifty-Nine, Weight: 149
+Start Node: Two Hundred Eighty-Nine, End Node: One Hundred Six, Weight: 224
+Start Node: Two Hundred Ninety, End Node: Six, Weight: 36
+Start Node: Two Hundred Ninety, End Node: Thirteen, Weight: 37
+Start Node: Two Hundred Ninety-One, End Node: One Hundred Twenty-Six, Weight: 193
+Start Node: Two Hundred Ninety-One, End Node: One Hundred Eighty-Seven, Weight: 12
+Start Node: Two Hundred Ninety-Two, End Node: Two Hundred Ninety-Eight, Weight: 86
+Start Node: Two Hundred Ninety-Two, End Node: Two Hundred Seventy-One, Weight: 2
+Start Node: Two Hundred Ninety-Three, End Node: Two Hundred Seventy, Weight: 43
+Start Node: Two Hundred Ninety-Three, End Node: Two Hundred Seventy-One, Weight: 238
+Start Node: Two Hundred Ninety-Four, End Node: One Hundred Twenty-Nine, Weight: 296
+Start Node: Two Hundred Ninety-Five, End Node: One Hundred Twenty-Eight, Weight: 65
+Start Node: Two Hundred Ninety-Five, End Node: Seventy-Three, Weight: 125
+Start Node: Two Hundred Ninety-Six, End Node: Seventy-Three, Weight: 265
+Start Node: Two Hundred Ninety-Seven, End Node: Two Hundred Thirty-Nine, Weight: 175
+Start Node: Two Hundred Ninety-Eight, End Node: Fifty-Five, Weight: 291
+Start Node: Two Hundred Ninety-Nine, End Node: Two Hundred Fifty-Five, Weight: 196
+Start Node: Two Hundred Ninety-Nine, End Node: Seventy-Three, Weight: 141
