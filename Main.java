@@ -1,5 +1,5 @@
 /**
- * Write a description of class Main here.
+ * Create a graph and perform Dijkstras Algorithm visually
  *
  * @author Frances Till
  * @version Verision 2 30/6/23

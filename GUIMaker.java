@@ -116,11 +116,9 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         for(int i = 0; i < nodesAccessible.length; i++){//HELP also don't set things for first node
             currentNode = nodesAccessible[i];
             linksForThisNode = currentNode.getLinks();
-            
             for(Links link : linksForThisNode){
                 System.out.println("added link to " + link.findOtherEnd(currentNode).getName() + " from " + currentNode.getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
                 queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
-                //queue.printQueue(followerNumber);
             }
             
             yDiff = circleSize* currentNode.getNumberOfLinks();
@@ -129,26 +127,19 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             int currentLink = 1;
             while(queue.isQueueEmpty() != true){ 
                 Nodes placingNode = queue.getHead();
-                
                 otherY = yDiff - yChange*currentLink;
-                
-                System.out.println("Other Y " + otherY + " yDiff " + yDiff + " yChange " + yChange + " currentLink " + currentLink);
-                
-                //slowPrint(1);
+                if(placingNode.getNumber() == 0)System.out.println("DreamsDreams Other Y " + otherY + " yDiff " + yDiff + " yChange " + yChange + " currentLink " + currentLink);
                 currentLink++;
-                
                 int newX = x + forwardDist*(i+0); //this shouldnt be working?? 
-                placingNode.setXCoord(newX);
                 
                 int newY = y + otherY;
                 placingNode.setYCoord(newY);
-                
+                placingNode.setXCoord(newX);
                 queue.takeFromQueue(followerNumber);
             }
             queue.printQueue(followerNumber);
         }
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
-
     }
 
     public void actionPerformed(ActionEvent e){

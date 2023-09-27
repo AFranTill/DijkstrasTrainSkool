@@ -15,4 +15,6 @@ comment6.params=arrayOfNumbers\ currentNumber\ numberToCompare
 comment6.target=int\ compare(int[],\ int,\ int)
 comment7.params=maxNumber\ minNumber\ cantBe\ alsoCantBe
 comment7.target=int\ randomNumber(int,\ int,\ int,\ int[])
-numComments=8
+comment8.params=arrayOfNodes\ arrayOfLinks
+comment8.target=void\ writeToFile(Nodes[],\ java.util.ArrayList)
+numComments=9
