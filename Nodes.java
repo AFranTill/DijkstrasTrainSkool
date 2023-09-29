@@ -3,7 +3,7 @@
  * Class to construct the nodes
  *
  * @author Frances Till
- * @version 6 17/7/23
+ * @version 7 28/9/23
  */
 
 
@@ -151,4 +151,10 @@ public class Nodes
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
+    
+    public boolean contains(int mx, int my, int circleSize) { // HELP (will this work? need to comment it as well)
+            int dx = this.xCoord - mx;
+            int dy = this.yCoord - my;
+            return dx * dx + dy * dy <= circleSize * circleSize;
+        }
 }

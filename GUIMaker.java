@@ -2,7 +2,7 @@
  * Making a GUI and visuals
  *
  * @author Frances Till
- * @version 2 17/7/23
+ * @version 5 28/9/23
  */
 
 import javax.swing.*;
@@ -161,6 +161,9 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             }
         }
 
+        
+        
+        
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
     }
 
