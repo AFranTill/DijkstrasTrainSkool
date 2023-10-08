@@ -46,15 +46,14 @@ public class TrainNetwork
         for(int i = 0; i < numberOfNodes; i++){
             arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
         }
-        
+
         int minNumberOfLinks = 1;
         int maxNumberOfLinks;
-        
-        if(numberOfNodes < 5)maxNumberOfLinks = 2;
-        else if(numberOfNodes > 5 && numberOfNodes < 10)maxNumberOfLinks = 3;
-        else if(numberOfNodes > 10 && numberOfNodes < 20)maxNumberOfLinks = 4;
-        else maxNumberOfLinks = 5;
-        
+
+        if(numberOfNodes < 5)maxNumberOfLinks = 1;
+        else if(numberOfNodes > 5 && numberOfNodes < 10)maxNumberOfLinks = 2;
+        else if(numberOfNodes > 10 && numberOfNodes < 20)maxNumberOfLinks = 3;
+        else maxNumberOfLinks = 4;
 
         boolean goAhead = true;
         for(int firstNodeNumber = 0; firstNodeNumber < numberOfNodes; firstNodeNumber++){
@@ -91,21 +90,19 @@ public class TrainNetwork
             System.out.println(arrayOfLinks.get(i).getWeight() + ", ");
         }
 
-        
 
         System.out.println("do you wanna contiune?");
         int yes = keyboard.nextInt();
         arrayOfNodes[0].setDistance(0);
 
         algorithmPartOne(arrayOfNodes, arrayOfLinks);
-
+        
+        printShortestPath(arrayOfNodes[arrayOfNodes.length - 1]);
 
         GUIMaker gui = new GUIMaker(arrayOfNodes, arrayOfLinks, graphType);
-
         writeToFile(arrayOfNodes, arrayOfLinks); //additional (filewriting)
-
     }
-
+    
     public void algorithmPartOne(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks ){
         Nodes currentNode = arrayOfNodes[firstValue]; // node currently looking at
         int length = arrayOfNodes.length - 1;
@@ -169,7 +166,7 @@ public class TrainNetwork
 
             }
         }
-        
+
         //System.out.println("shortest path:"  HELP
     }
 
@@ -181,7 +178,7 @@ public class TrainNetwork
         int costToSource = arrayOfDistances[sourceLocale];
         int costToDest = arrayOfDistances[destLocale];
         int totalCost = costToSource + costToDest;
-        
+
         System.out.println("totalCost");
         System.out.println(totalCost);
         System.out.println("arrayOfDistances[destLocale]");
@@ -267,8 +264,24 @@ public class TrainNetwork
         }
     }
 
-}
+    public static void printShortestPath(Nodes endNode) {
+        Nodes currentNode = endNode;
 
+        System.out.print("Shortest Path: ");
+
+        while (currentNode != null) {
+            System.out.print(currentNode.getName());
+
+            if (currentNode.getPathBack() != null) {
+                System.out.print(" -> ");
+            }
+
+            currentNode = currentNode.getPathBack();
+        }
+
+        System.out.println();
+    }
+}
 
 
 // for(int i = 0; i < arrayOfNodes.length; i++){
@@ -329,17 +342,15 @@ public class TrainNetwork
 //RANDOMISES A PATH OF LINKS = NOT VERY GOOD 
 //System.out.println(numberOfLinks);
 
-
 //---------------------------
 // arrayOfNodes[0].setLinks(arrayOfLinks);
 
-        // ArrayList<Links> linksForThisNode = arrayOfNodes[0].getLinks();        
-        // System.out.println("links for one node");
-        // for(int i = 0; i < linksForThisNode.size(); i++){
-        // System.out.print("Link "  + i);
-        // System.out.println(linksForThisNode.get(i).getEndNode().getName());
-        // System.out.println(linksForThisNode.get(i).getStartNode().getName());
-        // System.out.println(linksForThisNode.get(i).getWeight());
-        // }
-        
+// ArrayList<Links> linksForThisNode = arrayOfNodes[0].getLinks();        
+// System.out.println("links for one node");
+// for(int i = 0; i < linksForThisNode.size(); i++){
+// System.out.print("Link "  + i);
+// System.out.println(linksForThisNode.get(i).getEndNode().getName());
+// System.out.println(linksForThisNode.get(i).getStartNode().getName());
+// System.out.println(linksForThisNode.get(i).getWeight());
+// }
 

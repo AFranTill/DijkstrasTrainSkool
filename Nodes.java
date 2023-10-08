@@ -8,6 +8,7 @@
 
 
 import java.util.*;
+import java.awt.Color;
 
 public class Nodes 
 {
@@ -28,6 +29,7 @@ public class Nodes
     private int yCoord;
     private boolean visited = false;
     private Nodes nextFollower;
+    private Color color; 
 
     private ArrayList<Links> linksForThisNode = new ArrayList<Links>();
     //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
@@ -157,4 +159,12 @@ public class Nodes
             int dy = this.yCoord - my;
             return dx * dx + dy * dy <= circleSize * circleSize;
         }
+        
+        public Color getColor(){
+        return this.color;
+    }
+    
+    public void setColor(Color newColor){
+        this.color = newColor; 
+    }
 }

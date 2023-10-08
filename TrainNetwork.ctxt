@@ -17,4 +17,6 @@ comment7.params=maxNumber\ minNumber\ cantBe\ alsoCantBe
 comment7.target=int\ randomNumber(int,\ int,\ int,\ int[])
 comment8.params=arrayOfNodes\ arrayOfLinks
 comment8.target=void\ writeToFile(Nodes[],\ java.util.ArrayList)
-numComments=9
+comment9.params=endNode
+comment9.target=void\ printShortestPath(Nodes)
+numComments=10

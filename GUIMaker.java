@@ -20,6 +20,8 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     JMenu menu;
     JMenuItem menuItem;
 
+    private Nodes hoveredNode = null; //addition
+
     Canvas myGraphic;
     Nodes[] nodesAccessible;
     ArrayList<Links> linksAccessible;
@@ -27,6 +29,27 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     int circleSize = 30;
     //final String fileName = "blueRectangle.png";
     //ImageIcon image = new ImageIcon(fileName);
+
+    //orange "#ff6108" 
+    //Barbie colors: rect ##ffdae4, circ "#ea377f" ,  link #bf1567
+    //meditarenan: rect "#b2d8d8", circ "#ffeead", link "#ffcc5c", 
+    // #ff9999, #ffcaa7, #ffee8, #b2f2b0, #d2e9ff
+    //aggressive pan flag circ "#540D6E", link "#EE4266", rect "#FFD23F"
+    //light greens rect "#f3f9d2", circ "#cbeaa6", link "#c0d684"
+    //baby pastels rect "#c9def4" ,circ "#f5ccd4", link "#b8a4c9"
+    //blues rect "#dae1ed", circ "#6a86b7", link #4568a5
+    //oranges rect "#fee2cc", circ "#f98d35", link "#f87002" 
+    //black 	#000000
+    //white     #ffffff
+
+    private String hexRectColor = "#ffffff"; 
+    Color rectColor = Color.decode(hexRectColor);
+
+    private String hexCircleColor = "#000000"; 
+    Color circleColor = Color.decode(hexCircleColor);
+
+    private String hexLinkColor = "#000000"; 
+    Color linkColor = Color.decode(hexLinkColor);
 
     /**
      * Constructor for objects of class CirclesAndSquares
@@ -40,12 +63,13 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         nodesAccessible = arrayOfNodes; //HELP improve copying at some pint might pull up issues otherwise 
         linksAccessible = arrayOfLinks;
-        
+
+        //circles = new Circle[nodesAccessible.length]; addition
+
         int maxY = squareWindowSize - circleSize;
         int maxX = squareWindowSize - circleSize; //HELP - these should be dependant on the screensize
         int minY = 30 + circleSize; // 30 being the size of the menubar at the top
         int minX = circleSize; // gives buffer room
-        
 
         //creating menu - removed inputs from prev lesson
         this.setTitle(title);
@@ -124,7 +148,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             currentNode = nodesAccessible[i];
             linksForThisNode = currentNode.getLinks();
             for(Links link : linksForThisNode){
-                System.out.println("added link to " + link.findOtherEnd(currentNode).getName() + " from " + currentNode.getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
+                //System.out.println("added link to " + link.findOtherEnd(currentNode).getName() + " from " + currentNode.getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
                 queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
             }
 
@@ -161,9 +185,6 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             }
         }
 
-        
-        
-        
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
     }
 
@@ -228,25 +249,55 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         int y;
         int yChange;
         int yDiff = 5;
-
+        g2.setColor(rectColor);
+        g2.fillRect(0, 0, 600, 600); //x, y, width, height
         //int circleSize = 30;
-        g2.setColor(Color.black);
-        for(int i = 0; i < nodesAccessible.length; i++){
-            System.out.println(i);
-            x = nodesAccessible[i].getXCoord();
-            y = nodesAccessible[i].getYCoord();
-            g2.drawOval(x, y, circleSize, circleSize);
-        }
 
+        // for(int i = 0; i < nodesAccessible.length; i++){
+            // System.out.println(i);
+            // x = nodesAccessible[i].getXCoord();
+            // y = nodesAccessible[i].getYCoord();
+            // g2.setColor(nodesAccessible[i].getColor());
+
+            // //g2.setColor(circleColor);
+            // g2.fillOval(x, y, circleSize, circleSize);
+
+        // }
         int i = 0;
         for(Links link : linksAccessible){
             int shift = circleSize/2;
+            g2.setColor(linkColor);
             Line2D lin = new Line2D.Float(link.getStartNode().getXCoord()+shift, link.getStartNode().getYCoord()+shift, link.getEndNode().getXCoord()+shift, link.getEndNode().getYCoord()+shift);
             g2.draw(lin);
             i++;
         }
+        int end = nodesAccessible.length - 1; 
+        currentNode = nodesAccessible[end];
+        while (currentNode.getPathBack() != null) {
+                
+                int shift = circleSize/2;
+    
+                g.setColor(Color.RED); 
+                g.drawLine(currentNode.getXCoord()+shift, currentNode.getYCoord()+shift, currentNode.getPathBack().getXCoord()+shift, currentNode.getPathBack().getYCoord()+shift);
+                           
+                currentNode = currentNode.getPathBack();
+                        }
 
-    }   
+    
+    
+    for( i = 0; i < nodesAccessible.length; i++){
+            System.out.println(i);
+            x = nodesAccessible[i].getXCoord();
+            y = nodesAccessible[i].getYCoord();
+            g2.setColor(circleColor);
+            
+            //System.out.println(nodesAccessible[i].getColor());
+
+            //g2.setColor(circleColor);
+            g2.fillOval(x, y, circleSize, circleSize);
+
+        }
+}
 
     // System.out.println("working????");
     //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
@@ -305,13 +356,111 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
     public void mouseEntered(MouseEvent e){System.out.println("enter");}
 
-    public void mouseReleased(MouseEvent e){System.out.println("release");}
+    public void mouseReleased(MouseEvent e){
+        int mousex = e.getX();
+        int mousey = e.getY();
+        System.out.println("click at " + mousex + ", " + mousey);
 
-    public void mousePressed(MouseEvent e){System.out.println("press");}
+        // Check if the click is inside a node
+        for (Nodes node : nodesAccessible) {
+            int nodeX = node.getXCoord();
+            int nodeY = node.getYCoord();
+            if (mousex >= nodeX && mousex <= nodeX + circleSize &&
+            mousey >= nodeY && mousey <= nodeY + circleSize) {
+                // Handle the click on this node (e.g., display its information)
+                System.out.println("Clicked on node: " + node.getName());
+
+                // Change the color of the clicked node here
+                node.setColor(Color.BLACK); // Set the desired color (e.g., RED)
+
+                // Repaint the canvas to reflect the color change
+                repaint();
+
+                break; // Assuming only one node can be clicked at a time
+            }
+        }
+
+    }
+
+    public void mousePressed(MouseEvent e){
+        int mousex = e.getX();
+        int mousey = e.getY();
+        System.out.println("click at " + mousex + ", " + mousey);
+
+        // Check if the click is inside a node
+        for (Nodes node : nodesAccessible) {
+            int nodeX = node.getXCoord();
+            int nodeY = node.getYCoord();
+            if (mousex >= nodeX && mousex <= nodeX + circleSize &&
+            mousey >= nodeY && mousey <= nodeY + circleSize) {
+                // Handle the click on this node (e.g., display its information)
+                System.out.println("Clicked on node: " + node.getName());
+
+                // Change the color of the clicked node here
+                node.setColor(Color.RED); // Set the desired color (e.g., RED)
+
+                // Repaint the canvas to reflect the color change
+                
+
+
+                break; // Assuming only one node can be clicked at a time
+            }
+        }
+        
+        repaint();
+    }
 
     public void mouseClicked(MouseEvent e) {
         int mousex = e.getX();
         int mousey = e.getY();
-        System.out.println("click at" + mousex + ", " + mousey);
+        System.out.println("click at " + mousex + ", " + mousey);
+
+        // // Check if the click is inside a node
+        // for (Nodes node : nodesAccessible) {
+            // int nodeX = node.getXCoord();
+            // int nodeY = node.getYCoord();
+            // if (mousex >= nodeX && mousex <= nodeX + circleSize &&
+            // mousey >= nodeY && mousey <= nodeY + circleSize) {
+                // // Handle the click on this node (e.g., display its information)
+                // System.out.println("Clicked on node: " + node.getName());
+
+                // // Change the color of the clicked node here
+                // node.setColor(Color.RED); // Set the desired color (e.g., RED)
+
+                // // Repaint the canvas to reflect the color change
+                // repaint();
+
+                // break; // Assuming only one node can be clicked at a time
+            // }
+        // }
     }
+
+    // public void mouseMoved(Graphics g, MouseEvent e) { //addition
+    // int mousex = e.getX();
+    // int mousey = e.getY();
+
+    // // Check if the mouse is hovering over a node
+    // for (Nodes node : nodesAccessible) {
+    // int nodeX = node.getXCoord();
+    // int nodeY = node.getYCoord();
+    // if (mousex >= nodeX && mousex <= nodeX + circleSize &&
+    // mousey >= nodeY && mousey <= nodeY + circleSize) {
+    // // Mouse is hovering over this node
+    // if (hoveredNode != node) {
+    // // Highlight the node and its links
+    // hoveredNode = node;
+    // highlightNodeAndLinks(g, hoveredNode);
+    // repaint(); // Redraw the canvas to update the highlighting
+    // slowPrint(1);
+    // }
+    // return; // Exit the loop since we only want to highlight one node at a time
+    // }
+    // }
+
+    // }
+    // private void highlightNodeAndLinks(Graphics g, Nodes node) {
+    // System.out.println(node.getName());
+    // //g.setColour(BLACK );
+    // g.fillOval(node.getXCoord(), node.getYCoord(), circleSize, circleSize);
+    // }
 }
