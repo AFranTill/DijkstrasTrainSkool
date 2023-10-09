@@ -10,8 +10,10 @@ import java.awt.*;
 import java.awt.event.*; //or events specifcally 
 import java.awt.geom.*;
 import java.util.ArrayList;
-
+//import java.awt.BasicStroke;
 import java.util.concurrent.TimeUnit; 
+import java.awt.geom.Line2D;
+import java.util.List;
 
 public class GUIMaker extends JFrame implements ActionListener, MouseListener // can use JFrame tools
 {
@@ -42,15 +44,22 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     //black 	#000000
     //white     #ffffff
 
-    private String hexRectColor = "#ffffff"; 
+    private String hexRectColor = "#ffdae4"; 
     Color rectColor = Color.decode(hexRectColor);
 
-    private String hexCircleColor = "#000000"; 
+    private String hexCircleColor = "#ea377f"; 
     Color circleColor = Color.decode(hexCircleColor);
 
-    private String hexLinkColor = "#000000"; 
+    private String hexLinkColor = "#bf1567"; 
     Color linkColor = Color.decode(hexLinkColor);
+    
+    
+    private static final int NODE_SIZE = 10;
+    private static final int MIN_DISTANCE_BETWEEN_NODES = 25; //fixing need HELP added
 
+    private static List<Point> nodePositions = new ArrayList<>();
+
+   
     /**
      * Constructor for objects of class CirclesAndSquares
      */
@@ -176,8 +185,9 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
                     Nodes placingNode = queue.getHead();
                     int newY = (int) Math.floor(Math.random() *(maxY - minY + 1) + minY);
                     int newX = (int) Math.floor(Math.random() *(maxX - minX + 1) + minX);
-                    placingNode.setYCoord(newY);
-                    placingNode.setXCoord(newX);
+                    setNodePosition(newX, newY, currentNode);
+                    //placingNode.setNodePosition(newX, newY);
+                    //placingNode.setXCoord(newX);
                     queue.takeFromQueue(followerNumber);
                 }
             }else{
@@ -187,6 +197,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         this.pack(); // magical pack always needs to be after, other it won't load the menus until it's resized
     }
+    
 
     public void actionPerformed(ActionEvent e){
         String itemToActOn = e.getActionCommand(); //string of the clicked on menu item title's 
@@ -237,6 +248,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     public void paint (Graphics g){ //HELP BIG ONE need to set the values fo the arrays and the links etc before doign them in here bc can't pass anything into here.
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
+       
 
         //image.paintIcon(this, g, x, y);
 
@@ -276,8 +288,9 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         while (currentNode.getPathBack() != null) {
                 
                 int shift = circleSize/2;
-    
+                 float lineWidth = 3.0f;
                 g.setColor(Color.RED); 
+                g2.setStroke(new BasicStroke(lineWidth));
                 g.drawLine(currentNode.getXCoord()+shift, currentNode.getYCoord()+shift, currentNode.getPathBack().getXCoord()+shift, currentNode.getPathBack().getYCoord()+shift);
                            
                 currentNode = currentNode.getPathBack();
@@ -289,15 +302,50 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             System.out.println(i);
             x = nodesAccessible[i].getXCoord();
             y = nodesAccessible[i].getYCoord();
-            g2.setColor(circleColor);
+            //g2.setColor(circleColor);
+            end = nodesAccessible.length - 1;
+            int shift = circleSize/2;
             
             //System.out.println(nodesAccessible[i].getColor());
-
+            if (i == 0 || i == end) g2.setColor(linkColor);
+            else g2.setColor(circleColor);
             //g2.setColor(circleColor);
             g2.fillOval(x, y, circleSize, circleSize);
+            
+            String nodeNumber = String.valueOf(nodesAccessible[i].getNumber());
+            
+            g2.setColor(rectColor);
+            // Draw the node number near the node
+            int fontSize = 5;
+            g2.drawString(nodeNumber, x+shift-fontSize, y+shift+fontSize);
+
 
         }
 }
+
+
+    public void setNodePosition(int x, int y, Nodes currentNode) {
+        // Check for collisions with existing nodes
+        while (isColliding(x, y)) {
+            x += MIN_DISTANCE_BETWEEN_NODES; // Adjust horizontal position
+            y += MIN_DISTANCE_BETWEEN_NODES; // Adjust vertical position
+        }
+
+        currentNode.setXCoord(x);
+        currentNode.setYCoord(y);
+        nodePositions.add(new Point(x, y));
+    }
+
+    private boolean isColliding(int x, int y) {
+        for (Point position : nodePositions) {
+            int distanceSquared = (x - position.x) * (x - position.x) + (y - position.y) * (y - position.y);
+            if (distanceSquared < MIN_DISTANCE_BETWEEN_NODES * MIN_DISTANCE_BETWEEN_NODES) {
+                return true; // Colliding
+            }
+        }
+        return false; // Not colliding
+    }
+
 
     // System.out.println("working????");
     //for(int i = 0; i < arrayOfNodes.length; i++){//HELP

@@ -167,4 +167,6 @@ public class Nodes
     public void setColor(Color newColor){
         this.color = newColor; 
     }
+    
+    
 }

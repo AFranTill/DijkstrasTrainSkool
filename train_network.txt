@@ -1,48 +1,50 @@
 Node Information:
-Zero - X: 162, Y: 435
-One - X: 516, Y: 369
-Two - X: 153, Y: 493
-Three - X: 207, Y: 132
-Four - X: 321, Y: 437
-Five - X: 432, Y: 537
-Six - X: 210, Y: 240
-Seven - X: 364, Y: 331
-Eight - X: 60, Y: 264
-Nine - X: 450, Y: 402
-Ten - X: 441, Y: 139
-Eleven - X: 475, Y: 141
-Twelve - X: 434, Y: 338
-Thirteen - X: 124, Y: 198
-Fourteen - X: 211, Y: 134
+Zero - X: 185, Y: 109
+One - X: 264, Y: 332
+Two - X: 305, Y: 132
+Three - X: 95, Y: 132
+Four - X: 598, Y: 266
+Five - X: 497, Y: 653
+Six - X: 386, Y: 349
+Seven - X: 614, Y: 372
+Eight - X: 107, Y: 586
+Nine - X: 250, Y: 448
+Ten - X: 723, Y: 599
+Eleven - X: 628, Y: 278
+Twelve - X: 307, Y: 617
+Thirteen - X: 621, Y: 664
+Fourteen - X: 672, Y: 614
 Link Information:
-Start Node: Zero, End Node: Ten, Weight: 5
-Start Node: Zero, End Node: Fourteen, Weight: 8
-Start Node: Zero, End Node: Seven, Weight: 4
-Start Node: One, End Node: Four, Weight: 13
-Start Node: Two, End Node: Eight, Weight: 8
-Start Node: Three, End Node: Eight, Weight: 2
-Start Node: Three, End Node: Seven, Weight: 10
-Start Node: Three, End Node: Fourteen, Weight: 6
-Start Node: Four, End Node: Two, Weight: 13
-Start Node: Four, End Node: Five, Weight: 1
-Start Node: Five, End Node: Three, Weight: 8
-Start Node: Six, End Node: Eight, Weight: 5
-Start Node: Six, End Node: Eleven, Weight: 2
-Start Node: Six, End Node: Four, Weight: 10
-Start Node: Seven, End Node: Four, Weight: 3
-Start Node: Seven, End Node: Eleven, Weight: 8
-Start Node: Seven, End Node: Twelve, Weight: 2
-Start Node: Eight, End Node: One, Weight: 3
-Start Node: Eight, End Node: Fourteen, Weight: 3
-Start Node: Nine, End Node: Three, Weight: 10
-Start Node: Ten, End Node: Five, Weight: 2
-Start Node: Ten, End Node: Nine, Weight: 3
-Start Node: Eleven, End Node: Four, Weight: 5
-Start Node: Eleven, End Node: Eight, Weight: 2
-Start Node: Eleven, End Node: Thirteen, Weight: 4
-Start Node: Twelve, End Node: Nine, Weight: 12
-Start Node: Thirteen, End Node: One, Weight: 13
-Start Node: Thirteen, End Node: Twelve, Weight: 9
-Start Node: Thirteen, End Node: Two, Weight: 7
-Start Node: Fourteen, End Node: Eleven, Weight: 5
-Start Node: Fourteen, End Node: One, Weight: 8
+Start Node: Zero, End Node: Five, Weight: 1
+Start Node: Zero, End Node: Eleven, Weight: 4
+Start Node: One, End Node: Two, Weight: 6
+Start Node: Two, End Node: Nine, Weight: 1
+Start Node: Three, End Node: Twelve, Weight: 12
+Start Node: Three, End Node: Five, Weight: 14
+Start Node: Three, End Node: Ten, Weight: 9
+Start Node: Four, End Node: Five, Weight: 13
+Start Node: Four, End Node: Thirteen, Weight: 12
+Start Node: Five, End Node: Twelve, Weight: 9
+Start Node: Five, End Node: Six, Weight: 6
+Start Node: Five, End Node: Eight, Weight: 8
+Start Node: Six, End Node: Five, Weight: 13
+Start Node: Six, End Node: Four, Weight: 4
+Start Node: Six, End Node: Eight, Weight: 3
+Start Node: Seven, End Node: Two, Weight: 9
+Start Node: Seven, End Node: Eight, Weight: 6
+Start Node: Seven, End Node: Four, Weight: 6
+Start Node: Eight, End Node: Six, Weight: 8
+Start Node: Eight, End Node: Four, Weight: 8
+Start Node: Eight, End Node: Eleven, Weight: 8
+Start Node: Nine, End Node: Six, Weight: 12
+Start Node: Ten, End Node: One, Weight: 13
+Start Node: Ten, End Node: Twelve, Weight: 1
+Start Node: Ten, End Node: Fourteen, Weight: 3
+Start Node: Eleven, End Node: Ten, Weight: 5
+Start Node: Eleven, End Node: Thirteen, Weight: 13
+Start Node: Twelve, End Node: One, Weight: 13
+Start Node: Twelve, End Node: Eleven, Weight: 9
+Start Node: Thirteen, End Node: Fourteen, Weight: 10
+Start Node: Fourteen, End Node: Two, Weight: 5
+Start Node: Fourteen, End Node: Seven, Weight: 3
+Start Node: Fourteen, End Node: Eleven, Weight: 2
