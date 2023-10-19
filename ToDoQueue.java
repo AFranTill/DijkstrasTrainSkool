@@ -7,7 +7,7 @@
  */
 public class ToDoQueue
 {
-    // instance variables - replace the example below with your own
+    // need a beginning and an end
     private Nodes head;
     private Nodes tail;
 
@@ -20,28 +20,26 @@ public class ToDoQueue
     }
 
     public boolean isQueueEmpty(){
-
-        if(head == null){
+        if(head == null){ // checks to see if anything in queue
             return true;
         }else return false;
     }
 
-    public void addToQueue(Nodes newFollower, int which) {
+    public void addToQueue(Nodes newFollower, int which) { // adds to queue
         boolean isEmpty = isQueueEmpty();
-        if (isEmpty == true) {
+        if (isEmpty == true) { // if it's empty, new thing is front and back 
             head = newFollower;
             tail = newFollower;
-        } else if (alreadyInHere(newFollower, which) == false) { // HELP rewrite
+        } else if (alreadyInHere(newFollower, which) == false) { // if not empty, then add to back (check if in queue first)
             tail.addFollower(newFollower,which);
             tail = newFollower;
-        } else {
+        } else { // if already in queue
             System.out.println("already in queue");
         }
     }
 
-    public void takeFromQueue(int which) {
+    public void takeFromQueue(int which) { // removes from queue (which is used to manage different queues
         Nodes current;
-        
         current = head;
         head = head.getFollower(which);
         current.addFollower(null, which);
@@ -49,10 +47,9 @@ public class ToDoQueue
         if (head == null){
             tail = null;
         }
-
     }
 
-    public boolean alreadyInHere(Nodes nodeOfTheHour, int which) {
+    public boolean alreadyInHere(Nodes nodeOfTheHour, int which) { // checks to see if the thing is alrady queuing
         Nodes current = this.head;
         while (current != null) {
             if (current == nodeOfTheHour) {
@@ -62,25 +59,6 @@ public class ToDoQueue
             current = current.getFollower(which);
         }
         return false;
-    }
-
-    public void printQueue(int which){
-        Nodes current = this.head;
-        boolean  isEmpty = isQueueEmpty();
-        if(isEmpty == true){
-            System.out.println("queue is empty!");
-        }else{
-            while (current.getFollower(which) != null){
-                if(current.getFollower(which) == this.tail){
-                    System.out.println(current.getName());
-                    System.out.println(current.getFollower(which).getName());
-                    current = current.getFollower(which);
-                }else{
-                    System.out.println(current.getName());
-                    current = current.getFollower(which);
-                }
-            }
-        }
     }
 
     public Nodes getHead(){

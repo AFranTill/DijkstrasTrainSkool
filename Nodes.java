@@ -19,7 +19,6 @@ public class Nodes
     private String nameOfNode;
     private int numberOfNode;
     private int numberOfNodes;
-    //private Nodes[] whoCanIGoTo;
     private int[] howLongWillItTake;
     private int distanceFromStart = Integer.MAX_VALUE;
     private boolean evaluated = false; 
@@ -29,10 +28,8 @@ public class Nodes
     private int yCoord;
     private boolean visited = false;
     private Nodes nextFollower;
-    private Color color; 
 
     private ArrayList<Links> linksForThisNode = new ArrayList<Links>();
-    //private Nodes[] whoCanIGoTo = new Nodes[numberOfNodes];
 
     /**
      * Constructor for objects of class Nodes
@@ -42,18 +39,6 @@ public class Nodes
         this.nameOfNode = newName;
         this.numberOfNode = newNumber;
         this.numberOfNodes = numberOfNodes;
-
-        // whoCanIGoTo = new Nodes[numberOfNodes];
-        // for(int i = 0; i < numberOfNodes; i++){
-        // arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
-        // }
-
-        
-    }
-
-    public Nodes(int newNumber, String newName)
-    {
-
     }
 
     public int getNumber(){
@@ -86,9 +71,8 @@ public class Nodes
         this.follower[which] = newFollower;
     }
 
-    public Nodes getFollower(int which) //NOTE this is the part that is breaking. idk why?
-    //this is working on the queue to print the circles (aka the links and nodes are being made but not the circles? idk it'sinteresting. 
-    {
+    public Nodes getFollower(int which) //this is working on the queue to print the circles     
+        {
         return this.follower[which];
     }
 
@@ -153,20 +137,5 @@ public class Nodes
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
-    
-    public boolean contains(int mx, int my, int circleSize) { // HELP (will this work? need to comment it as well)
-            int dx = this.xCoord - mx;
-            int dy = this.yCoord - my;
-            return dx * dx + dy * dy <= circleSize * circleSize;
-        }
-        
-        public Color getColor(){
-        return this.color;
-    }
-    
-    public void setColor(Color newColor){
-        this.color = newColor; 
-    }
-    
     
 }

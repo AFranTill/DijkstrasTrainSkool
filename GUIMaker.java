@@ -5,33 +5,37 @@
  * @version 5 28/9/23
  */
 
+//IMPORTS
 import javax.swing.*;
 import java.awt.*; 
-import java.awt.event.*; //or events specifcally 
+import java.awt.event.*; 
 import java.awt.geom.*;
 import java.util.ArrayList;
-//import java.awt.BasicStroke;
 import java.util.concurrent.TimeUnit; 
 import java.awt.geom.Line2D;
 import java.util.List;
 import java.util.Scanner;
 
-public class GUIMaker extends JFrame implements ActionListener, MouseListener // can use JFrame tools
+public class GUIMaker extends JFrame implements ActionListener // can use JFrame tools
 {
+    //VARS
+    
     //menu bar items = class object intialisation
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem menuItem;
 
-    private Nodes hoveredNode = null; //addition
-
     Canvas myGraphic;
-    Nodes[] nodesAccessible;
+    
+    // have to create new arrays to work in here (same info as prev)
+    Nodes[] nodesAccessible; 
     ArrayList<Links> linksAccessible;
-    int followerNumber = 1;
-    int circleSize = 30;
-    //final String fileName = "blueRectangle.png";
-    //ImageIcon image = new ImageIcon(fileName);
+    
+    
+    int followerNumber = 1; //placeholder for a node iteration thing
+    int circleSize = 30; //size of circles
+    
+    //COLOUR OPTIONS
 
     //orange "#ff6108" 
     //Barbie colors: rect ##ffdae4, circ "#ea377f" ,  link #bf1567
@@ -54,14 +58,14 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     private String hexLinkColor = "#bf1567"; 
     Color linkColor = Color.decode(hexLinkColor);
 
-    private static final int MIN_DISTANCE_BETWEEN_NODES = 65; //fixing need HELP added
-    private int printingLinks;
-    private int screenWidth;
-    private int screenHeight;
+    private static final int MIN_DISTANCE_BETWEEN_NODES = 35; //distance betwene nodes (buffer)
+    private int printingLinks; // for if we are prinitng link weights
+    
+    private int menuBuffer; // distance needed for the menu bar at top 
 
-    private int squareWindowSize;
+    private int squareWindowSize; // size of window
 
-    private static List<Point> nodePositions = new ArrayList<>();
+    private static List<Point> nodePositions = new ArrayList<>(); // where the other nodes are (to check against) 
 
     /**
      * Constructor for objects of class CirclesAndSquares
@@ -71,20 +75,20 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
         String title = "Dijkstra's Algorithm Visualisation";
         squareWindowSize = 600;
-        getScreenSize();
         this.setSize(squareWindowSize, squareWindowSize);
+        this.setResizable(false);
 
-        nodesAccessible = arrayOfNodes; //HELP improve copying at some pint might pull up issues otherwise 
+        nodesAccessible = arrayOfNodes; 
         linksAccessible = arrayOfLinks;
 
         System.out.println("Would you like to print the link weights (please input y/n)");
         printingLinks = yesOrNoQuestionMethod(0);
 
-        //circles = new Circle[nodesAccessible.length]; addition
+         menuBuffer = 50; 
 
         int maxY = squareWindowSize - circleSize;
-        int maxX = squareWindowSize - circleSize; //HELP - these should be dependant on the screensize
-        int minY = 30 + circleSize; // 30 being the size of the menubar at the top
+        int maxX = squareWindowSize - circleSize; 
+        int minY = menuBuffer + circleSize; // being the size of the menubar at the top and the circle size 
         int minX = circleSize; // gives buffer room
 
         //creating menu - removed inputs from prev lesson
@@ -105,7 +109,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         this.setJMenuBar(menuBar);
 
         //create the file menu 
-        menu = new JMenu("File");
+        menu = new JMenu("quit");
         menuBar.add(menu);
 
         //add items
@@ -113,43 +117,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         menuItem.addActionListener(this);
         menu.add(menuItem);
 
-        //Example of a shortcut
-        menuItem = new JMenuItem("Down");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke("DOWN"));
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
-
-        menu = new JMenu("Dogs"); //create a menu
-        menuBar.add(menu); // menu's don't generate action items and therefore u can't add action listeners to them 
-
-        //add items
-        menuItem = new JMenuItem("Corgi");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke('g'));
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
-
-        menuItem = new JMenuItem("Collie");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke('l'));
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
-
-        //create another menu
-        menu = new JMenu("Cats");
-        menuBar.add(menu);
-
-        //add items
-        menuItem = new JMenuItem("Tabby");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke('t'));
-        menuItem.addActionListener(this);
-        menu.add(menuItem);
-
-        menuItem = new JMenuItem("Sphinix");
-        menuItem.setAccelerator(KeyStroke.getKeyStroke('s'));
-        menuItem.addActionListener(this);
-        addMouseListener(this);
-        menu.add(menuItem);
-
-        ToDoQueue queue = new ToDoQueue();
+        ToDoQueue queue = new ToDoQueue(); //set up a new queue to go through the nodes/links
         ArrayList<Links> linksForThisNode;
 
         int forwardDist = circleSize*2;
@@ -159,23 +127,21 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         int yDiff;
         Nodes currentNode;
 
-        if(graphType != 3){
+        if(graphType != 3){ //as long as not reading from file, intialise first node
             nodesAccessible[0].setXCoord(50);
             nodesAccessible[0].setYCoord(y);
         }
 
-        for(int i = 0; i < nodesAccessible.length; i++){//HELP also don't set things for first node
+        for(int i = 0; i < nodesAccessible.length; i++){// sets up link and uses them to manage adding nodoes to queue
             currentNode = nodesAccessible[i];
             linksForThisNode = currentNode.getLinks();
-            for(Links link : linksForThisNode){
-                //System.out.println("added link to " + link.findOtherEnd(currentNode).getName() + " from " + currentNode.getName()); //HELP it's a little broken but it works for the firs tbit so we gonna work with it for now
+            for(Links link : linksForThisNode){ // set up links 
                 queue.addToQueue(link.findOtherEnd(currentNode), followerNumber);
             }
 
-            if(graphType == 3){
-                System.out.println("cool");
+            if(graphType == 3){ // if file reading, do nothing
 
-            }else if(graphType == 1 || graphType == 2){
+            }else if(graphType == 1 || graphType == 2){ // if not, iterate through nodes and generate a locale for them 
                 while(queue.isQueueEmpty() != true){ 
                     Nodes placingNode = queue.getHead();
                     int newY = (int) Math.floor(Math.random() *(maxY - minY + 1) + minY);
@@ -184,7 +150,6 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
                     queue.takeFromQueue(followerNumber);
                 }
             }else{
-
             }
         }
 
@@ -194,50 +159,15 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     public void actionPerformed(ActionEvent e){
         String itemToActOn = e.getActionCommand(); //string of the clicked on menu item title's 
 
-        //much prettier, updated actions using a switch
+        //allows for user freedom
         switch (itemToActOn){
             case "quit":
                 System.exit(0);
                 break;
-
-            case "Corgi":
-                System.out.println("britishes people and queenie like this innit");
-                break;
-
-            case "Collie":
-                System.out.println("that's just a make work scheme");
-                String collieDogDialogue = "I have a border collie, his name is Ted";
-                createDialogExample(collieDogDialogue);
-                break;
-
-            case "Tabby":
-                System.out.println("yas - best cat breed");
-                String tabbyCatDialogue = "tabbies are very pretty";
-                createDialogExample(tabbyCatDialogue);
-                break;
-
-            case "Sphinix":
-                System.out.println("a weird hairless kitty cat");
-                break;
-
-            case "Down":
-                System.out.println("downing");
-                break;
         }
     }
 
-    void createDialogExample(String information){ //must be created in the same class
-        JDialog box = new JDialog(this);
-        box.setBounds(400, 400, 150, 70);
-        TextArea area = new TextArea(information);
-        box.add(area);
-        box.toFront();
-        box.setVisible(true);
-        box.setTitle("Hello");
-        area.setEditable(false);
-    }
-
-    public void paint (Graphics g){ //HELP BIG ONE need to set the values fo the arrays and the links etc before doign them in here bc can't pass anything into here.
+    public void paint (Graphics g){ //Here is where everything is dranw in
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
 
@@ -252,38 +182,27 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         int yChange;
         int yDiff = 5;
         g2.setColor(rectColor);
-        g2.fillRect(0, 0, 600, 600); //x, y, width, height
-        //int circleSize = 30;
-
-        // for(int i = 0; i < nodesAccessible.length; i++){
-        // System.out.println(i);
-        // x = nodesAccessible[i].getXCoord();
-        // y = nodesAccessible[i].getYCoord();
-        // g2.setColor(nodesAccessible[i].getColor());
-
-        // //g2.setColor(circleColor);
-        // g2.fillOval(x, y, circleSize, circleSize);
-
-        // }
+        g2.fillRect(0, menuBuffer, 600, 600); //x, y, width, height
+        
         int i = 0;
-        for(Links link : linksAccessible){
+        for(Links link : linksAccessible){ //itater through all the links
             int shift = circleSize/2;
             g2.setColor(linkColor);
             int snx = link.getStartNode().getXCoord();
             int sny = link.getStartNode().getYCoord();
             int enx = link.getEndNode().getXCoord();
             int eny = link.getEndNode().getYCoord();
-            Line2D lin = new Line2D.Float(snx+shift, sny+shift, enx+shift, eny+shift);
+            g2.setColor(linkColor);
+            Line2D lin = new Line2D.Float(snx+shift, sny+shift, enx+shift, eny+shift); // draw then, accouting for circle radius, locale
             g2.draw(lin);
 
             String linkNumber = String.valueOf(link.getWeight());
-            g2.setColor(linkColor);
             // Draw the node number near the node
             int fontSize = 5;
             int weightX = enx + snx;
             int weightY = eny + sny;
 
-            if(printingLinks == 1){
+            if(printingLinks == 1){ // if printing the link weights 
                 g2.drawString(linkNumber, weightX/2, weightY/2);
             }else{
 
@@ -293,36 +212,27 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         }
         int end = nodesAccessible.length - 1; 
         currentNode = nodesAccessible[end];
-        while (currentNode.getPathBack() != null) {
-
+        while (currentNode.getPathBack() != null) { // set up pathback links 
             int shift = circleSize/2;
             float lineWidth = 3.0f;
-            g.setColor(Color.RED); 
-            g2.setStroke(new BasicStroke(lineWidth));
+            g.setColor(Color.RED); //stand out colour
+            g2.setStroke(new BasicStroke(lineWidth)); //make it bolder
             g.drawLine(currentNode.getXCoord()+shift, currentNode.getYCoord()+shift, currentNode.getPathBack().getXCoord()+shift, currentNode.getPathBack().getYCoord()+shift);
-
-            currentNode = currentNode.getPathBack();
+            currentNode = currentNode.getPathBack(); // move down the path
         }
 
-        for( i = 0; i < nodesAccessible.length; i++){
-            //System.out.println(i);
+        for( i = 0; i < nodesAccessible.length; i++){ // iterate thrrough nodes
             x = nodesAccessible[i].getXCoord();
             y = nodesAccessible[i].getYCoord();
-            //g2.setColor(circleColor);
             end = nodesAccessible.length - 1;
             int shift = circleSize/2;
 
-            //System.out.println(nodesAccessible[i].getColor());
-            if (i == 0 || i == end) g2.setColor(linkColor);
-            //else if () g2.setColor(linkColor);
+            if (i == 0 || i == end) g2.setColor(linkColor); // change color if start or end
             else g2.setColor(circleColor);
-            //g2.setColor(circleColor);
-            g2.fillOval(x, y, circleSize, circleSize);
 
+            g2.fillOval(x, y, circleSize, circleSize); // draw nodes
             String nodeNumber = String.valueOf(nodesAccessible[i].getNumber());
-
-            g2.setColor(rectColor);
-            // Draw the node number near the node
+            g2.setColor(rectColor); // set a different color for node numbers
             int fontSize = 5;
 
             g2.drawString(nodeNumber, x+shift-fontSize, y+shift+fontSize);
@@ -330,51 +240,25 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     }
 
     public void setNodePosition(int x, int y, Nodes currentNode) {
-        // Check for collisions with existing nodes
-
-        while (isColliding(x, y)) {
-            // int offScreen = isOffScreen(x,y);
-            // if(offScreen == 1){
-                // //MIN_DISTANCE_BETWEEN_NODES = 1;
-                // x = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);; 
-                // y = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);
-            // }else if(offScreen == 2){
+        while (isColliding(x, y)) { // check if overlappign with other nodes or off page
                 x = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);; 
-                y = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);
-            
-            // }else{
-                // int xOneOrMinusOne = generateRandomOneOrMinusOne();
-                // int yOneOrMinusOne = generateRandomOneOrMinusOne();
-                // x += MIN_DISTANCE_BETWEEN_NODES*xOneOrMinusOne; // Adjust horizontal position
-                // y += MIN_DISTANCE_BETWEEN_NODES*yOneOrMinusOne; // Adjust vertical position
-            // }
+                y = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES + menuBuffer + 1) + MIN_DISTANCE_BETWEEN_NODES + menuBuffer);
         }
-
         currentNode.setXCoord(x); 
-        System.out.println("node " + currentNode.getName() + " set x " + x + "set y " + y);
         currentNode.setYCoord(y);
         nodePositions.add(new Point(x, y));
     }
 
     private boolean isColliding(int x, int y) {
         for (Point position : nodePositions) {
-            // float xPos = (x - position.x);
-            // float yPos = (y - position.y);
-            // double distanceSquared = Math.sqrt(xPos * xPos + yPos * yPos);
-            // int distance = (int) distanceSquared;
-            
-            int distanceSquared = ((x - position.x) * (x - position.x) + (y - position.y) * (y - position.y));
-            //int radius = MIN_DISTANCE_BETWEEN_NODES + MIN_DISTANCE_BETWEEN_NODES ;
-            if (distanceSquared <= MIN_DISTANCE_BETWEEN_NODES + MIN_DISTANCE_BETWEEN_NODES) {
-                System.out.println("colldiing with another node " +  " x " + x + " y " + y);
+            int distanceSquared = ((x - position.x) * (x - position.x) + (y - position.y) * (y - position.y)); // works out circle collision 
+            int radiiSquared = MIN_DISTANCE_BETWEEN_NODES * MIN_DISTANCE_BETWEEN_NODES;
+            if (distanceSquared <= MIN_DISTANCE_BETWEEN_NODES + MIN_DISTANCE_BETWEEN_NODES) { // overlapping
                 return true; // Colliding
             }
-
-            if (x < 0 || y < 0 ||x > squareWindowSize-30 || y > squareWindowSize-30) {
-                System.out.println("colldiing " +  " x " + x + " y " + y);
+            if (x < 0 || y < menuBuffer ||x > squareWindowSize-30 || y > squareWindowSize-30) { //off screen
                 return true;
             }
-
         }
         return false; // Not colliding
     }
@@ -406,51 +290,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         }
         return yesOrNo;
     }
-
-    // System.out.println("working????");
-    //for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-    // currentNode = arrayOfNodes[i];
-    // yChange = 20/(currentNode.getNumberOfLinks() - 1);
-    // g2.drawOval(x, y, height, width);
-    // System.out.println("working");
-
-    // g2.drawString("Girlboss!", 100, 100);
-
-    // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-    // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-    // g2.draw(lin);
-    // }
-
-    // x = x + 20;
-    // y = y + yChange*vertical;
-    // vertical = vertical*-1;
-
-    // }
-
-    // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-    // currentNode = arrayOfNodes[i];
-    // yChange = 20/(currentNode.getNumberOfLinks() - 1);
-    // if(i==0){
-    // g2.drawOval(x, y, height, width);
-    // xChange = 100;//HELP
-
-    // }else{
-    // newX = x +
-    // newY = y + yChange;
-    // g2.drawOval(newX, newY, height, width);
-    // }
-    // for(int j = 0; j < currentNode.getNumberOfLinks(); j++){
-    // Line2D lin = new Line2D.Float(x+width, y, x+length-width, y+20-yChange*j);
-    // }
-
-    // }
-
-    // for(int i = 0; i < arrayOfNodes.length; i++){//HELP
-    // g2.drawOval(x, y, height, width);
-    // //x = x + change;
-
-    // }
-
+    
     public static void slowPrint(int timeWaiting) { //makes the computer pause for the given amount of time
         timeWaiting = timeWaiting*1000;
         try{
@@ -460,62 +300,4 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         }
     }
 
-    public void mouseExited(MouseEvent e){}
-
-    public void mouseEntered(MouseEvent e){}
-
-    public void mouseReleased(MouseEvent e){}
-
-    public void mousePressed(MouseEvent e){}
-
-    public void mouseClicked(MouseEvent e) {}
-
-    public static int generateRandomOneOrMinusOne() {
-        int oneOrMinusOne = (int) Math.floor(Math.random() *(1 - -1 + 1) + -1);
-        if(oneOrMinusOne == 1 || oneOrMinusOne == -1 ){
-            return oneOrMinusOne;
-        }else{
-            return generateRandomOneOrMinusOne();
-        }
-
-    }
-
-    public void getScreenSize() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        screenWidth = (int) screenSize.getWidth();
-        screenHeight = (int) screenSize.getHeight();
-
-        System.out.println("Screen Width: " + screenWidth);
-        System.out.println("Screen Height: " + screenHeight);
-    }
-
-    // public void mouseMoved(Graphics g, MouseEvent e) { //addition
-    // int mousex = e.getX();
-    // int mousey = e.getY();
-
-    // // Check if the mouse is hovering over a node
-    // for (Nodes node : nodesAccessible) {
-    // int nodeX = node.getXCoord();
-    // int nodeY = node.getYCoord();
-    // if (mousex >= nodeX && mousex <= nodeX + circleSize &&
-    // mousey >= nodeY && mousey <= nodeY + circleSize) {
-    // // Mouse is hovering over this node
-    // if (hoveredNode != node) {
-    // // Highlight the node and its links
-    // hoveredNode = node;
-    // highlightNodeAndLinks(g, hoveredNode);
-    // repaint(); // Redraw the canvas to update the highlighting
-    // slowPrint(1);
-    // }
-    // return; // Exit the loop since we only want to highlight one node at a time
-    // }
-    // }
-
-    // }
-    // private void highlightNodeAndLinks(Graphics g, Nodes node) {
-    // System.out.println(node.getName());
-    // //g.setColour(BLACK );
-    // g.fillOval(node.getXCoord(), node.getYCoord(), circleSize, circleSize);
-    // }
 }

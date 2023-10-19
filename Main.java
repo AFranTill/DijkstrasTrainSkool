@@ -9,8 +9,7 @@
 public class Main
 {
     public static void Main(String[] args) {
-        //new TrainNetwork();
-        //new GUI();
+        new TrainNetwork();
         System.out.println("null");
     }
 }
