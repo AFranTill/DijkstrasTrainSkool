@@ -54,11 +54,8 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
     private String hexLinkColor = "#bf1567"; 
     Color linkColor = Color.decode(hexLinkColor);
 
-    
-    private static final int MIN_DISTANCE_BETWEEN_NODES = 20; //fixing need HELP added
-
+    private static final int MIN_DISTANCE_BETWEEN_NODES = 65; //fixing need HELP added
     private int printingLinks;
-
     private int screenWidth;
     private int screenHeight;
 
@@ -166,7 +163,7 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
             nodesAccessible[0].setXCoord(50);
             nodesAccessible[0].setYCoord(y);
         }
-        
+
         for(int i = 0; i < nodesAccessible.length; i++){//HELP also don't set things for first node
             currentNode = nodesAccessible[i];
             linksForThisNode = currentNode.getLinks();
@@ -336,14 +333,15 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
         // Check for collisions with existing nodes
 
         while (isColliding(x, y)) {
-            //int offScreen = isOffScreen(x,y);
-            //if(offScreen == 1){
-                //MIN_DISTANCE_BETWEEN_NODES = 1;
-            x += MIN_DISTANCE_BETWEEN_NODES; 
-            y += MIN_DISTANCE_BETWEEN_NODES;
+            // int offScreen = isOffScreen(x,y);
+            // if(offScreen == 1){
+                // //MIN_DISTANCE_BETWEEN_NODES = 1;
+                // x = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);; 
+                // y = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);
             // }else if(offScreen == 2){
-                // x -= MIN_DISTANCE_BETWEEN_NODES; 
-                // y -= MIN_DISTANCE_BETWEEN_NODES;
+                x = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);; 
+                y = (int) Math.floor(Math.random() *(squareWindowSize - MIN_DISTANCE_BETWEEN_NODES  + 1) + MIN_DISTANCE_BETWEEN_NODES);
+            
             // }else{
                 // int xOneOrMinusOne = generateRandomOneOrMinusOne();
                 // int yOneOrMinusOne = generateRandomOneOrMinusOne();
@@ -360,30 +358,37 @@ public class GUIMaker extends JFrame implements ActionListener, MouseListener //
 
     private boolean isColliding(int x, int y) {
         for (Point position : nodePositions) {
-            int distanceSquared = (x - position.x) * (x - position.x) + (y - position.y) * (y - position.y);
-            if (distanceSquared < MIN_DISTANCE_BETWEEN_NODES * MIN_DISTANCE_BETWEEN_NODES ) {
+            // float xPos = (x - position.x);
+            // float yPos = (y - position.y);
+            // double distanceSquared = Math.sqrt(xPos * xPos + yPos * yPos);
+            // int distance = (int) distanceSquared;
+            
+            int distanceSquared = ((x - position.x) * (x - position.x) + (y - position.y) * (y - position.y));
+            //int radius = MIN_DISTANCE_BETWEEN_NODES + MIN_DISTANCE_BETWEEN_NODES ;
+            if (distanceSquared <= MIN_DISTANCE_BETWEEN_NODES + MIN_DISTANCE_BETWEEN_NODES) {
+                System.out.println("colldiing with another node " +  " x " + x + " y " + y);
                 return true; // Colliding
             }
+
+            if (x < 0 || y < 0 ||x > squareWindowSize-30 || y > squareWindowSize-30) {
+                System.out.println("colldiing " +  " x " + x + " y " + y);
+                return true;
+            }
+
         }
         return false; // Not colliding
     }
 
-    // private int isOffScreen(int x, int y) {
-        // for (Point position : nodePositions) {
-            // if (x < 50 || y < 50 ) {
-                // return 1; // Colliding due to being off the screen
-            // }else if (x > squareWindowSize-30 || y > squareWindowSize-30){
-                // return 2;
-            // }
-        // }
-        // return 0;
-    // }
-    
-    
-            // if (x < 50 || y < 50 ||x > squareWindowSize-30 || y > squareWindowSize-30) {
-                // return true;
-            // }
-
+    private int isOffScreen(int x, int y) {
+        for (Point position : nodePositions) {
+            if (x < 0 || y < 0 ) {
+                return 1; // Colliding due to being off the screen
+            }else if (x > squareWindowSize-30 || y > squareWindowSize-30){
+                return 2;
+            }
+        }
+        return 0;
+    }
 
     public int yesOrNoQuestionMethod(int yesOrNo){ 
         Scanner keyboard = new Scanner(System.in); 
