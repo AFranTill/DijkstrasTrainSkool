@@ -14,6 +14,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.*;
 import java.util.Scanner;
+import java.io.File;
 
 public class TrainNetwork
 {
@@ -25,6 +26,9 @@ public class TrainNetwork
     private int arrayOfDistances[];
     private int followerNumber = 0;
     private int graphType;
+    private String filepath;
+    private int minNumberOfNodes = 15;
+    private int maxNumberOfNodes = 100; 
 
     /**
      * Constructor for objects of class TrainNetwork
@@ -34,75 +38,108 @@ public class TrainNetwork
 
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("how many nodes do you want?");
-        numberOfNodes = keyboard.nextInt();
+        int networkType = returnInteger("Would you like a preset graph (1), or a randomised graph (2), or to read from a file (3)?", 1, 3); 
+        int numberOfNodes;
+        if(networkType == 1){
+            numberOfNodes = 6;
+        }else if(networkType == 2){
+                int toRandomise = returnInteger("Would you like to submit your own number of nodes (1), or shall I randomise one (2)?", 1, 2); 
+                if (toRandomise == 1){
+                    numberOfNodes = returnInteger("how many nodes do you want? You can have a min of 15 and a max of 100", minNumberOfNodes, maxNumberOfNodes); 
+                }else {
+                     numberOfNodes = (int) Math.floor(Math.random() *(maxNumberOfNodes - minNumberOfNodes + 1) + minNumberOfNodes);
+                }
+        }else if (networkType == 3){
+            System.out.println("Please provide a text file name");
+            filepath = keyboard.nextLine();
+            int count = readNumberOfNodes(filepath);
+            System.out.println(count + "count");
+            numberOfNodes = count;
+        
+            System.out.println(numberOfNodes);
+
+        }else{
+            numberOfNodes = 0;
+        }
+
         int maxNumberOfNodes = numberOfNodes - 1;
 
         Nodes[] arrayOfNodes = new Nodes[numberOfNodes];
-
-        System.out.println("and what graph type?");
-        graphType = keyboard.nextInt();
 
         for(int i = 0; i < numberOfNodes; i++){
             arrayOfNodes[i] = new Nodes(i, names[i], numberOfNodes);
         }
 
-        int minNumberOfLinks = 1;
-        int maxNumberOfLinks;
+        if(networkType == 1){
+            arrayOfLinks.add(new Links(2, arrayOfNodes[0], arrayOfNodes[1]));
 
-        if(numberOfNodes < 5)maxNumberOfLinks = 1;
-        else if(numberOfNodes > 5 && numberOfNodes < 10)maxNumberOfLinks = 2;
-        else if(numberOfNodes > 10 && numberOfNodes < 20)maxNumberOfLinks = 3;
-        else maxNumberOfLinks = 4;
+            arrayOfLinks.add(new Links(4, arrayOfNodes[0], arrayOfNodes[2]));
 
-        boolean goAhead = true;
-        for(int firstNodeNumber = 0; firstNodeNumber < numberOfNodes; firstNodeNumber++){
-            int numberOfLinksForThisNode = (int) Math.floor(Math.random() *(maxNumberOfLinks - minNumberOfLinks + 1) + minNumberOfLinks); //generates a random number of links for each node
-            int[] linkEnds = new int[numberOfLinksForThisNode];
+            arrayOfLinks.add(new Links(3, arrayOfNodes[1], arrayOfNodes[2]));
 
-            for(int k = 0; k < numberOfLinksForThisNode; k++){
-                int weight =  (int) Math.floor(Math.random() *(maxNumberOfNodes - 1 + 1) + 1);//WEIGHTS? HELP
+            arrayOfLinks.add(new Links(1, arrayOfNodes[1], arrayOfNodes[3]));
 
-                int secondNodeNumber = randomNumber(numberOfNodes-1, 0, firstNodeNumber, linkEnds);
-                Nodes firstNode = arrayOfNodes[firstNodeNumber];
-                Nodes secondNode = arrayOfNodes[secondNodeNumber];
-                Links currentLink = new Links(weight, firstNode, secondNode);
-                arrayOfLinks.add(currentLink);
-                linkEnds[k] = secondNodeNumber;
-                System.out.println("went ahead" + secondNodeNumber +", "+ firstNodeNumber);
+            arrayOfLinks.add(new Links(5, arrayOfNodes[1], arrayOfNodes[4]));
 
+            arrayOfLinks.add(new Links(2, arrayOfNodes[2], arrayOfNodes[3]));
+
+            arrayOfLinks.add(new Links(1, arrayOfNodes[3], arrayOfNodes[4]));
+
+            arrayOfLinks.add(new Links(4, arrayOfNodes[3], arrayOfNodes[5]));
+
+            arrayOfLinks.add(new Links(2, arrayOfNodes[4], arrayOfNodes[5]));
+
+        }else if (networkType == 2){
+
+            int minNumberOfLinks = 1;
+            int maxNumberOfLinks;
+
+            if(numberOfNodes < 5)maxNumberOfLinks = 1;
+            else if(numberOfNodes > 5 && numberOfNodes < 10)maxNumberOfLinks = 2;
+            else if(numberOfNodes > 10 && numberOfNodes < 20)maxNumberOfLinks = 3;
+            else maxNumberOfLinks = 4;
+
+            boolean goAhead = true;
+            for(int firstNodeNumber = 0; firstNodeNumber < numberOfNodes; firstNodeNumber++){
+                int numberOfLinksForThisNode = (int) Math.floor(Math.random() *(maxNumberOfLinks - minNumberOfLinks + 1) + minNumberOfLinks); //generates a random number of links for each node
+                int[] linkEnds = new int[numberOfLinksForThisNode];
+
+                for(int k = 0; k < numberOfLinksForThisNode; k++){
+                    int weight =  (int) Math.floor(Math.random() *(maxNumberOfNodes - 1 + 1) + 1);//WEIGHTS? HELP
+
+                    int secondNodeNumber = randomNumber(numberOfNodes-1, 0, firstNodeNumber, linkEnds);
+                    Nodes firstNode = arrayOfNodes[firstNodeNumber];
+                    Nodes secondNode = arrayOfNodes[secondNodeNumber];
+                    Links currentLink = new Links(weight, firstNode, secondNode);
+                    arrayOfLinks.add(currentLink);
+                    linkEnds[k] = secondNodeNumber;
+                    //System.out.println("went ahead" + secondNodeNumber +", "+ firstNodeNumber);
+
+                }
             }
+
+        }else if (networkType == 3){
+            readNetworkDataFromFile(arrayOfNodes, arrayOfLinks, filepath);
         }
 
-        System.out.println("link beginnings");
-        for(int i = 0; i < arrayOfLinks.size(); i++){
-            System.out.println(arrayOfLinks.get(i).getStartNode().getName() + ", ");
+        System.out.println("Would you like to contiune (please input y/n)");
+        int cont = yesOrNoQuestionMethod(0);
+
+        graphType = networkType;
+        if (cont == 1) {
+            arrayOfNodes[0].setDistance(0);
+
+            algorithmPartOne(arrayOfNodes, arrayOfLinks);
+
+            printShortestPath(arrayOfNodes[arrayOfNodes.length - 1]);
+
+            GUIMaker gui = new GUIMaker(arrayOfNodes, arrayOfLinks, graphType);
+            writeToFile(arrayOfNodes, arrayOfLinks, numberOfNodes); //additional (filewriting)
+        }else{
+            System.out.println("ok, have a good day!");
         }
-
-        System.out.println("Link ends");
-        for(int i = 0; i < arrayOfLinks.size(); i++){
-            System.out.println(arrayOfLinks.get(i).getEndNode().getName() + ", ");
-        }
-
-        System.out.println("Link Weights");
-
-        for(int i = 0; i < arrayOfLinks.size(); i++){
-            System.out.println(arrayOfLinks.get(i).getWeight() + ", ");
-        }
-
-
-        System.out.println("do you wanna contiune?");
-        int yes = keyboard.nextInt();
-        arrayOfNodes[0].setDistance(0);
-
-        algorithmPartOne(arrayOfNodes, arrayOfLinks);
-        
-        printShortestPath(arrayOfNodes[arrayOfNodes.length - 1]);
-
-        GUIMaker gui = new GUIMaker(arrayOfNodes, arrayOfLinks, graphType);
-        writeToFile(arrayOfNodes, arrayOfLinks); //additional (filewriting)
     }
-    
+
     public void algorithmPartOne(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks ){
         Nodes currentNode = arrayOfNodes[firstValue]; // node currently looking at
         int length = arrayOfNodes.length - 1;
@@ -117,35 +154,34 @@ public class TrainNetwork
         //System.out.println("gotten to algorithm");
         while(queue.isQueueEmpty() != true){ 
 
-            System.out.println("new current node");
+            //System.out.println("new current node");
 
-            System.out.println("Looking at connections from node " + currentNode.getName());
+            // System.out.println("Looking at connections from node " + currentNode.getName());
             ArrayList<Links> linksForThisNode = currentNode.getLinks();
             for(Links link : linksForThisNode){
-                System.out.println("Connection from " + currentNode.getName() + " to " + link.findOtherEnd(currentNode).getName());
+                //System.out.println("Connection from " + currentNode.getName() + " to " + link.findOtherEnd(currentNode).getName());
 
                 Nodes destNode = link.findOtherEnd(currentNode);
-                System.out.println("Confirming destNode is " + destNode.getName());
-                System.out.println();
+                //System.out.println("Confirming destNode is " + destNode.getName());
                 int currentDist = currentNode.getDistance() + link.getWeight();
-                System.out.println("The distance from source node to the destation is " + currentNode.getDistance());
-                System.out.println();
-                System.out.println("The weight of the connection between " + currentNode.getName() + " and " + destNode.getName() + " is " + link.getWeight());
+                //System.out.println("The distance from source node to the destation is " + currentNode.getDistance());
+                //System.out.println();
+                //System.out.println("The weight of the connection between " + currentNode.getName() + " and " + destNode.getName() + " is " + link.getWeight());
                 if(currentDist < destNode.getDistance()){ //update dist if smaller
-                    System.out.println("the current dist: " + currentDist + " is " + currentNode.getDistance() + " + " + link.getWeight() + " current node dist  + link weight " );
+                    //System.out.println("the current dist: " + currentDist + " is " + currentNode.getDistance() + " + " + link.getWeight() + " current node dist  + link weight " );
                     System.out.println();
-                    System.out.println("This is smaller than the destNode.getDistance, " + destNode.getDistance());
+                    //System.out.println("This is smaller than the destNode.getDistance, " + destNode.getDistance());
                     destNode.setDistance(currentDist);
                     destNode.setPathBack(currentNode);
-                    System.out.println("pathBack " + destNode.getPathBack().getName());
+                    //System.out.println("pathBack " + destNode.getPathBack().getName());
                     //update dist & prev node here
-                    System.out.println("updated dist " + destNode.getDistance());
+                    //System.out.println("updated dist " + destNode.getDistance());
                     if(destNode != lastNode){
                         queue.addToQueue(destNode, followerNumber);
-                        System.out.println("added dest " + destNode.getName() + " to queue");
+                        //System.out.println("added dest " + destNode.getName() + " to queue");
                     }
                 }else{
-                    System.out.println("the current dist " + currentDist + " is larger than destNode dist " + destNode.getDistance() + " so not updated");
+                    //System.out.println("the current dist " + currentDist + " is larger than destNode dist " + destNode.getDistance() + " so not updated");
                 }
                 slowPrint(0);
             }
@@ -153,7 +189,7 @@ public class TrainNetwork
             queue.takeFromQueue(followerNumber);
             currentNode = queue.getHead();
         }
-        System.out.println("over");
+        //System.out.println("over");
     }
 
     public void findLinks(Nodes sourceNode, Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks, int[] arrayOfDistances, ToDoQueue queue){ //HELP
@@ -179,19 +215,19 @@ public class TrainNetwork
         int costToDest = arrayOfDistances[destLocale];
         int totalCost = costToSource + costToDest;
 
-        System.out.println("totalCost");
+        //System.out.println("totalCost");
         System.out.println(totalCost);
-        System.out.println("arrayOfDistances[destLocale]");
+        //System.out.println("arrayOfDistances[destLocale]");
         System.out.println(arrayOfDistances[destLocale]);
 
         if(totalCost < arrayOfDistances[destLocale]){
-            System.out.println("crying");
+            //System.out.println("crying");
             sourceNode.setDistance(totalCost);
             arrayOfDistances[sourceLocale] = totalCost;
             dest.setPathBack(sourceNode);
             queue.addToQueue(dest, followerNumber);
         }else{
-            System.out.println("unchanged");
+            //System.out.println("unchanged");
         }
     }
 
@@ -217,42 +253,38 @@ public class TrainNetwork
     }
 
     public int randomNumber(int maxNumber, int minNumber, int cantBe, int[] alsoCantBe){
-        System.out.println("maxNumber " + maxNumber + " minNumber " + minNumber);
-        int generatedNumber = (int) Math.floor(Math.random() *(maxNumber - minNumber + 1) + minNumber);
-        System.out.println("generatedNumber " + generatedNumber);
-        boolean goAhead = true;
-        for(int comparision : alsoCantBe){
+        int generatedNumber = (int) Math.floor(Math.random() *(maxNumber - minNumber + 1) + minNumber); 
+        boolean goAhead = true; //reset from prev attempt
+        for(int comparision : alsoCantBe){ //go through the array and check the gennumber against the array
             if (generatedNumber == comparision){
-                goAhead = false;
+                goAhead = false; //if it is the same as any number in the array 
             }
         }
 
-        if(generatedNumber != cantBe && goAhead == true){
-            System.out.println("returned");
+        if(generatedNumber != cantBe && goAhead == true){ //if it's unique
             return generatedNumber;
-        }else {
-            System.out.println("recalled");
-            return randomNumber(maxNumber, minNumber, cantBe, alsoCantBe);
+        }else { //recall the function if the gennumber is already in the array/the int it can't be
+            return randomNumber(maxNumber, minNumber, cantBe, alsoCantBe); 
         }
 
     }
 
-    public void writeToFile(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks) {
+    public void writeToFile(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks, int numberOfNodes) {
         try {
             FileWriter fileWriter = new FileWriter("train_network.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             // Write data to the file
+            bufferedWriter.write(numberOfNodes + "\n");
+            
             bufferedWriter.write("Node Information:\n");
             for (Nodes node : arrayOfNodes) {
-                bufferedWriter.write(node.getName() + " - X: " + node.getXCoord() + ", Y: " + node.getYCoord() + "\n");
+                bufferedWriter.write(node.getName() + ", " + node.getNumber() + ", " + node.getXCoord() + ", " + node.getYCoord() + "\n");
             }
 
             bufferedWriter.write("Link Information:\n");
             for (Links link : arrayOfLinks) {
-                bufferedWriter.write("Start Node: " + link.getStartNode().getName() +
-                    ", End Node: " + link.getEndNode().getName() +
-                    ", Weight: " + link.getWeight() + "\n");
+                bufferedWriter.write(link.getStartNode().getNumber() +", " + link.getEndNode().getNumber() +", " + link.getWeight() + "\n");
             }
 
             // Close the file
@@ -261,6 +293,144 @@ public class TrainNetwork
             System.out.println("Data has been written to train_network.txt");
         } catch (IOException e) {
             System.err.println("Error writing to the file: " + e.getMessage());
+        }
+    }
+    
+    public int readingAFile(String fileNameAsAString, int intsOrLines){ 
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("We've received your file....");
+        File myFile = new File(fileNameAsAString);
+        int numberOfLines = 0;
+        int numberOfInts = 0;
+        try {
+            if(intsOrLines == 1){ // reads ints or lines depending on what was passed
+                Scanner readTheFileLines = new Scanner(myFile);
+                while (readTheFileLines.hasNextLine()){
+                    System.out.println(readTheFileLines.nextLine()); // counts the lines up 
+                    System.out.println('\u000c'); // clears the creen each time 
+                    numberOfLines++;
+                }
+                System.out.println('\u000c'); // and again for good measure
+                return numberOfLines;
+            }else if (intsOrLines == 2){ // same as above but for ints
+                Scanner readTheFileInts = new Scanner(myFile);
+                while (readTheFileInts.hasNextInt()){
+                    System.out.print(readTheFileInts.nextInt()); 
+                    System.out.println('\u000c');
+                    numberOfInts++;
+                }
+                System.out.println('\u000c');
+                return numberOfInts;
+            }
+            return numberOfLines; // if unspecifcedd, return lines
+        }catch(IOException e){
+            //and if it doesn't work
+            e.printStackTrace();
+            System.out.println("yeah, that didn't work. Maybe you typed it wrong, maybe that file does't exist, or maybe I ust don't have it. Sorry. ");
+            return -1;
+        }
+    }
+    
+    
+
+    public int readNumberOfNodes(String filePath) { // HELP
+        File myFile = new File(filePath);
+        int count;
+        try {
+             Scanner readTheFile = new Scanner(myFile);
+             String firstLine = readTheFile.nextLine();
+             System.out.println("hi" + firstLine);
+             count = Integer.parseInt(firstLine); //readTheFile.nextInt(); //Integer.parseInt(firstLine);
+             System.out.println(count);
+             //int numberOfNodes = count;
+             
+             //System.out.println(numberOfNodes);
+                
+            }catch(IOException e){//and if it doesn't work
+            e.printStackTrace();
+            System.out.println("yeah, that didn't work. Maybe you typed it wrong, maybe that file does't exist, or maybe I ust don't have it. Sorry. ");
+            count = 0;
+        }
+        return count;
+
+            }
+            
+    public void readNetworkDataFromFile(Nodes[] arrayOfNodes, ArrayList<Links> arrayOfLinks, String filePath) {
+        File myFile = new File(filePath);
+        
+        try {
+                Scanner readTheFile = new Scanner(myFile);
+                int nodeCount = 0;
+                ArrayList<Nodes> nodes = new ArrayList<>();
+                ArrayList<Links> links = new ArrayList<>();
+
+                while (readTheFile.hasNextLine()) { //HELP
+                    String line = readTheFile.nextLine();
+                    String[] parts = line.split(", ");
+                    if(parts.length == 1){
+                        
+                    }else if (parts.length == 4) {
+                        // Nodes are in the style "nodeName, nodeNumber, X, Y"
+                        //the nodeName and number is mostly for readibility (and to differentiate between nodes and links)
+                        //here, we just assign the x and y coords to the premade nodes
+                        String nodeName = parts[0];
+                        int xCoord = Integer.parseInt(parts[2]);
+                        int yCoord = Integer.parseInt(parts[3]);
+                        arrayOfNodes[nodeCount].setXCoord(xCoord);
+                        arrayOfNodes[nodeCount].setYCoord(yCoord);
+                        nodeCount++;
+                    } else if (parts.length == 3) {
+                        // links are in the style "startNodeNumber, endNodeNumber, Weight"
+                        int startNodeNumber = Integer.parseInt(parts[0]);
+                        int endNodeNumber = Integer.parseInt(parts[1]);
+                        int weight = Integer.parseInt(parts[2]);
+                        Nodes startNode = arrayOfNodes[startNodeNumber];
+                        Nodes endNode = arrayOfNodes[endNodeNumber];
+                        if (startNode != null && endNode != null) {
+                            Links link = new Links(weight, startNode, endNode);
+                            arrayOfLinks.add(link);
+                        }
+                    }
+                    //line = reader.readLine();//HELP
+                }
+            }catch(IOException e){//and if it doesn't work
+            e.printStackTrace();
+            System.out.println("yeah, that didn't work. Maybe you typed it wrong, maybe that file does't exist, or maybe I ust don't have it. Sorry. ");
+        }
+
+            }
+        
+    public String getFileName(String parametersStatement, boolean forPopulatingAGrid){ //HELP
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(parametersStatement);
+        System.out.println("For any markers = the files supplied are 'hasAGrid.txt' which can be used to populate a file" );
+        System.out.println("and 'thisIWillWriteTo.txt' which can be used to populate with a grid to save it" );
+        System.out.println("but of course any supplied grid will also work!" );
+        String fileNameString = keyboard.nextLine();
+        File namedFile = new File(fileNameString);
+        if(namedFile.exists()){
+            if(forPopulatingAGrid == false){ // the grid we write over can have anything in it, it doesn't matter as it gets written over
+                return fileNameString;
+            }else{ // but if you want to read a grid, it needs to have valid contens 
+                int areThereAnyLines = readingAFile(fileNameString, 1);
+                if(areThereAnyLines < 5){ // if the grid isn't big enough 
+                    System.out.println("I'm sorry, that file doesn't have enough lines in it. Either add some more lines or find another file");
+                    fileNameString = getFileName(parametersStatement, forPopulatingAGrid); //keeps calling the method until a vsalid file is given 
+                    return fileNameString;
+                }
+                int areThereAnyInts = readingAFile(fileNameString, 2);
+                if( areThereAnyInts/areThereAnyLines == areThereAnyLines){ // if there are full lines/and it has enough ints per line
+                    return fileNameString;
+                }else{
+                    System.out.println("I'm sorry, that file doesn't have enough cell values in it. It needs to be a square grid, with as many cells per line as there are lines");
+                    fileNameString = getFileName(parametersStatement, forPopulatingAGrid); //keeps calling the method until a vsalid file is given 
+                    return fileNameString;
+                }
+            }
+        }else {
+            System.out.println("I'm sorry, that doesn't seem to have worked. Please check the parameters and your spelling and try again");
+            fileNameString = getFileName(parametersStatement, forPopulatingAGrid); //keeps calling the method until a vsalid file is given 
+            return fileNameString;
         }
     }
 
@@ -281,10 +451,45 @@ public class TrainNetwork
 
         System.out.println();
     }
-    
-    
-}
 
+    public int returnInteger(String question, int minParameter, int maxParameter){//allows for flexbility/games doesn't crash if a question recieves a non-int input
+        Scanner keyboard = new Scanner(System.in);
+        int intReceived = 0;
+        try {
+            System.out.println(question); //it will reprint the question everytime so the user is reminded of what to input
+            intReceived = keyboard.nextInt();
+            if(intReceived >= minParameter && intReceived <= maxParameter){ //this means I can just have one method for validity & within parameters
+                return intReceived; //will only return the inputted int if it is both within the Parameters and is valid
+            }else{
+                System.out.println("Sorry, that doesn't seem quite right? Check you inputted a number that fits the parameters.");
+                intReceived = returnInteger(question, minParameter, maxParameter); //calls method again until it receives a valid input
+                return intReceived;
+            }
+        }catch(Exception e){ 
+            System.out.println("Sorry, that doesn't seem quite right? Check you inputted a number that fits the parameters.");
+            intReceived = returnInteger(question, minParameter, maxParameter);//calls method again until it receives a valid input
+            return intReceived; 
+        }
+    }
+
+
+    public int yesOrNoQuestionMethod(int yesOrNo){ 
+        Scanner keyboard = new Scanner(System.in); 
+        //takes userInput, mainuplates it into the simplest form, so it can compare to the simplest form in the if statement
+        String userInput = keyboard.nextLine(); //creates 'userInput' as a string variable, assigns it the just receieved input
+        userInput = userInput.toLowerCase().trim(); //converts it to lowercase and trims it 
+
+        if(userInput.equals("yes")||userInput.equals("y")){ //if it receives yes
+            yesOrNo = 1;
+        }else if (userInput.equals("no")||userInput.equals("n")){ //if it receives no
+            yesOrNo = 2;
+        }else{ //if it gets an invalid answer
+            System.out.println("sorry that was an invalid input. Try yes or no, or y/n");
+            yesOrNo = yesOrNoQuestionMethod(1); //calls method again until it gets a valid answer
+        }
+        return yesOrNo;
+    }
+}
 
 // for(int i = 0; i < arrayOfNodes.length; i++){
 // System.out.println(arrayOfNodes[i] + ", ");
@@ -356,3 +561,18 @@ public class TrainNetwork
 // System.out.println(linksForThisNode.get(i).getWeight());
 // }
 
+// System.out.println("link beginnings");
+            // for(int i = 0; i < arrayOfLinks.size(); i++){
+            // System.out.println(arrayOfLinks.get(i).getStartNode().getName() + ", ");
+            // }
+
+            // System.out.println("Link ends");
+            // for(int i = 0; i < arrayOfLinks.size(); i++){
+            // System.out.println(arrayOfLinks.get(i).getEndNode().getName() + ", ");
+            // }
+
+            // System.out.println("Link Weights");
+
+            // for(int i = 0; i < arrayOfLinks.size(); i++){
+            // System.out.println(arrayOfLinks.get(i).getWeight() + ", ");
+            // }
