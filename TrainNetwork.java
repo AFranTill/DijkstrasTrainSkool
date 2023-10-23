@@ -118,7 +118,7 @@ public class TrainNetwork
             printShortestPath(arrayOfNodes[arrayOfNodes.length - 1]);
 
             GUIMaker gui = new GUIMaker(arrayOfNodes, arrayOfLinks, graphType);
-            writeToFile(arrayOfNodes, arrayOfLinks, numberOfNodes); //additional (filewriting)
+            if(graphType != 1)writeToFile(arrayOfNodes, arrayOfLinks, numberOfNodes); //file writes the randomised nwtworks
         }else{
             System.out.println("ok, have a good day!");
         }
@@ -290,6 +290,14 @@ public class TrainNetwork
         String fileNameString = keyboard.nextLine();
         File namedFile = new File(fileNameString);
         if(namedFile.exists()){
+            int countCheck = readNumberOfNodes(fileNameString);
+            if(countCheck < 15){
+                System.out.println("I'm sorry, but that file has too few nodes. Please input a file with enough nodes (more than 15)");
+                fileNameString = getFileName(parametersStatement);
+            }else if (countCheck > 100){
+                System.out.println("I'm sorry, but that file has too many nodes. Please input a file with less nodes (less than 100)");
+                fileNameString = getFileName(parametersStatement);
+            }
             return fileNameString;
         }else {
             System.out.println("I'm sorry, that doesn't seem to have worked. Please check the parameters and your spelling and try again");
